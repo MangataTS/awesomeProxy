@@ -1,0 +1,14 @@
+{
+  "ProxyMethod":true,
+  "ReProxy":{
+    "port":"9090",
+    "BalanceMethod":1,
+    "backend":[{"host":"127.0.0.1:10001","Weghit":1},{"host":"127.0.0.1:10002","Weghit":1},{"host":"127.0.0.1:10003","Weghit":1}]
+  },
+  "CoProxy":{
+    "port":"9090",
+    "MultiListenNum":5,
+    "nagle":true,
+    "filt":["http://*.csdn.*"]
+  }
+}

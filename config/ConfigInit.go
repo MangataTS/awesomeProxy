@@ -1,6 +1,7 @@
 package config
 
 import (
+	"awesomeProxy/Cert"
 	"awesomeProxy/Log"
 	"awesomeProxy/balance"
 	"encoding/json"
@@ -54,6 +55,8 @@ func (cc Config) Init() {
 	}
 	if CONFIG.ProxyMethod == true {
 		cc.balance_init()
+	} else {
+		Cert.Install()
 	}
 
 }

@@ -70,9 +70,6 @@ func main() {
 			Log.Log.Println("URL : ", request.URL)
 			Log.Log.Println("Proto : ", request.Proto)
 			Log.Log.Println("Form : ", request.Form)
-			if request.Host == "127.0.0.1:10001" {
-				return
-			}
 		}
 		// 注册http服务器响应事件函数
 		s.OnHttpResponseEvent = func(response *http.Response) {

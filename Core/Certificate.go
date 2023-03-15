@@ -76,9 +76,9 @@ func (i *Certificate) GeneratePem(host string) ([]byte, []byte, error) {
 			Country:            []string{"CN"},         // 证书所属的国家
 			Organization:       []string{"company"},    // 证书存放的公司名称
 			OrganizationalUnit: []string{"department"}, // 证书所属的部门名称
-			Province:           []string{"BeiJing"},    // 证书签发机构所在省
+			Province:           []string{"SiChuan"},    // 证书签发机构所在省
 			CommonName:         host,
-			Locality:           []string{"BeiJing"}, // 证书签发机构所在市
+			Locality:           []string{"NanChong"}, // 证书签发机构所在市
 		},
 		NotBefore:             time.Now().AddDate(-1, 0, 0),
 		NotAfter:              time.Now().AddDate(1, 0, 0),

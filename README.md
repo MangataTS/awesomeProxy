@@ -1,6 +1,37 @@
 # AwesomeProxy
 
 
+## 预计功能
+
+### 正向代理
+- [x] HTTP、HTTPS、WS、WSS、SOCKET5多种协议数据包抓包代理
+
+- [x] 支持数据拦截和自定义修改
+
+- [x] 自动识别入站协议，按照消息头识别不同的协议进行处理
+
+- [ ] 正则匹配黑名单HOST过滤
+
+- [ ] 用AC自动机去做一个模式串匹配，处理数据包过滤+网站分析
+
+- [ ] 自动安装证书，代理加密数据包
+
+### 反向代理
+
+- [x] 多种算法实现负载均衡
+
+- [ ] 过滤爬虫、流量攻击
+
+- [ ] IP封禁
+
+### 其他功能
+
+- [ ] 一个独立的Golang日志库，支持彩色打印，分为不同日志级别，线程安全，可以参考：[https://github.com/donnie4w/go-logger](https://github.com/donnie4w/go-logger) 和 [https://github.com/davyxu/golog](https://github.com/davyxu/golog)
+
+- [ ] 生成流量分析报告
+  - [ ] 反向代理分析恶意攻击和爬虫
+  - [ ] 正向代理分析对用户上网行为分析，违禁网站访问等
+  
 ## config.json
 
 先给一个简单的配置例子：
@@ -22,7 +53,7 @@
 }
 ```
 
-- `ProxyMethod` 表示的代理方式，True为反向代理，False为正向代理
+- `ProxyMethod` 表示的代理方式，`true` 为反向代理， `false` 为正向代理
 - `ReProxy` 表示反向代理的配置
   - `prot` 表示的是反向代理的代理端口
   - `BalanceMethod` 表示的是负载均衡的方法，本项目支持六种负载均衡算法，分别是：

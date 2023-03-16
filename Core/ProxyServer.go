@@ -62,21 +62,8 @@ func (i *ProxyServer) Start() error {
 		return fmt.Errorf("%w", err)
 	}
 	i.listener = listener
-	i.Logo()
 	i.MultiListen()
 	select {}
-}
-
-func (i *ProxyServer) Logo() {
-	logo := ` 
-______   ______     ______     __  __     __  __ 
-/\  == \ /\  == \   /\  __ \   /\_\_\_\   /\ \_\ \
-\ \  _-/ \ \  __<   \ \ \/\ \  \/_/\_\/_  \ \____ \ 
- \ \_\    \ \_\ \_\  \ \_____\   /\_\/\_\  \/\_____\
-  \/_/     \/_/ /_/   \/_____/   \/_/\/_/   \/_____/ 
-`
-	Log.Log.Println(logo)
-	Log.Log.Println("代理监听端口:0.0.0.0:" + i.port + "(如果是新生成的证书文件，请先手动将根证书.crt文件导入到系统中)")
 }
 
 // 这里协程嵌套处理了客户端请求处理，通过五个协程进行监听客户端操作，然后协程内部再通过协程handle处理conn链接
@@ -89,10 +76,10 @@ func (i *ProxyServer) MultiListen() {
 				conn, err := i.listener.Accept()
 				if err != nil {
 					if e, ok := err.(net.Error); ok && e.Temporary() {
-						Log.Log.Println("接受连接失败,重试：" + err.Error())
+						Log.Error("接受连接失败,重试：" + err.Error())
 						time.Sleep(time.Second / 20)
 					} else {
-						Log.Log.Println("接受连接失败：" + err.Error())
+						Log.Error("接受连接失败：" + err.Error())
 					}
 					continue
 				}

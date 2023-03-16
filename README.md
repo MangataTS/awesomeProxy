@@ -24,6 +24,8 @@
 
 - [ ] IP封禁
 
+- [ ] 数据缓存
+
 ### 其他功能
 
 - [ ] 一个独立的Golang日志库，支持彩色打印，分为不同日志级别，线程安全，可以参考：[https://github.com/donnie4w/go-logger](https://github.com/donnie4w/go-logger) 和 [https://github.com/davyxu/golog](https://github.com/davyxu/golog)
@@ -48,7 +50,7 @@
     "port":"9090",
     "MultiListenNum":5,
     "nagle":true,
-    "filt":["http://*.csdn.*"]
+    "filt":["*.csdn.*"]
   }
 }
 ```

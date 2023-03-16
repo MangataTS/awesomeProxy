@@ -19,13 +19,13 @@ type ProxySocket struct {
 }
 
 const (
-	// 预留位
+	// Rsv 预留位
 	Rsv = 0x00
-	// 命令
+	// CommandConn 命令
 	CommandConn = 0x01
 	CommandBind = 0x02
 	CommandUdp  = 0x03
-	// 目标类型
+	// TargetIpv4 目标类型
 	TargetIpv4   = 0x01
 	TargetIpv6   = 0x04
 	TargetDomain = 0x03
@@ -42,21 +42,21 @@ func (i *ProxySocket) Handle() {
 	// 读取版本号
 	version, err := i.reader.ReadByte()
 	if err != nil {
-		Log.Log.Println("读取socket5版本号错误：" + err.Error())
+		Log.Error("读取socket5版本号错误：" + err.Error())
 		return
 	}
 	if version != Version {
-		Log.Log.Println("socket5版本号不匹配")
+		Log.Error("socket5版本号不匹配")
 		return
 	}
 	// 读取支持的方法
 	methodNum, err := i.reader.ReadByte()
 	if err != nil {
-		Log.Log.Println("读取socket5支持方法数量错误：" + err.Error())
+		Log.Error("读取socket5支持方法数量错误：" + err.Error())
 		return
 	}
 	if methodNum < 0 || methodNum > 0xFF {
-		Log.Log.Println("socket5支持方法参数错误")
+		Log.Error("socket5支持方法参数错误")
 		return
 	}
 	// 是否需要账号密码验证
@@ -66,7 +66,7 @@ func (i *ProxySocket) Handle() {
 	for n := 0; n < int(methodNum); n++ {
 		method, err = i.reader.ReadByte()
 		if err != nil {
-			Log.Log.Println("读取socket5支持错误：" + err.Error())
+			Log.Error("读取socket5支持错误：" + err.Error())
 			return
 		}
 		if method == 0x02 {
@@ -76,7 +76,7 @@ func (i *ProxySocket) Handle() {
 
 	_, err = i.writer.Write([]byte{version, method})
 	if err != nil {
-		Log.Log.Println("返回数据错误：" + err.Error())
+		Log.Error("返回数据错误：" + err.Error())
 		return
 	}
 	_ = i.writer.Flush()
@@ -87,53 +87,53 @@ func (i *ProxySocket) Handle() {
 	// 读取版本号
 	version, err = i.reader.ReadByte()
 	if version != Version {
-		Log.Log.Println("socket5版本号错误")
+		Log.Error("socket5版本号错误")
 		return
 	}
 	// 读取命令
 	command, err := i.reader.ReadByte()
 	if err != nil {
-		Log.Log.Println("读取socket5命令错误")
+		Log.Error("读取socket5命令错误")
 		return
 	}
 	if command != CommandConn && command != CommandBind && command != CommandUdp {
-		Log.Log.Println("不支持socket5命令")
+		Log.Error("不支持socket5命令")
 		return
 	}
 	// 读取保留位
 	rsv, err := i.reader.ReadByte()
 	if err != nil || rsv != Rsv {
-		Log.Log.Println("读取socket5保留位错误")
+		Log.Error("读取socket5保留位错误")
 		return
 	}
 	// 读取目标地址类型
 	targetType, err := i.reader.ReadByte()
 	if err != nil {
-		Log.Log.Println("读取socket5保留位错误")
+		Log.Error("读取socket5保留位错误")
 		return
 	}
 	if targetType != TargetIpv4 && targetType != TargetIpv6 && targetType != TargetDomain {
-		Log.Log.Println("不支持socket5地址")
+		Log.Error("不支持socket5地址")
 		return
 	}
 	var hostname string
 	switch targetType {
 	case TargetIpv4:
 		buffer := make([]byte, 4)
-		// 读4字节
+		// 读4个字节
 		n, err := i.reader.Read(buffer)
 		if err != nil || n != len(buffer) {
-			Log.Log.Println("读取ipv4地址错误")
+			Log.Error("读取ipv4地址错误")
 			return
 		}
 		hostname = net.IP(buffer).String()
 		break
 	case TargetIpv6:
 		buffer := make([]byte, 16)
-		// 读16字节
+		// 读16个字节
 		n, err := i.reader.Read(buffer)
 		if err != nil || n != len(buffer) {
-			Log.Log.Println("读取ipv6地址错误")
+			Log.Error("读取ipv6地址错误")
 			return
 		}
 		hostname = net.IP(buffer).String()
@@ -142,18 +142,18 @@ func (i *ProxySocket) Handle() {
 		// 读取域名长度
 		domainLen, err := i.reader.ReadByte()
 		if err != nil || domainLen <= 0 {
-			Log.Log.Println("读取域名地址错误")
+			Log.Error("读取域名地址错误")
 			return
 		}
 		buffer := make([]byte, domainLen)
 		n, err := i.reader.Read(buffer)
 		if err != nil || n != len(buffer) {
-			Log.Log.Println("读取域名地址错误")
+			Log.Error("读取域名地址错误")
 			return
 		}
 		addr, err := net.ResolveIPAddr("ip", string(buffer))
 		if err != nil {
-			Log.Log.Println("读取域名地址错误：" + err.Error())
+			Log.Error("读取域名地址错误：" + err.Error())
 			hostname = string(buffer)
 		} else {
 			hostname = addr.String()
@@ -164,7 +164,7 @@ func (i *ProxySocket) Handle() {
 	buffer := make([]byte, 2)
 	_, err = i.reader.Read(buffer)
 	if err != nil {
-		Log.Log.Println("读取端口号错误：" + err.Error())
+		Log.Error("读取端口号错误：" + err.Error())
 		return
 	}
 	i.port = strconv.Itoa(int(i.ByteToInt(buffer)))
@@ -185,10 +185,10 @@ func (i *ProxySocket) Handle() {
 			i.target, err = net.DialTimeout("tcp", hostname, time.Second*30)
 		}
 	}
-	Log.Log.Println("待连接的目标服务器：" + hostname)
+	Log.Info("待连接的目标服务器：" + hostname)
 	// 写入Rep
 	if err != nil {
-		Log.Log.Println("连接目标服务器失败：" + hostname + " " + err.Error())
+		Log.Error("连接目标服务器失败：" + hostname + " " + err.Error())
 		_ = i.writer.WriteByte(0x01)
 		_ = i.writer.Flush()
 		return
@@ -216,7 +216,7 @@ func (i *ProxySocket) Handle() {
 	_, _ = i.writer.Write(buffer)
 	err = i.writer.Flush()
 	if err != nil {
-		Log.Log.Println("写入socket5握手错误：" + err.Error())
+		Log.Error("写入socket5握手错误：" + err.Error())
 		return
 	}
 	out := make(chan error, 2)
@@ -271,7 +271,7 @@ func (i *ProxySocket) IpV6(ipAddr string) bool {
 	return ip != nil && strings.Contains(ipAddr, ":")
 }
 
-// 字节转整型
+// ByteToInt 字节转整型
 func (i *ProxySocket) ByteToInt(input []byte) int32 {
 	return int32(input[0]&0xFF)<<8 | int32(input[1]&0xFF)
 }

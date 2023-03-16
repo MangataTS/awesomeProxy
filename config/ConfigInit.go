@@ -15,15 +15,21 @@ type Config struct {
 	ProxyMethod bool    `json:"ProxyMethod"`
 	ReProxy     ReProxy `json:"ReProxy"`
 	CoProxy     CoProxy `json:"CoProxy"`
+	Logg        Logg    `json:"Logg"`
 }
 type Backend struct {
 	Host   string `json:"host"`
-	Weghit int    `json:"Weghit"`
+	Weight int    `json:"Weight"`
+}
+type Cache struct {
+	Start   string `json:"start"`
+	MaxSize string `json:"MaxSize"`
 }
 type ReProxy struct {
 	Port          string    `json:"port"`
 	BalanceMethod int       `json:"BalanceMethod"`
 	Backend       []Backend `json:"backend"`
+	Cache         Cache     `json:"Cache"`
 }
 type CoProxy struct {
 	Port           string   `json:"port"`
@@ -31,42 +37,59 @@ type CoProxy struct {
 	Nagle          bool     `json:"nagle"`
 	Filt           []string `json:"filt"`
 }
+type SizeSplit struct {
+	LogSize int    `json:"LogSize"`
+	Unit    string `json:"Unit"`
+	FileNum int    `json:"FileNum"`
+}
+type Logg struct {
+	FileNameReProxy string    `json:"FileNameReProxy"`
+	FileNameCoProxy string    `json:"FileNameCoProxy"`
+	SplitFormat     string    `json:"SplitFormat"`
+	DateSplit       string    `json:"DateSplit"`
+	SizeSplit       SizeSplit `json:"SizeSplit"`
+}
 
 var CONFIG = &Config{}
 var BalanceNames = []string{"hash", "random", "roundrobin", "weight_roundrobin", "shuffle", "shuffle2"}
 var Insts []*balance.Instance
 
 func (cc Config) Init() {
+	ReadConfig()
+	LogInit()
+	if CONFIG.ProxyMethod == true {
+		cc.BalanceInit()
+	} else {
+		Cert.Install()
+	}
+	Logo()
+
+}
+
+// ReadConfig 读取配置文件
+func ReadConfig() {
 	file, err := os.Open("config.json")
 	if err != nil {
-		Log.Log.Fatal("Config Init error : open json file err")
-		return
+		Log.Fatal("open json file err")
 	}
 	defer file.Close()
 	data, err := io.ReadAll(file)
 	if err != nil {
-		Log.Log.Fatal("Config Init error : read json file err")
-		Log.Sfatal(err, "awesomeProxy/config/Init read file")
+		Log.Fatal("read json file err")
 	}
 	err = json.Unmarshal(data, &CONFIG)
 	if err != nil {
-		Log.Log.Fatal("Config Init error : Unmarshal json file err")
+		Log.Fatal("Unmarshal json file err")
 		return
 	}
-	if CONFIG.ProxyMethod == true {
-		cc.balance_init()
-	} else {
-		Cert.Install()
-	}
-
 }
 
-// 负载均衡初始化
-func (cc Config) balance_init() {
-	//这里获取负载均衡的分散ip
+// BalanceInit 负载均衡初始化
+func (cc Config) BalanceInit() {
+	//这里获取负载均衡服务器ip
 	BacSize := len(CONFIG.ReProxy.Backend)
 	if BacSize == 0 {
-		Log.Log.Fatal("awesomeProxy/config/Init balance_init error,BacSize = 0")
+		Log.Fatal("balance_init error,BacSize = 0")
 	} else if BacSize == 1 {
 		//如果server只有一个
 		CONFIG.ReProxy.BalanceMethod = 2
@@ -75,19 +98,82 @@ func (cc Config) balance_init() {
 		s := strings.Split(CONFIG.ReProxy.Backend[i].Host, ":")
 		bhost := s[0]
 		if len(s) > 2 {
-			Log.Log.Fatal("awesomeProxy/config/Init balance_init error,Backend Host error ")
+			Log.Fatal("awesomeProxy/config/Init balance_init error,Backend Host error ")
 		}
 		if len(s) == 1 {
 			s = append(s, "0")
 		}
-
 		bport, err := strconv.ParseInt(s[1], 10, 64)
 		if err != nil {
-			Log.Log.Fatal("balance_init trans int64 error")
+			Log.Fatal("balance_init trans int64 error")
 		}
-
-		wc := int64(CONFIG.ReProxy.Backend[i].Weghit)
+		wc := int64(CONFIG.ReProxy.Backend[i].Weight)
 		one := balance.NewInstance(bhost, bport, wc)
 		Insts = append(Insts, one)
 	}
+}
+
+// LogInit 日志初始化
+func LogInit() {
+	LogName := ""
+	if CONFIG.ProxyMethod {
+		LogName = CONFIG.Logg.FileNameReProxy
+	} else {
+		LogName = CONFIG.Logg.FileNameCoProxy
+	}
+	if CONFIG.Logg.SplitFormat == "DateSplit" {
+		Method := Log.MODE_DAY
+		if CONFIG.Logg.DateSplit == "MODE_DAY" {
+			Method = Log.MODE_DAY
+		} else if CONFIG.Logg.DateSplit == "MODE_HOUR" {
+			Method = Log.MODE_HOUR
+		} else if CONFIG.Logg.DateSplit == "MODE_MONTH" {
+			Method = Log.MODE_MONTH
+		}
+		_, err := Log.SetRollingByTime("", LogName, Method)
+		if err != nil {
+			Log.Fatal("Log.SetRollingByTime error" + err.Error())
+		}
+	} else if CONFIG.Logg.SplitFormat == "SizeSplit" {
+		Method := Log.MB
+		if CONFIG.Logg.SizeSplit.Unit == "MB" {
+			Method = Log.MB
+		} else if CONFIG.Logg.SizeSplit.Unit == "KB" {
+			Method = Log.KB
+		} else if CONFIG.Logg.SizeSplit.Unit == "GB" {
+			Method = Log.GB
+		} else if CONFIG.Logg.SizeSplit.Unit == "TB" {
+			Method = Log.TB
+		}
+		_, err := Log.SetRollingFileLoop("", LogName, int64(CONFIG.Logg.SizeSplit.LogSize), Method, CONFIG.Logg.SizeSplit.FileNum)
+		if err != nil {
+			Log.Fatal("Log.SetRollingByTime error" + err.Error())
+		}
+	} else {
+		Log.Fatal("Log SplitFormat error")
+	}
+
+}
+
+func Logo() {
+	logo := `
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+`
+	Log.Info(logo)
+	Log.Info("欢迎使用awesomeProxy")
+	if CONFIG.ProxyMethod {
+		Log.Info("反向代理监听端口:0.0.0.0:" + CONFIG.ReProxy.Port)
+	} else {
+		Log.Info("正向代理监听端口:0.0.0.0:" + CONFIG.CoProxy.Port)
+	}
+
 }

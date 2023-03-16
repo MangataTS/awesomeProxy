@@ -23,7 +23,7 @@ func (i *ProxyTcp) Handle() {
 	}()
 	tcpAddr, err := net.ResolveTCPAddr("tcp", i.server.proxy)
 	if err != nil {
-		Log.Log.Println("解析tcp代理目标地址错误：" + err.Error())
+		Log.Error("解析tcp代理目标地址错误：" + err.Error())
 		return
 	}
 	conn, err := net.DialTCP("tcp", nil, tcpAddr)
@@ -31,14 +31,14 @@ func (i *ProxyTcp) Handle() {
 		_ = conn.Close()
 	}()
 	if err != nil {
-		Log.Log.Println("连接tcp代理目标地址错误：" + err.Error())
+		Log.Error("连接tcp代理目标地址错误：" + err.Error())
 		return
 	}
 	// 处理tls握手
 	host, port, _ := net.SplitHostPort(conn.RemoteAddr().String())
 	certificate, err := Cache.GetCertificate(host, port)
 	if err != nil {
-		Log.Log.Println(conn.RemoteAddr().String() + "：获取证书失败：" + err.Error())
+		Log.Error(conn.RemoteAddr().String() + "：获取证书失败：" + err.Error())
 		return
 	}
 	if _, ok := certificate.(tls.Certificate); !ok {
@@ -60,7 +60,7 @@ func (i *ProxyTcp) Handle() {
 	go i.Transport(stop, i.ConnPeer.conn, conn, TcpClient)
 	go i.Transport(stop, conn, i.ConnPeer.conn, TcpServer)
 	err = <-stop
-	Log.Log.Println("转发tcp数据错误：" + err.Error())
+	Log.Error("转发tcp数据错误：" + err.Error())
 }
 
 func (i *ProxyTcp) Transport(out chan<- error, originConn net.Conn, targetConn net.Conn, role string) {

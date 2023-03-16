@@ -5,7 +5,6 @@ import (
 	"awesomeProxy/balance"
 	"awesomeProxy/config"
 	"fmt"
-	"log"
 	"net/http"
 	"net/http/httputil"
 	"net/url"
@@ -24,12 +23,12 @@ func GoReverseProxy(this *RProxy) *httputil.ReverseProxy {
 	proxy.Director = func(request *http.Request) {
 		ins, err := balance.DoBalance(config.BalanceNames[config.CONFIG.ReProxy.BalanceMethod], config.Insts)
 		if err != nil {
-			Log.Log.Fatal("report error")
+			Log.Fatal("report error")
 		}
-		forw := fmt.Sprintf("http://%v:%d", ins.Host, ins.Port)
-		remote, err = url.Parse(forw)
+		Forw := fmt.Sprintf("http://%v:%d", ins.Host, ins.Port)
+		remote, err = url.Parse(Forw)
 		if err != nil {
-
+			Log.Error("GoReverseProxy remote url" + err.Error())
 		}
 		targetQuery := remote.RawQuery
 		request.URL.Scheme = remote.Scheme
@@ -46,7 +45,7 @@ func GoReverseProxy(this *RProxy) *httputil.ReverseProxy {
 			// explicitly disable User-Agent so it's not set to default value
 			request.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36")
 		}
-		log.Println("request.URL.Path：", request.URL.Path, "request.URL.RawQuery：", request.URL.RawQuery)
+		Log.Info("request.URL.Path：", request.URL.Path, "request.URL.RawQuery：", request.URL.RawQuery)
 	}
 
 	// 修改响应头

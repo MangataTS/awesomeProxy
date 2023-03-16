@@ -116,11 +116,18 @@ func (cc Config) BalanceInit() {
 // LogInit 日志初始化
 func LogInit() {
 	LogName := ""
+	// 设置日志目录
+	DataPath, _ := os.Getwd()
+	DataPath = DataPath + "\\Log\\Data"
+
 	if CONFIG.ProxyMethod {
 		LogName = CONFIG.Logg.FileNameReProxy
+		DataPath = DataPath + "\\ReProxyData"
 	} else {
 		LogName = CONFIG.Logg.FileNameCoProxy
+		DataPath = DataPath + "\\CoProxyData"
 	}
+	// 按照日期分割
 	if CONFIG.Logg.SplitFormat == "DateSplit" {
 		Method := Log.MODE_DAY
 		if CONFIG.Logg.DateSplit == "MODE_DAY" {
@@ -130,10 +137,14 @@ func LogInit() {
 		} else if CONFIG.Logg.DateSplit == "MODE_MONTH" {
 			Method = Log.MODE_MONTH
 		}
-		_, err := Log.SetRollingByTime("", LogName, Method)
+		if CONFIG.ProxyMethod {
+
+		}
+		_, err := Log.SetRollingByTime(DataPath, LogName, Method)
 		if err != nil {
 			Log.Fatal("Log.SetRollingByTime error" + err.Error())
 		}
+		// 按照文件大小进行分割
 	} else if CONFIG.Logg.SplitFormat == "SizeSplit" {
 		Method := Log.MB
 		if CONFIG.Logg.SizeSplit.Unit == "MB" {
@@ -145,7 +156,7 @@ func LogInit() {
 		} else if CONFIG.Logg.SizeSplit.Unit == "TB" {
 			Method = Log.TB
 		}
-		_, err := Log.SetRollingFileLoop("", LogName, int64(CONFIG.Logg.SizeSplit.LogSize), Method, CONFIG.Logg.SizeSplit.FileNum)
+		_, err := Log.SetRollingFileLoop(DataPath, LogName, int64(CONFIG.Logg.SizeSplit.LogSize), Method, CONFIG.Logg.SizeSplit.FileNum)
 		if err != nil {
 			Log.Fatal("Log.SetRollingByTime error" + err.Error())
 		}

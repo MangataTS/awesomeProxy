@@ -36,6 +36,7 @@ type CoProxy struct {
 	MultiListenNum int      `json:"MultiListenNum"`
 	Nagle          bool     `json:"nagle"`
 	Filt           []string `json:"filt"`
+	WindowsUnProxy string   `json:"WindowsUnProxy"`
 }
 type SizeSplit struct {
 	LogSize int    `json:"LogSize"`

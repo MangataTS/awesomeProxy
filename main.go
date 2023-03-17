@@ -20,13 +20,14 @@ import (
 func init() {
 	//配置初始化
 	config.CONFIG.Init()
-	// 初始化根证书
+	// 初始化并根证书
 	err := Core.NewCertificate().Init()
 	if err != nil {
 		Log.Fatal("初始化根证书失败：" + err.Error())
-		return
 	}
-
+	//打开系统代理
+	Host := "127.0.0.1:" + config.CONFIG.CoProxy.Port
+	Utils.SetWindowsProxy(Host)
 }
 
 func main() {

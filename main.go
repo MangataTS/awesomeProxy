@@ -5,6 +5,7 @@ import (
 	"awesomeProxy/Core/Websocket"
 	"awesomeProxy/Log"
 	"awesomeProxy/Reproxy"
+	"awesomeProxy/Utils"
 	"awesomeProxy/config"
 	"bufio"
 	"compress/gzip"
@@ -67,6 +68,7 @@ func main() {
 			Log.Info("URL : ", request.URL)
 			Log.Info("Proto : ", request.Proto)
 			Log.Info("Form : ", request.Form)
+			Utils.BlacklistFilter(request)
 		}
 		// 注册http服务器响应事件函数
 		s.OnHttpResponseEvent = func(response *http.Response) {

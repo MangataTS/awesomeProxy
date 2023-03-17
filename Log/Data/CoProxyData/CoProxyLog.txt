@@ -1,0 +1,529 @@
+[INFO]2023/03/17 12:57:26 ConfigInit.go:182: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/17 12:57:26 ConfigInit.go:183: 欢迎使用awesomeProxy
+[INFO]2023/03/17 12:57:26 ConfigInit.go:187: 正向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/17 12:57:34 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 12:57:34 main.go:66: Host : blog.csdn.net
+[INFO]2023/03/17 12:57:34 main.go:67: Method : GET
+[INFO]2023/03/17 12:57:34 main.go:68: URL : https://blog.csdn.net/Arlingtonroad/article/details/99700010
+[INFO]2023/03/17 12:57:34 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 12:57:34 main.go:70: Form : map[]
+[INFO]2023/03/17 12:58:59 ConfigInit.go:182: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/17 12:58:59 ConfigInit.go:183: 欢迎使用awesomeProxy
+[INFO]2023/03/17 12:58:59 ConfigInit.go:187: 正向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/17 12:59:01 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 12:59:01 main.go:66: Host : blog.csdn.net
+[INFO]2023/03/17 12:59:01 main.go:67: Method : GET
+[INFO]2023/03/17 12:59:01 main.go:68: URL : https://blog.csdn.net/Arlingtonroad/article/details/99700010
+[INFO]2023/03/17 12:59:01 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 12:59:01 main.go:70: Form : map[]
+[INFO]2023/03/17 12:59:01 Utils.go:38: *.csdn.*
+[INFO]2023/03/17 13:02:14 ConfigInit.go:182: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/17 13:02:14 ConfigInit.go:183: 欢迎使用awesomeProxy
+[INFO]2023/03/17 13:02:14 ConfigInit.go:187: 正向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/17 13:02:15 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:02:15 main.go:66: Host : blog.csdn.net
+[INFO]2023/03/17 13:02:15 main.go:67: Method : GET
+[INFO]2023/03/17 13:02:15 main.go:68: URL : https://blog.csdn.net/Arlingtonroad/article/details/99700010
+[INFO]2023/03/17 13:02:15 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:02:15 main.go:70: Form : map[]
+[INFO]2023/03/17 13:02:15 Utils.go:38: *.csdn.*
+[INFO]2023/03/17 13:20:49 ConfigInit.go:182: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/17 13:20:49 ConfigInit.go:183: 欢迎使用awesomeProxy
+[INFO]2023/03/17 13:20:49 ConfigInit.go:187: 正向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/17 13:20:59 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:20:59 main.go:66: Host : ev.csdn.net
+[INFO]2023/03/17 13:20:59 main.go:67: Method : POST
+[INFO]2023/03/17 13:20:59 main.go:68: URL : https://ev.csdn.net/webv3
+[INFO]2023/03/17 13:20:59 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:20:59 main.go:70: Form : map[]
+[INFO]2023/03/17 13:20:59 Utils.go:38: .*\.csdn\..*
+[WARN]2023/03/17 13:20:59 Utils.go:46: 访问到黑名单网页
+[INFO]2023/03/17 13:20:59 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:20:59 main.go:66: Host : blog.csdn.net
+[INFO]2023/03/17 13:20:59 main.go:67: Method : GET
+[INFO]2023/03/17 13:20:59 main.go:68: URL : https://blog.csdn.net/dianxin113/article/details/118769094
+[INFO]2023/03/17 13:20:59 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:20:59 main.go:70: Form : map[]
+[INFO]2023/03/17 13:20:59 Utils.go:38: .*\.csdn\..*
+[WARN]2023/03/17 13:20:59 Utils.go:46: 访问到黑名单网页
+[INFO]2023/03/17 13:21:09 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:09 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:09 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:09 main.go:68: URL : https://cn.bing.com/search?q=golang%E7%9A%84%E6%AD%A3%E5%88%99&PC=U316&FORM=CHROMN
+[INFO]2023/03/17 13:21:09 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:09 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:09 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : aefd.nelreports.net
+[INFO]2023/03/17 13:21:11 main.go:67: Method : OPTIONS
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://aefd.nelreports.net/api/report?cat=bingserp
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/rp/nxfMzw1nNLuLBqH--76jwmuIDS0.gz.js
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/sa/simg/favicon-trans-bg-blue-mg.ico
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/geolocation/write?isDevLoc=false&lat=30.8046817779541&lon=106.08262634277344&dispName=%25E9%25A1%25BA%25E5%25BA%2586%25E5%258C%25BA%25EF%25BC%258C%25E5%259B%259B%25E5%25B7%259D%25E7%259C%2581&isEff=1&effLocType=5&clientsid=undefined
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/rp/Eo8Y8CBjaLp1XcGrxKUtnD4sNG0.gz.js
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/rp/pWTUP4F6QsN6MUgzMznsFtCLqb0.gz.js
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/rp/3Q9njnMqbxWhAC_4w9tFQlbp8uY.gz.js
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/rp/B7InTrcwAAxYOgZYz9MRWRGfNWo.gz.js
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:11 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:11 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:11 main.go:68: URL : https://cn.bing.com/rp/mlKxxkf6UTEZv7k-d_D59PCFRho.gz.js
+[INFO]2023/03/17 13:21:11 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:11 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:11 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/GiGr-rA9TBhE2c3LJn7PvDweiOo.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/h0-q6jQPhnmoiznHslVVTcekjqo.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/Oe08_JybWoSjYfa3Ll9ycg1m96I.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/T_fuRJ5ONhzzZUcXzufvynXGXyQ.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/Xp-HPHGHOZznHBwdn7OWdva404Y.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : aefd.nelreports.net
+[INFO]2023/03/17 13:21:12 main.go:67: Method : POST
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://aefd.nelreports.net/api/report?cat=bingserp
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/MstqcgNaYngCBavkktAoSE0--po.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/FSK5nJW--oEsqx-C9U_AFXN4ICM.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/xqPv9huw2nFIRQKbjYKz3qlRoYA.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/B6z3MALNFEeBovQmI37aEJvT4eI.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/pz421bijbK5lmV9FFBsk0txoB1A.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/3lrOXP-rJw_coEESsCV7NFu7aNM.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/ts7UOg9v7BITEkfFgq3rKf7XFN0.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:12 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:12 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:12 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:12 main.go:68: URL : https://cn.bing.com/rp/5ZeCNP-uUJOft0EeiTJVHgcU_PU.gz.js
+[INFO]2023/03/17 13:21:12 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:12 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:12 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/LnlBqkmkv_RbbrebWtMIKUiA-PM.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/hZOKYQo1sXmAf8U0BWrxquEEuaM.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/8QFXXuDW6vBVVv-MRWu1-AyTGfs.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/hLIJkdTrOxcvwVdcjNc-Ci4kLok.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/-4lWPvsxE8kxJO-eEYkwR6dS34E.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : login.microsoftonline.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://login.microsoftonline.com/common/oauth2/authorize?client_id=9ea1ad79-fdb6-4f9a-8bc3-2b70f96e34c7&response_type=id_token&nonce=76c2ccc4-a936-4c6d-aa06-bf578e5f6834&redirect_uri=https%3a%2f%2fcn.bing.com%2forgid%2fidtoken%2fnosignin&scope=openid&response_mode=form_post&instance_aware=true&msafed=0&prompt=none&state=%7b%22ig%22%3a%22F58BF653D0E644859DF65CD9DD519D70%22%7d
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/e18WoGB0Fl3Fh_de5Qlf5D_DTk0.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/k3ZVuYS7g0Y3jh4IK8ZsmdNbzxw.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/BEMA8OTiP06Tckju1JCgbJdkP88.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/Dky0EFi_5HFU5i3GtxYP0GoDJM8.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/Lnfta-0h_3I7U8Q_YcrRseEB3V8.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/KHyqpNEgLO9gplDjiVz7SmJpcLc.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : storage.live.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://storage.live.com/users/0x0c4f53dbb5d4c7c6/myprofile/expressionprofile/profilephoto:UserTileStatic/p?ck=1&ex=720&sid=035F4F66B0AF6E4A10D55DB1B17D6FC2&fofoff=1
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/oTnAeCTy1wpurBE4xfhX3gCY6bI.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/TkZMqjCykkx3c1BXoQJJMYkIgdM.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/DxWMZhoq6hGl__nVCqya7UyujBs.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/ZFhjfD5uXQ9bg30-L4I8h-gOyyU.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:13 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:13 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:13 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:13 main.go:68: URL : https://cn.bing.com/rp/aJTBcPwSPwT0NuwamlgAxWxfDqw.gz.js
+[INFO]2023/03/17 13:21:13 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:13 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:13 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/-MzNG8MFGprxNzOgYpcaamPtJD8.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/5zG9lhllsXznNmRSlzqWAKX3RCY.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/FmScsMs5PjCIlRR4U95RyaZlLEQ.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/UMc3LQfNxSkvn2QdRt2WMsv397Y.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/PQBECiNxQWM0MjdCI24eL12qp_4.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : POST
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/orgid/idtoken/nosignin
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/zSrGvVfY9qY6qsN8e_NSmFpqlc0.gz.js
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/b2rx3vflj537v_M6PaOdovKD_18.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/oAuJWu8cdLxwX2WC911SDezsqF4.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/JYzKC157W-FgO4jTRAUTy_7FaUM.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/4QDTMkVL8cyUcwmfwEYqVc5vlKc.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/iT_V8KBI7eC1TQv70SZIlBffTUA.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rp/PCLHkxkQKrcHICXwdoAfcKEj8Cs.gz.js
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:14 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:14 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:14 main.go:67: Method : POST
+[INFO]2023/03/17 13:21:14 main.go:68: URL : https://cn.bing.com/rewardsapp/ncheader?ver=34937749&IID=SERP.5043&IG=F58BF653D0E644859DF65CD9DD519D70
+[INFO]2023/03/17 13:21:14 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:14 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:14 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:15 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:15 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:15 main.go:67: Method : POST
+[INFO]2023/03/17 13:21:15 main.go:68: URL : https://cn.bing.com/rewardsapp/reportActivity?IG=F58BF653D0E644859DF65CD9DD519D70&IID=SERP.5052&q=golang%E7%9A%84%E6%AD%A3%E5%88%99&PC=U316&FORM=CHROMN
+[INFO]2023/03/17 13:21:15 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:15 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:15 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:15 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:15 main.go:66: Host : login.live.com
+[INFO]2023/03/17 13:21:15 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:15 main.go:68: URL : https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=13&ct=1679030478&rver=7.5.2116.0&wp=MBI_SSL&wreply=https:%2F%2Fstorage.live.com%2Fstorageservice%2Fpassport%2Fauth.aspx%3Fsru%3Dhttps:%252f%252fstorage.live.com%252fusers%252f0x0c4f53dbb5d4c7c6%252fmyprofile%252fexpressionprofile%252fprofilephoto:UserTileStatic%252fp&lc=1033&id=63539
+[INFO]2023/03/17 13:21:15 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:15 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:15 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:15 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:15 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:15 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:15 main.go:68: URL : https://cn.bing.com/rp/wyVGfTD-G9ExaqWqCQgG7kOGN0w.gz.css
+[INFO]2023/03/17 13:21:15 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:15 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:15 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:15 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:15 main.go:66: Host : bingciservice.koreasouth.cloudapp.azure.com
+[INFO]2023/03/17 13:21:15 main.go:67: Method : POST
+[INFO]2023/03/17 13:21:15 main.go:68: URL : https://bingciservice.koreasouth.cloudapp.azure.com/api/QRTrigger/Hook
+[INFO]2023/03/17 13:21:15 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:15 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:15 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:15 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:15 main.go:66: Host : cn.bing.com
+[INFO]2023/03/17 13:21:15 main.go:67: Method : GET
+[INFO]2023/03/17 13:21:15 main.go:68: URL : https://cn.bing.com/rp/LstXTQaou3NoCs7EgQHgnUKh_zQ.gz.js
+[INFO]2023/03/17 13:21:15 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:15 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:15 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:42 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:42 main.go:66: Host : aefd.nelreports.net
+[INFO]2023/03/17 13:21:42 main.go:67: Method : OPTIONS
+[INFO]2023/03/17 13:21:42 main.go:68: URL : https://aefd.nelreports.net/api/report?cat=bingaot
+[INFO]2023/03/17 13:21:42 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:42 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:42 Utils.go:38: .*\.csdn\..*
+[INFO]2023/03/17 13:21:49 main.go:65: =========================HttpRequestEvent: =============================
+[INFO]2023/03/17 13:21:49 main.go:66: Host : aefd.nelreports.net
+[INFO]2023/03/17 13:21:49 main.go:67: Method : POST
+[INFO]2023/03/17 13:21:49 main.go:68: URL : https://aefd.nelreports.net/api/report?cat=bingaot
+[INFO]2023/03/17 13:21:49 main.go:69: Proto : HTTP/1.1
+[INFO]2023/03/17 13:21:49 main.go:70: Form : map[]
+[INFO]2023/03/17 13:21:49 Utils.go:38: .*\.csdn\..*

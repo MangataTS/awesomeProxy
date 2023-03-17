@@ -21,9 +21,15 @@ func GoReverseProxy(this *RProxy) *httputil.ReverseProxy {
 	proxy := httputil.NewSingleHostReverseProxy(remote)
 
 	proxy.Director = func(request *http.Request) {
+		if FiltrationCrawler(*request) {
+			Log.Warn("发现爬虫，现在正在对IP进行监管")
+			request.URL.Scheme = "http"
+			request.Host = "localhost"
+			return
+		}
 		ins, err := balance.DoBalance(config.BalanceNames[config.CONFIG.ReProxy.BalanceMethod], config.Insts)
 		if err != nil {
-			Log.Fatal("report error")
+			Log.Fatal("report error" + err.Error())
 		}
 		Forw := fmt.Sprintf("http://%v:%d", ins.Host, ins.Port)
 		remote, err = url.Parse(Forw)
@@ -41,17 +47,14 @@ func GoReverseProxy(this *RProxy) *httputil.ReverseProxy {
 		} else {
 			request.URL.RawQuery = targetQuery + "&" + request.URL.RawQuery
 		}
-		if _, ok := request.Header["User-Agent"]; !ok {
-			// explicitly disable User-Agent so it's not set to default value
-			request.Header.Set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36")
-		}
-		Log.Info("request.URL.Path：", request.URL.Path, "request.URL.RawQuery：", request.URL.RawQuery)
+		//Log.Info("request.UserAgent() : ", request.UserAgent())
+		Log.Info("request.URL.Path：", request.URL.Path, " request.URL.RawQuery：", request.URL.RawQuery)
 	}
 
 	// 修改响应头
 	proxy.ModifyResponse = func(response *http.Response) error {
 		response.Header.Add("Access-Control-Allow-Origin", "*")
-		response.Header.Add("Reverse-Proxy-Server-PowerBy", "(Hzz)https://hzz.cool")
+		response.Header.Add("Reverse-Proxy-Server-PowerBy", "(kaptree)https://acm.mangata.ltd")
 		return nil
 	}
 

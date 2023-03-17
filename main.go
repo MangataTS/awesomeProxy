@@ -30,7 +30,6 @@ func init() {
 }
 
 func main() {
-
 	//如果是进行反向代理代理
 	if config.CONFIG.ProxyMethod {
 		port := flag.String("port", config.CONFIG.ReProxy.Port, "listen port")
@@ -44,7 +43,6 @@ func main() {
 			Remote: remote,
 		})
 		serveErr := http.ListenAndServe(":"+*port, Pproxy)
-
 		if serveErr != nil {
 			panic(serveErr)
 		}

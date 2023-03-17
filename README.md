@@ -16,6 +16,8 @@
 
 - [x] 自动生成并安装证书，代理加密数据包
 
+- [ ] 自动打开Windows系统代理，并设置
+
 ### 反向代理
 
 - [x] 多种算法实现负载均衡
@@ -40,7 +42,7 @@
 
 ```json
 {
-  "ProxyMethod":true,
+  "ProxyMethod":false,
   "ReProxy":{
     "port":"9090",
     "BalanceMethod":1,
@@ -51,7 +53,7 @@
     "port":"9090",
     "MultiListenNum":5,
     "nagle":true,
-    "filt":["*.csdn.*"]
+    "filt":[".*\\.csdn\\..*"]
   },
   "Logg": {
     "FileNameReProxy": "ReProxyLog.txt",
@@ -91,7 +93,7 @@
 - `port` 表示的是正向代理的代理端口
 - `MultiListenNum` 表示的多线程数，可以设置为CPU的核心数
 - `nagle` 表示是否开启nagle算法优化网络传输，在一些对时延要求较高的交互式操作环境中可以设置 `false` ，默认开启
-- `filt` 表示的是正则过滤的网站，可以将一些违禁网站过滤
+- `filt` 表示的是正则过滤的网站，可以将一些违禁网站过滤，注意这里的正则匹配只支持Golang的regexp包规则
 
 ### Logg
 

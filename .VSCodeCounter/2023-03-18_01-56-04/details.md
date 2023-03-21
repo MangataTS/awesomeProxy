@@ -1,10 +1,10 @@
 # Details
 
-Date : 2023-03-16 02:09:09
+Date : 2023-03-18 01:56:04
 
 Directory e:\\goland\\project\\awesomeProxy
 
-Total : 50 files,  4202 codes, 886 comments, 662 blanks, all 5750 lines
+Total : 52 files,  5051 codes, 953 comments, 751 blanks, all 6755 lines
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
@@ -13,14 +13,15 @@ Total : 50 files,  4202 codes, 886 comments, 662 blanks, all 5750 lines
 | :--- | :--- | ---: | ---: | ---: | ---: |
 | [.idea/awesomeProxy.iml](/.idea/awesomeProxy.iml) | XML | 9 | 0 | 0 | 9 |
 | [.idea/modules.xml](/.idea/modules.xml) | XML | 8 | 0 | 0 | 8 |
+| [.idea/statistic.xml](/.idea/statistic.xml) | XML | 6 | 0 | 0 | 6 |
 | [.idea/vcs.xml](/.idea/vcs.xml) | XML | 6 | 0 | 0 | 6 |
 | [Cert/WindowsCA.go](/Cert/WindowsCA.go) | Go | 49 | 8 | 11 | 68 |
-| [Constant/Certificate.go](/Constant/Certificate.go) | Go | 1 | 0 | 2 | 3 |
+| [Constant/Certificate.go](/Constant/Certificate.go) | Go | 1 | 0 | 1 | 2 |
 | [Contract/IServerProcesser.go](/Contract/IServerProcesser.go) | Go | 4 | 0 | 4 | 8 |
 | [Core/Certificate.go](/Core/Certificate.go) | Go | 168 | 10 | 10 | 188 |
 | [Core/ConnPeer.go](/Core/ConnPeer.go) | Go | 11 | 0 | 3 | 14 |
-| [Core/ProxyHttp.go](/Core/ProxyHttp.go) | Go | 429 | 41 | 21 | 491 |
-| [Core/ProxyServer.go](/Core/ProxyServer.go) | Go | 111 | 5 | 13 | 129 |
+| [Core/ProxyHttp.go](/Core/ProxyHttp.go) | Go | 428 | 42 | 21 | 491 |
+| [Core/ProxyServer.go](/Core/ProxyServer.go) | Go | 99 | 5 | 12 | 116 |
 | [Core/ProxySocket5.go](/Core/ProxySocket5.go) | Go | 246 | 21 | 11 | 278 |
 | [Core/ProxyTcp.go](/Core/ProxyTcp.go) | Go | 91 | 2 | 6 | 99 |
 | [Core/Storage.go](/Core/Storage.go) | Go | 67 | 4 | 9 | 80 |
@@ -43,10 +44,11 @@ Total : 50 files,  4202 codes, 886 comments, 662 blanks, all 5750 lines
 | [Core/Websocket/Trace_17.go](/Core/Websocket/Trace_17.go) | Go | 8 | 1 | 4 | 13 |
 | [Core/Websocket/Util.go](/Core/Websocket/Util.go) | Go | 244 | 26 | 14 | 284 |
 | [Core/Websocket/XnetProxy.go](/Core/Websocket/XnetProxy.go) | Go | 352 | 57 | 65 | 474 |
-| [Log/Logger.go](/Log/Logger.go) | Go | 20 | 0 | 7 | 27 |
-| [README.md](/README.md) | Markdown | 55 | 0 | 19 | 74 |
-| [Reproxy/handle.go](/Reproxy/handle.go) | Go | 76 | 6 | 14 | 96 |
-| [Utils/Utils.go](/Utils/Utils.go) | Go | 26 | 0 | 4 | 30 |
+| [Log/Logger.go](/Log/Logger.go) | Go | 549 | 46 | 61 | 656 |
+| [README.md](/README.md) | Markdown | 83 | 0 | 30 | 113 |
+| [Reproxy/UnCrawler.go](/Reproxy/UnCrawler.go) | Go | 101 | 14 | 15 | 130 |
+| [Reproxy/handle.go](/Reproxy/handle.go) | Go | 79 | 6 | 13 | 98 |
+| [Utils/Utils.go](/Utils/Utils.go) | Go | 122 | 2 | 14 | 138 |
 | [balance/balance_mgr.go](/balance/balance_mgr.go) | Go | 24 | 0 | 7 | 31 |
 | [balance/blancer.go](/balance/blancer.go) | Go | 4 | 0 | 2 | 6 |
 | [balance/hash_balance.go](/balance/hash_balance.go) | Go | 27 | 1 | 8 | 36 |
@@ -56,10 +58,10 @@ Total : 50 files,  4202 codes, 886 comments, 662 blanks, all 5750 lines
 | [balance/shuffle2_balance.go](/balance/shuffle2_balance.go) | Go | 26 | 2 | 9 | 37 |
 | [balance/shuffle_balance.go](/balance/shuffle_balance.go) | Go | 26 | 2 | 9 | 37 |
 | [balance/weight_round_robin.go](/balance/weight_round_robin.go) | Go | 65 | 4 | 15 | 84 |
-| [config.json](/config.json) | JSON | 12 | 2 | 0 | 14 |
-| [config/ConfigInit.go](/config/ConfigInit.go) | Go | 82 | 3 | 9 | 94 |
+| [config.json](/config.json) | JSON | 23 | 0 | 0 | 23 |
+| [config/ConfigInit.go](/config/ConfigInit.go) | Go | 170 | 8 | 14 | 192 |
 | [go.mod](/go.mod) | Go Module File | 6 | 0 | 3 | 9 |
 | [go.sum](/go.sum) | Go Checksum File | 4 | 0 | 1 | 5 |
-| [main.go](/main.go) | Go | 90 | 12 | 8 | 110 |
+| [main.go](/main.go) | Go | 90 | 13 | 5 | 108 |
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

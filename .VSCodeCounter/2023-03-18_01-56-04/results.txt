@@ -1,34 +1,37 @@
-Date : 2023-03-14 21:50:07
+Date : 2023-03-18 01:56:04
 Directory : e:\goland\project\awesomeProxy
-Total : 46 files,  4004 codes, 924 comments, 616 blanks, all 5544 lines
+Total : 52 files,  5051 codes, 953 comments, 751 blanks, all 6755 lines
 
 Languages
 +------------------+------------+------------+------------+------------+------------+
 | language         | files      | code       | comment    | blank      | total      |
 +------------------+------------+------------+------------+------------+------------+
-| Go               |         41 |      3,975 |        924 |        615 |      5,514 |
-| XML              |          2 |         17 |          0 |          0 |         17 |
-| JSON             |          1 |          8 |          0 |          0 |          8 |
-| Go Checksum File |          1 |          2 |          0 |          1 |          3 |
-| Go Module File   |          1 |          2 |          0 |          0 |          2 |
+| Go               |         44 |      4,906 |        953 |        717 |      6,576 |
+| Markdown         |          1 |         83 |          0 |         30 |        113 |
+| XML              |          4 |         29 |          0 |          0 |         29 |
+| JSON             |          1 |         23 |          0 |          0 |         23 |
+| Go Module File   |          1 |          6 |          0 |          3 |          9 |
+| Go Checksum File |          1 |          4 |          0 |          1 |          5 |
 +------------------+------------+------------+------------+------------+------------+
 
 Directories
 +--------------------------------------------------------------------+------------+------------+------------+------------+------------+
 | path                                                               | files      | code       | comment    | blank      | total      |
 +--------------------------------------------------------------------+------------+------------+------------+------------+------------+
-| .                                                                  |         46 |      4,004 |        924 |        616 |      5,544 |
-| . (Files)                                                          |          4 |        155 |         69 |         15 |        239 |
-| .idea                                                              |          2 |         17 |          0 |          0 |         17 |
-| Constant                                                           |          1 |          1 |          0 |          2 |          3 |
+| .                                                                  |         52 |      5,051 |        953 |        751 |      6,755 |
+| . (Files)                                                          |          5 |        206 |         13 |         39 |        258 |
+| .idea                                                              |          4 |         29 |          0 |          0 |         29 |
+| Cert                                                               |          1 |         49 |          8 |         11 |         68 |
+| Constant                                                           |          1 |          1 |          0 |          1 |          2 |
 | Contract                                                           |          1 |          4 |          0 |          4 |          8 |
-| Core                                                               |         26 |      3,509 |        844 |        506 |      4,859 |
-| Core (Files)                                                       |          7 |      1,122 |         83 |         73 |      1,278 |
+| Core                                                               |         26 |      3,497 |        845 |        505 |      4,847 |
+| Core (Files)                                                       |          7 |      1,110 |         84 |         72 |      1,266 |
 | Core\Websocket                                                     |         19 |      2,387 |        761 |        433 |      3,581 |
-| Log                                                                |          1 |         14 |          0 |          6 |         20 |
-| Utils                                                              |          1 |         26 |          0 |          4 |         30 |
+| Log                                                                |          1 |        549 |         46 |         61 |        656 |
+| Reproxy                                                            |          2 |        180 |         20 |         28 |        228 |
+| Utils                                                              |          1 |        122 |          2 |         14 |        138 |
 | balance                                                            |          9 |        244 |         11 |         74 |        329 |
-| config                                                             |          1 |         34 |          0 |          5 |         39 |
+| config                                                             |          1 |        170 |          8 |         14 |        192 |
 +--------------------------------------------------------------------+------------+------------+------------+------------+------------+
 
 Files
@@ -37,12 +40,15 @@ Files
 +--------------------------------------------------------------------+------------------+------------+------------+------------+------------+
 | e:\goland\project\awesomeProxy\.idea\awesomeProxy.iml              | XML              |          9 |          0 |          0 |          9 |
 | e:\goland\project\awesomeProxy\.idea\modules.xml                   | XML              |          8 |          0 |          0 |          8 |
-| e:\goland\project\awesomeProxy\Constant\Certificate.go             | Go               |          1 |          0 |          2 |          3 |
+| e:\goland\project\awesomeProxy\.idea\statistic.xml                 | XML              |          6 |          0 |          0 |          6 |
+| e:\goland\project\awesomeProxy\.idea\vcs.xml                       | XML              |          6 |          0 |          0 |          6 |
+| e:\goland\project\awesomeProxy\Cert\WindowsCA.go                   | Go               |         49 |          8 |         11 |         68 |
+| e:\goland\project\awesomeProxy\Constant\Certificate.go             | Go               |          1 |          0 |          1 |          2 |
 | e:\goland\project\awesomeProxy\Contract\IServerProcesser.go        | Go               |          4 |          0 |          4 |          8 |
 | e:\goland\project\awesomeProxy\Core\Certificate.go                 | Go               |        168 |         10 |         10 |        188 |
 | e:\goland\project\awesomeProxy\Core\ConnPeer.go                    | Go               |         11 |          0 |          3 |         14 |
-| e:\goland\project\awesomeProxy\Core\ProxyHttp.go                   | Go               |        428 |         41 |         21 |        490 |
-| e:\goland\project\awesomeProxy\Core\ProxyServer.go                 | Go               |        111 |          5 |         13 |        129 |
+| e:\goland\project\awesomeProxy\Core\ProxyHttp.go                   | Go               |        428 |         42 |         21 |        491 |
+| e:\goland\project\awesomeProxy\Core\ProxyServer.go                 | Go               |         99 |          5 |         12 |        116 |
 | e:\goland\project\awesomeProxy\Core\ProxySocket5.go                | Go               |        246 |         21 |         11 |        278 |
 | e:\goland\project\awesomeProxy\Core\ProxyTcp.go                    | Go               |         91 |          2 |          6 |         99 |
 | e:\goland\project\awesomeProxy\Core\Storage.go                     | Go               |         67 |          4 |          9 |         80 |
@@ -65,8 +71,11 @@ Files
 | e:\goland\project\awesomeProxy\Core\Websocket\Trace_17.go          | Go               |          8 |          1 |          4 |         13 |
 | e:\goland\project\awesomeProxy\Core\Websocket\Util.go              | Go               |        244 |         26 |         14 |        284 |
 | e:\goland\project\awesomeProxy\Core\Websocket\XnetProxy.go         | Go               |        352 |         57 |         65 |        474 |
-| e:\goland\project\awesomeProxy\Log\Logger.go                       | Go               |         14 |          0 |          6 |         20 |
-| e:\goland\project\awesomeProxy\Utils\Utils.go                      | Go               |         26 |          0 |          4 |         30 |
+| e:\goland\project\awesomeProxy\Log\Logger.go                       | Go               |        549 |         46 |         61 |        656 |
+| e:\goland\project\awesomeProxy\README.md                           | Markdown         |         83 |          0 |         30 |        113 |
+| e:\goland\project\awesomeProxy\Reproxy\UnCrawler.go                | Go               |        101 |         14 |         15 |        130 |
+| e:\goland\project\awesomeProxy\Reproxy\handle.go                   | Go               |         79 |          6 |         13 |         98 |
+| e:\goland\project\awesomeProxy\Utils\Utils.go                      | Go               |        122 |          2 |         14 |        138 |
 | e:\goland\project\awesomeProxy\balance\balance_mgr.go              | Go               |         24 |          0 |          7 |         31 |
 | e:\goland\project\awesomeProxy\balance\blancer.go                  | Go               |          4 |          0 |          2 |          6 |
 | e:\goland\project\awesomeProxy\balance\hash_balance.go             | Go               |         27 |          1 |          8 |         36 |
@@ -76,10 +85,10 @@ Files
 | e:\goland\project\awesomeProxy\balance\shuffle2_balance.go         | Go               |         26 |          2 |          9 |         37 |
 | e:\goland\project\awesomeProxy\balance\shuffle_balance.go          | Go               |         26 |          2 |          9 |         37 |
 | e:\goland\project\awesomeProxy\balance\weight_round_robin.go       | Go               |         65 |          4 |         15 |         84 |
-| e:\goland\project\awesomeProxy\config.json                         | JSON             |          8 |          0 |          0 |          8 |
-| e:\goland\project\awesomeProxy\config\ConfigInit.go                | Go               |         34 |          0 |          5 |         39 |
-| e:\goland\project\awesomeProxy\go.mod                              | Go Module File   |          2 |          0 |          0 |          2 |
-| e:\goland\project\awesomeProxy\go.sum                              | Go Checksum File |          2 |          0 |          1 |          3 |
-| e:\goland\project\awesomeProxy\main.go                             | Go               |        143 |         69 |         14 |        226 |
-| Total                                                              |                  |      4,004 |        924 |        616 |      5,544 |
+| e:\goland\project\awesomeProxy\config.json                         | JSON             |         23 |          0 |          0 |         23 |
+| e:\goland\project\awesomeProxy\config\ConfigInit.go                | Go               |        170 |          8 |         14 |        192 |
+| e:\goland\project\awesomeProxy\go.mod                              | Go Module File   |          6 |          0 |          3 |          9 |
+| e:\goland\project\awesomeProxy\go.sum                              | Go Checksum File |          4 |          0 |          1 |          5 |
+| e:\goland\project\awesomeProxy\main.go                             | Go               |         90 |         13 |          5 |        108 |
+| Total                                                              |                  |      5,051 |        953 |        751 |      6,755 |
 +--------------------------------------------------------------------+------------------+------------+------------+------------+------------+

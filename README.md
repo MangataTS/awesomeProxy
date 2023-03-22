@@ -16,6 +16,8 @@ Total : 56 files,  5239 codes, 974 comments, 792 blanks, all 7005 lines
 
 ## 预计功能
 
+开发完成一个基于Golang语言的多协议流量分析工具，支持正反向代理，日志、报告生成等多项功能，具体功能如下
+
 ### 正向代理
 - [x] HTTP、HTTPS、WS、WSS、SOCKET5多种协议数据包抓包代理
 
@@ -29,7 +31,7 @@ Total : 56 files,  5239 codes, 974 comments, 792 blanks, all 7005 lines
 
 - [x] 自动生成并安装RSA公私钥证书，代理加密数据包
 
-- [x] 通过WindowsAPI，自动打开Windows系统代理，并设响应参数
+- [x] 通过WindowsAPI，自动打开Windows系统代理，并设相应参数
 
 ### 反向代理
 
@@ -41,7 +43,6 @@ Total : 56 files,  5239 codes, 974 comments, 792 blanks, all 7005 lines
   - [x] 基于洗牌算法的负载均衡
   - [x] 基于优化洗牌算法的负载均衡
 
-  
 - [x] 通过协议头和访问频率算法分析过滤爬虫，减轻服务器负担
 
 - [ ] 通过流量分析防止DDOS流量攻击

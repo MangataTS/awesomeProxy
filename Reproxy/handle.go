@@ -6,19 +6,17 @@ import (
 	"awesomeProxy/config"
 	"fmt"
 	"net/http"
-	"net/http/httputil"
 	"net/url"
-	"strings"
 )
 
 type RProxy struct {
 	Remote *url.URL
 }
 
-func GoReverseProxy(this *RProxy) *httputil.ReverseProxy {
+func GoReverseProxy(this *RProxy) *ReverseProxy {
 	remote := this.Remote
 
-	proxy := httputil.NewSingleHostReverseProxy(remote)
+	proxy := NewSingleHostReverseProxy(remote)
 
 	proxy.Director = func(request *http.Request) {
 		if FiltrationCrawler(*request) {
@@ -61,37 +59,37 @@ func GoReverseProxy(this *RProxy) *httputil.ReverseProxy {
 	return proxy
 }
 
-// go sdk 源码
-func joinURLPath(a, b *url.URL) (path, rawpath string) {
-	if a.RawPath == "" && b.RawPath == "" {
-		return singleJoiningSlash(a.Path, b.Path), ""
-	}
-	// Same as singleJoiningSlash, but uses EscapedPath to determine
-	// whether a slash should be added
-	apath := a.EscapedPath()
-	bpath := b.EscapedPath()
-
-	aslash := strings.HasSuffix(apath, "/")
-	bslash := strings.HasPrefix(bpath, "/")
-
-	switch {
-	case aslash && bslash:
-		return a.Path + b.Path[1:], apath + bpath[1:]
-	case !aslash && !bslash:
-		return a.Path + "/" + b.Path, apath + "/" + bpath
-	}
-	return a.Path + b.Path, apath + bpath
-}
-
-// go sdk 源码
-func singleJoiningSlash(a, b string) string {
-	aslash := strings.HasSuffix(a, "/")
-	bslash := strings.HasPrefix(b, "/")
-	switch {
-	case aslash && bslash:
-		return a + b[1:]
-	case !aslash && !bslash:
-		return a + "/" + b
-	}
-	return a + b
-}
+//// go sdk 源码
+//func joinURLPath(a, b *url.URL) (path, rawpath string) {
+//	if a.RawPath == "" && b.RawPath == "" {
+//		return singleJoiningSlash(a.Path, b.Path), ""
+//	}
+//	// Same as singleJoiningSlash, but uses EscapedPath to determine
+//	// whether a slash should be added
+//	apath := a.EscapedPath()
+//	bpath := b.EscapedPath()
+//
+//	aslash := strings.HasSuffix(apath, "/")
+//	bslash := strings.HasPrefix(bpath, "/")
+//
+//	switch {
+//	case aslash && bslash:
+//		return a.Path + b.Path[1:], apath + bpath[1:]
+//	case !aslash && !bslash:
+//		return a.Path + "/" + b.Path, apath + "/" + bpath
+//	}
+//	return a.Path + b.Path, apath + bpath
+//}
+//
+//// go sdk 源码
+//func singleJoiningSlash(a, b string) string {
+//	aslash := strings.HasSuffix(a, "/")
+//	bslash := strings.HasPrefix(b, "/")
+//	switch {
+//	case aslash && bslash:
+//		return a + b[1:]
+//	case !aslash && !bslash:
+//		return a + "/" + b
+//	}
+//	return a + b
+//}

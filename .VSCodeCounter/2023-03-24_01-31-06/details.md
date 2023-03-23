@@ -1,10 +1,10 @@
 # Details
 
-Date : 2023-03-17 01:04:04
+Date : 2023-03-24 01:31:06
 
 Directory e:\\goland\\project\\awesomeProxy
 
-Total : 50 files,  4829 codes, 933 comments, 726 blanks, all 6488 lines
+Total : 62 files,  6204 codes, 1351 comments, 932 blanks, all 8487 lines
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
@@ -13,9 +13,15 @@ Total : 50 files,  4829 codes, 933 comments, 726 blanks, all 6488 lines
 | :--- | :--- | ---: | ---: | ---: | ---: |
 | [.idea/awesomeProxy.iml](/.idea/awesomeProxy.iml) | XML | 9 | 0 | 0 | 9 |
 | [.idea/modules.xml](/.idea/modules.xml) | XML | 8 | 0 | 0 | 8 |
+| [.idea/statistic.xml](/.idea/statistic.xml) | XML | 6 | 0 | 0 | 6 |
 | [.idea/vcs.xml](/.idea/vcs.xml) | XML | 6 | 0 | 0 | 6 |
+| [AsCache/ascache.go](/AsCache/ascache.go) | Go | 67 | 8 | 16 | 91 |
+| [AsCache/byteview.go](/AsCache/byteview.go) | Go | 18 | 4 | 6 | 28 |
+| [AsCache/cache.go](/AsCache/cache.go) | Go | 29 | 0 | 7 | 36 |
+| [AsCache/lru/lru.go](/AsCache/lru/lru.go) | Go | 62 | 9 | 11 | 82 |
+| [AsCache/lru/lru_test.go](/AsCache/lru/lru_test.go) | Go | 54 | 0 | 12 | 66 |
 | [Cert/WindowsCA.go](/Cert/WindowsCA.go) | Go | 49 | 8 | 11 | 68 |
-| [Constant/Certificate.go](/Constant/Certificate.go) | Go | 1 | 0 | 2 | 3 |
+| [Constant/Certificate.go](/Constant/Certificate.go) | Go | 1 | 0 | 1 | 2 |
 | [Contract/IServerProcesser.go](/Contract/IServerProcesser.go) | Go | 4 | 0 | 4 | 8 |
 | [Core/Certificate.go](/Core/Certificate.go) | Go | 168 | 10 | 10 | 188 |
 | [Core/ConnPeer.go](/Core/ConnPeer.go) | Go | 11 | 0 | 3 | 14 |
@@ -43,10 +49,16 @@ Total : 50 files,  4829 codes, 933 comments, 726 blanks, all 6488 lines
 | [Core/Websocket/Trace_17.go](/Core/Websocket/Trace_17.go) | Go | 8 | 1 | 4 | 13 |
 | [Core/Websocket/Util.go](/Core/Websocket/Util.go) | Go | 244 | 26 | 14 | 284 |
 | [Core/Websocket/XnetProxy.go](/Core/Websocket/XnetProxy.go) | Go | 352 | 57 | 65 | 474 |
-| [Log/Logger.go](/Log/Logger.go) | Go | 548 | 46 | 61 | 655 |
-| [README.md](/README.md) | Markdown | 79 | 0 | 28 | 107 |
-| [Reproxy/handle.go](/Reproxy/handle.go) | Go | 76 | 6 | 13 | 95 |
-| [Utils/Utils.go](/Utils/Utils.go) | Go | 26 | 0 | 4 | 30 |
+| [Log/Logger.go](/Log/Logger.go) | Go | 549 | 46 | 61 | 656 |
+| [README.md](/README.md) | Markdown | 106 | 0 | 34 | 140 |
+| [Reproxy/UnCrawler.go](/Reproxy/UnCrawler.go) | Go | 101 | 14 | 15 | 130 |
+| [Reproxy/ascii/print.go](/Reproxy/ascii/print.go) | Go | 44 | 10 | 8 | 62 |
+| [Reproxy/ascii/print_test.go](/Reproxy/ascii/print_test.go) | Go | 88 | 3 | 5 | 96 |
+| [Reproxy/handle.go](/Reproxy/handle.go) | Go | 50 | 36 | 10 | 96 |
+| [Reproxy/httpguts/guts.go](/Reproxy/httpguts/guts.go) | Go | 35 | 11 | 5 | 51 |
+| [Reproxy/httpguts/httplex.go](/Reproxy/httpguts/httplex.go) | Go | 230 | 98 | 25 | 353 |
+| [Reproxy/reverseproxy.go](/Reproxy/reverseproxy.go) | Go | 524 | 225 | 84 | 833 |
+| [Utils/Utils.go](/Utils/Utils.go) | Go | 122 | 2 | 14 | 138 |
 | [balance/balance_mgr.go](/balance/balance_mgr.go) | Go | 24 | 0 | 7 | 31 |
 | [balance/blancer.go](/balance/blancer.go) | Go | 4 | 0 | 2 | 6 |
 | [balance/hash_balance.go](/balance/hash_balance.go) | Go | 27 | 1 | 8 | 36 |
@@ -56,10 +68,10 @@ Total : 50 files,  4829 codes, 933 comments, 726 blanks, all 6488 lines
 | [balance/shuffle2_balance.go](/balance/shuffle2_balance.go) | Go | 26 | 2 | 9 | 37 |
 | [balance/shuffle_balance.go](/balance/shuffle_balance.go) | Go | 26 | 2 | 9 | 37 |
 | [balance/weight_round_robin.go](/balance/weight_round_robin.go) | Go | 65 | 4 | 15 | 84 |
-| [config.json](/config.json) | JSON | 22 | 0 | 0 | 22 |
-| [config/ConfigInit.go](/config/ConfigInit.go) | Go | 163 | 5 | 12 | 180 |
-| [go.mod](/go.mod) | Go Module File | 6 | 0 | 3 | 9 |
-| [go.sum](/go.sum) | Go Checksum File | 4 | 0 | 1 | 5 |
-| [main.go](/main.go) | Go | 87 | 12 | 8 | 107 |
+| [config.json](/config.json) | JSON | 23 | 0 | 0 | 23 |
+| [config/ConfigInit.go](/config/ConfigInit.go) | Go | 170 | 8 | 14 | 192 |
+| [go.mod](/go.mod) | Go Module File | 10 | 0 | 4 | 14 |
+| [go.sum](/go.sum) | Go Checksum File | 8 | 0 | 1 | 9 |
+| [main.go](/main.go) | Go | 90 | 13 | 5 | 108 |
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

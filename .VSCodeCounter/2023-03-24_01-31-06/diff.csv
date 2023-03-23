@@ -1,0 +1,12 @@
+"filename", "language", "Go", "Go Checksum File", "Go Module File", "Markdown", "comment", "blank", "total"
+"e:\goland\project\awesomeProxy\AsCache\lru\lru_test.go", "Go", 54, 0, 0, 0, 0, 12, 66
+"e:\goland\project\awesomeProxy\README.md", "Markdown", 0, 0, 0, 11, 0, 3, 14
+"e:\goland\project\awesomeProxy\Reproxy\ascii\print.go", "Go", 44, 0, 0, 0, 10, 8, 62
+"e:\goland\project\awesomeProxy\Reproxy\ascii\print_test.go", "Go", 88, 0, 0, 0, 3, 5, 96
+"e:\goland\project\awesomeProxy\Reproxy\handle.go", "Go", -29, 0, 0, 0, 30, -3, -2
+"e:\goland\project\awesomeProxy\Reproxy\httpguts\guts.go", "Go", 35, 0, 0, 0, 11, 5, 51
+"e:\goland\project\awesomeProxy\Reproxy\httpguts\httplex.go", "Go", 230, 0, 0, 0, 98, 25, 353
+"e:\goland\project\awesomeProxy\Reproxy\reverseproxy.go", "Go", 524, 0, 0, 0, 225, 84, 833
+"e:\goland\project\awesomeProxy\go.mod", "Go Module File", 0, 0, 4, 0, 0, 1, 5
+"e:\goland\project\awesomeProxy\go.sum", "Go Checksum File", 0, 4, 0, 0, 0, 0, 4
+"Total", "-", 946, 4, 4, 11, 377, 140, 1482

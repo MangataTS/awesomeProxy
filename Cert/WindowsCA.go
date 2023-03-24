@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// todo 安装证书后设置Windows系统代理开启
+// 安装证书后设置Windows系统代理开启
 // 参考blog：https://blog.csdn.net/leoforbest/article/details/120166881
 
 // Person 个人

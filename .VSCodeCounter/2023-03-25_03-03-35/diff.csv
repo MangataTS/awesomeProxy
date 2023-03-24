@@ -1,0 +1,10 @@
+"filename", "language", "Go", "Markdown", "comment", "blank", "total"
+"e:\goland\project\awesomeProxy\Core\ProxyHttp.go", "Go", 30, 0, -1, 5, 34
+"e:\goland\project\awesomeProxy\Core\ProxyServer.go", "Go", 9, 0, 0, 2, 11
+"e:\goland\project\awesomeProxy\Core\ProxySocket5.go", "Go", 14, 0, 0, 1, 15
+"e:\goland\project\awesomeProxy\Core\ProxyTcp.go", "Go", 6, 0, 1, 0, 7
+"e:\goland\project\awesomeProxy\README.md", "Markdown", 0, 1, 0, 0, 1
+"e:\goland\project\awesomeProxy\Reproxy\UnCrawler.go", "Go", -4, 0, 4, 0, 0
+"e:\goland\project\awesomeProxy\Reproxy\reverseproxy.go", "Go", 33, 0, 23, 3, 59
+"e:\goland\project\awesomeProxy\main.go", "Go", 23, 0, 36, 6, 65
+"Total", "-", 111, 1, 63, 17, 192

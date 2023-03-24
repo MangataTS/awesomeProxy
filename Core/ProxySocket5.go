@@ -12,11 +12,13 @@ import (
 	"time"
 )
 
-type ProxySocket struct {
+type ProxySocks5 struct {
 	ConnPeer
 	target net.Conn
 	port   string
 }
+
+type ResolveSocks5 func(buff []byte) (int, error)
 
 const (
 	// Rsv 预留位
@@ -31,14 +33,23 @@ const (
 	TargetDomain = 0x03
 	Version      = 0x5
 )
+const (
+	GssApi                = 0x01
+	UsernamePassword      = 0x02
+	IanaAssignedMin       = 0x03
+	IanaAssignedMax       = 0x7F
+	ReservedForPrivateMin = 0x80
+	ReservedForPrivateMax = 0xFE
+	NoAcceptMethod        = 0xFF
+)
 const SocketServer = "server"
 const SocketClient = "client"
 
-func NewProxySocket() *ProxySocket {
-	return &ProxySocket{}
+func NewProxySocks5() *ProxySocks5 {
+	return &ProxySocks5{}
 }
 
-func (i *ProxySocket) Handle() {
+func (i *ProxySocks5) Handle() {
 	// 读取版本号
 	version, err := i.reader.ReadByte()
 	if err != nil {
@@ -69,7 +80,7 @@ func (i *ProxySocket) Handle() {
 			Log.Error("读取socket5支持错误：" + err.Error())
 			return
 		}
-		if method == 0x02 {
+		if method == UsernamePassword {
 			requiredAuth = true
 		}
 	}
@@ -171,7 +182,7 @@ func (i *ProxySocket) Handle() {
 	hostname = fmt.Sprintf("%s:%s", hostname, i.port)
 	// 写入版本号
 	_ = i.writer.WriteByte(Version)
-	if command == 0x03 {
+	if command == CommandUdp {
 		i.target, err = net.DialTimeout("udp", hostname, time.Second*30)
 	} else {
 		if i.port == "443" {
@@ -221,24 +232,28 @@ func (i *ProxySocket) Handle() {
 	}
 	out := make(chan error, 2)
 	if command == 0x01 {
-		go i.Transport(out, i.conn, i.target, SocketServer)
-		go i.Transport(out, i.target, i.conn, SocketClient)
-		<-out
+		go i.Transport(out, i.conn, i.target, SocketClient)
+		go i.Transport(out, i.target, i.conn, SocketServer)
+		err = <-out
+		Log.Error("代理socks5数据错误：" + err.Error())
 	}
 }
 
-func (i *ProxySocket) Transport(out chan<- error, originConn net.Conn, targetConn net.Conn, role string) {
+func (i *ProxySocks5) Transport(out chan<- error, originConn net.Conn, targetConn net.Conn, role string) {
 	buff := make([]byte, 10*1024)
+	resolve := ResolveSocks5(func(buff []byte) (int, error) {
+		return targetConn.Write(buff)
+	})
+	var writeLen int
 	for {
 		readLen, err := originConn.Read(buff)
 		if readLen > 0 {
 			buff = buff[0:readLen]
 			if role == SocketServer {
-				i.server.OnSocket5ResponseEvent(buff)
+				writeLen, err = i.server.OnSocket5ResponseEvent(buff, resolve)
 			} else {
-				i.server.OnSocket5RequestEvent(buff)
+				writeLen, err = i.server.OnSocket5RequestEvent(buff, resolve)
 			}
-			writeLen, err := targetConn.Write(buff)
 			if writeLen < 0 || readLen < writeLen {
 				writeLen = 0
 				if err == nil {
@@ -261,17 +276,17 @@ func (i *ProxySocket) Transport(out chan<- error, originConn net.Conn, targetCon
 	}
 }
 
-func (i *ProxySocket) IpV4(ipAddr string) bool {
+func (i *ProxySocks5) IpV4(ipAddr string) bool {
 	ip := net.ParseIP(ipAddr)
 	return ip != nil && strings.Contains(ipAddr, ".")
 }
 
-func (i *ProxySocket) IpV6(ipAddr string) bool {
+func (i *ProxySocks5) IpV6(ipAddr string) bool {
 	ip := net.ParseIP(ipAddr)
 	return ip != nil && strings.Contains(ipAddr, ":")
 }
 
 // ByteToInt 字节转整型
-func (i *ProxySocket) ByteToInt(input []byte) int32 {
+func (i *ProxySocks5) ByteToInt(input []byte) int32 {
 	return int32(input[0]&0xFF)<<8 | int32(input[1]&0xFF)
 }

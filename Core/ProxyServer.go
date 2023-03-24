@@ -2,7 +2,6 @@ package Core
 
 import (
 	"awesomeProxy/Contract"
-	"awesomeProxy/Core/Websocket"
 	"awesomeProxy/Log"
 	"awesomeProxy/config"
 	"bufio"
@@ -13,20 +12,33 @@ import (
 	"time"
 )
 
-type HttpRequestEvent func(request *http.Request)
-type HttpResponseEvent func(response *http.Response)
+type HttpRequestEvent func(message []byte, request *http.Request, resolve ResolveHttpRequest)
+type HttpResponseEvent func(message []byte, response *http.Response, resolve ResolveHttpResponse)
 
-type Socket5ResponseEvent func(message []byte)
-type Socket5RequestEvent func(message []byte)
+type Socket5ResponseEvent func(message []byte, resolve ResolveSocks5) (int, error)
+type Socket5RequestEvent func(message []byte, resolve ResolveSocks5) (int, error)
 
-type WsRequestEvent func(msgType int, message []byte, clientConn *Websocket.Conn, resolve ResolveWs) error
-type WsResponseEvent func(msgType int, message []byte, tartgetConn *Websocket.Conn, resolve ResolveWs) error
+type WsRequestEvent func(msgType int, message []byte, resolve ResolveWs) error
+type WsResponseEvent func(msgType int, message []byte, resolve ResolveWs) error
 
-type TcpServerStreamEvent func(message []byte)
-type TcpClientStreamEvent func(message []byte)
+type TcpServerStreamEvent func(message []byte, resolve ResolveTcp) (int, error)
+type TcpClientStreamEvent func(message []byte, resolve ResolveTcp) (int, error)
+
+const (
+	MethodGet     = 0x47
+	MethodConnect = 0x43
+	MethodPost    = 0x50
+	MethodPut     = 0x50
+	MethodDelete  = 0x44
+	MethodOptions = 0x4F
+	MethodHead    = 0x48
+
+	SocksFive = 0x5
+)
 
 type ProxyServer struct {
 	nagle                  bool
+	to                     string
 	proxy                  string
 	port                   string
 	listener               *net.TCPListener
@@ -41,7 +53,7 @@ type ProxyServer struct {
 	OnTcpClientStreamEvent TcpClientStreamEvent
 }
 
-func NewProxyServer(port string, nagle bool, proxy string) *ProxyServer {
+func NewProxyServer(port string, nagle bool, proxy string, to string) *ProxyServer {
 	return &ProxyServer{
 		port:  port,
 		dns:   dnscache.New(time.Minute * 5),
@@ -95,19 +107,18 @@ func (i *ProxyServer) handle(conn net.Conn) {
 	// 使用bufio读取,原conn的句柄数据被读完
 	reader := bufio.NewReader(conn)
 	writer := bufio.NewWriter(conn)
-	// 预读取一段字节,https、ws、wss读取到的数据为：CONNECT wan.xx.com:8080 HTTP/1.1
+	// 预读取一段字节,https、ws、wss读取到的数据为：CONNECT xx.com:8080 HTTP/1.1
 	peek, err := reader.Peek(3)
 	if err != nil {
 		return
 	}
-	peekHex := fmt.Sprintf("0x%x", peek[0])
 	peer := ConnPeer{server: i, conn: conn, writer: writer, reader: reader}
-	switch peekHex {
-	case "0x47", "0x43", "0x50", "0x4f", "0x44", "0x48":
+	switch peek[0] {
+	case MethodGet, MethodPost, MethodDelete, MethodOptions, MethodHead, MethodConnect:
 		process = &ProxyHttp{ConnPeer: peer}
 		break
-	case "0x5":
-		process = &ProxySocket{ConnPeer: peer}
+	case SocksFive:
+		process = &ProxySocks5{ConnPeer: peer}
 	default:
 		process = &ProxyTcp{ConnPeer: peer}
 	}

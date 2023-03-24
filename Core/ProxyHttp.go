@@ -6,6 +6,7 @@ import (
 	"awesomeProxy/Utils"
 	"bufio"
 	"bytes"
+	"compress/gzip"
 	"context"
 	"crypto/tls"
 	"fmt"
@@ -13,6 +14,7 @@ import (
 	"net"
 	"net/http"
 	"net/http/httptest"
+	"net/http/httputil"
 	"net/url"
 	"strconv"
 	"strings"
@@ -33,7 +35,10 @@ type ProxyHttp struct {
 	port     string
 }
 
-type ResolveWs func(msgType int, message []byte, wsConn *Websocket.Conn) error
+type ResolveHttpRequest func(message []byte, request *http.Request)
+type ResolveHttpResponse func(message []byte, response *http.Response)
+
+type ResolveWs func(msgType int, message []byte) error
 
 func NewProxyHttp() *ProxyHttp {
 	p := &ProxyHttp{}
@@ -82,10 +87,12 @@ func (i *ProxyHttp) handleRequest() {
 		_ = response.Write(i.conn)
 		return
 	}
-	body, _ := i.ReadBody(i.request.Body)
+	resolveRequest := ResolveHttpRequest(func(message []byte, request *http.Request) {
+		request.Body = io.NopCloser(bytes.NewReader(message))
+	})
+	body, _ := i.ReadRequestBody(i.request.Body)
 	i.request.Body = io.NopCloser(bytes.NewReader(body))
-	i.server.OnHttpRequestEvent(i.request)
-	i.request.Body = io.NopCloser(bytes.NewReader(body))
+	i.server.OnHttpRequestEvent(body, i.request, resolveRequest)
 	// 处理正常请求,获取响应，将客户端数据转发给请求的服务器
 	i.response, err = i.Transport(i.request)
 	if i.response == nil {
@@ -101,10 +108,11 @@ func (i *ProxyHttp) handleRequest() {
 		Log.Error("获取远程服务器响应失败：" + err.Error())
 		return
 	}
-	body, _ = i.ReadBody(i.response.Body)
-	i.response.Body = io.NopCloser(bytes.NewReader(body))
-	i.server.OnHttpResponseEvent(i.response)
-	i.response.Body = io.NopCloser(bytes.NewReader(body))
+	body, _ = i.ReadResponseBody(i.response)
+	resolveResponse := ResolveHttpResponse(func(message []byte, response *http.Response) {
+		response.Body = io.NopCloser(bytes.NewReader(message))
+	})
+	i.server.OnHttpResponseEvent(body, i.response, resolveResponse)
 	defer func() {
 		if i.response.Body != nil {
 			i.response.Body.Close()
@@ -113,10 +121,24 @@ func (i *ProxyHttp) handleRequest() {
 	_ = i.response.Write(i.conn)
 }
 
-// ReadBody 读取http请求体
-func (i *ProxyHttp) ReadBody(reader io.Reader) ([]byte, error) {
+// 读取http请求体
+func (i *ProxyHttp) ReadRequestBody(reader io.Reader) ([]byte, error) {
 	if reader == nil {
 		return []byte{}, nil
+	}
+	body, err := io.ReadAll(reader)
+	return body, err
+}
+
+func (i *ProxyHttp) ReadResponseBody(response *http.Response) ([]byte, error) {
+	var reader io.Reader
+	var err error
+	reader = bufio.NewReader(response.Body)
+	if header := response.Header.Get("Content-Encoding"); header == "gzip" {
+		reader, err = gzip.NewReader(response.Body)
+		if err != nil {
+			return []byte{}, nil
+		}
 	}
 	body, err := io.ReadAll(reader)
 	return body, err
@@ -153,13 +175,17 @@ func (i *ProxyHttp) RemoveHeader(header http.Header) {
 func (i *ProxyHttp) Transport(request *http.Request) (*http.Response, error) {
 	// 去除一些头部
 	i.RemoveHeader(request.Header)
-	response, err := (&http.Transport{
+	transport := &http.Transport{
 		DisableKeepAlives:     true,
 		TLSHandshakeTimeout:   5 * time.Second,
 		ResponseHeaderTimeout: 60 * time.Second,
 		DialContext:           i.DialContext(),
 		TLSClientConfig:       &tls.Config{InsecureSkipVerify: true},
-	}).RoundTrip(request)
+	}
+	if i.ConnPeer.server.proxy != "" {
+		transport.Proxy = http.ProxyURL(&url.URL{Host: i.server.proxy})
+	}
+	response, err := transport.RoundTrip(request)
 	if err != nil {
 		return nil, err
 	}
@@ -171,13 +197,19 @@ func (i *ProxyHttp) Transport(request *http.Request) (*http.Response, error) {
 // 处理tls请求
 func (i *ProxyHttp) handleSslRequest() {
 	var err error
-	if i.port == "443" {
-		i.target, err = tls.Dial("tcp", i.request.Host, &tls.Config{
-			InsecureSkipVerify: true,
-		})
+	// 如果使用了上级代理
+	if i.ConnPeer.server.proxy != "" {
+		i.target, err = net.Dial("tcp", i.server.proxy)
 	} else {
-		i.target, err = net.Dial("tcp", i.request.Host)
+		if i.port == "443" {
+			i.target, err = tls.Dial("tcp", i.request.Host, &tls.Config{
+				InsecureSkipVerify: true,
+			})
+		} else {
+			i.target, err = net.Dial("tcp", i.request.Host)
+		}
 	}
+
 	if err != nil {
 		_, err = i.conn.Write([]byte(ConnectFailed))
 		return
@@ -189,7 +221,7 @@ func (i *ProxyHttp) handleSslRequest() {
 		Log.Error("返回连接状态失败：" + err.Error())
 		return
 	}
-	// 建立ssl连接并返回给源
+	// 建立TLS连接并返回给源
 	i.SslReceiveSend()
 }
 
@@ -218,7 +250,7 @@ func (i *ProxyHttp) SslReceiveSend() {
 	})
 	// ssl校验
 	err = sslConn.Handshake()
-	// 如果不是http的ssl请求,则说明是普通ws请求(ws请求会ssl校验报错),这里专门处理这种情况
+	// 如果不是http的TLS请求,则说明是普通ws请求(ws请求会TLS校验报错),这里专门处理这种情况
 	if err != nil {
 		i.tls = false
 		if err == io.EOF || strings.Index(err.Error(), "closed") != -1 {
@@ -226,8 +258,7 @@ func (i *ProxyHttp) SslReceiveSend() {
 			return
 		}
 		// 反射读取最后一帧原始数据
-		lastFrameByte := Utils.GetLastTimeFrame(sslConn, "rawInput")
-		i.handleWsShakehandErr(lastFrameByte)
+		i.handleWsShakehandErr(Utils.GetLastTimeFrame(sslConn, "rawInput"))
 		return
 	}
 	_ = sslConn.SetDeadline(time.Now().Add(time.Second * 60))
@@ -237,10 +268,10 @@ func (i *ProxyHttp) SslReceiveSend() {
 	i.request, err = http.ReadRequest(i.reader)
 	if err != nil {
 		if err == io.EOF {
-			Log.Error("浏览器ssl连接断开：" + err.Error())
+			Log.Error("浏览器TLS连接断开：" + err.Error())
 			return
 		}
-		Log.Error("读取ssl连接请求数据失败：" + err.Error())
+		Log.Error("读取TLS连接请求数据失败：" + err.Error())
 		return
 	}
 	// 如果包含upgrade同步说明是wss请求
@@ -248,11 +279,13 @@ func (i *ProxyHttp) SslReceiveSend() {
 		i.handleWssRequest()
 		return
 	}
+	resolveRequest := ResolveHttpRequest(func(message []byte, request *http.Request) {
+		request.Body = io.NopCloser(bytes.NewReader(message))
+	})
+
 	i.request = i.SetRequest(i.request)
-	body, _ := i.ReadBody(i.request.Body)
-	i.request.Body = io.NopCloser(bytes.NewReader(body))
-	i.server.OnHttpRequestEvent(i.request)
-	i.request.Body = io.NopCloser(bytes.NewReader(body))
+	body, _ := i.ReadRequestBody(i.request.Body)
+	i.server.OnHttpRequestEvent(body, i.request, resolveRequest)
 	i.response, err = i.Transport(i.request)
 	if err != nil {
 		Log.Error("远程服务器响应失败：" + err.Error())
@@ -267,10 +300,12 @@ func (i *ProxyHttp) SslReceiveSend() {
 			_ = i.response.Body.Close()
 		}
 	}()
-	body, _ = i.ReadBody(i.response.Body)
-	i.response.Body = io.NopCloser(bytes.NewReader(body))
-	i.server.OnHttpResponseEvent(i.response)
-	i.response.Body = io.NopCloser(bytes.NewReader(body))
+
+	body, _ = i.ReadResponseBody(i.response)
+	resolveResponse := ResolveHttpResponse(func(message []byte, response *http.Response) {
+		response.Body = io.NopCloser(bytes.NewReader(message))
+	})
+	i.server.OnHttpResponseEvent(body, i.response, resolveResponse)
 	// 如果写入的数据比返回的头部指定长度还长,就会报错,这里手动计算返回的数据长度
 	i.response.Header.Set("Content-Length", strconv.Itoa(len(body)))
 	i.response.Body = io.NopCloser(bytes.NewReader(body))
@@ -345,6 +380,7 @@ func (i *ProxyHttp) handleWsRequest() bool {
 			},
 		}
 	}
+
 	// 如果有携带自定义参数,添加上
 	i.upgrade.Subprotocols = []string{i.request.Header.Get("Sec-WebSocket-Protocol")}
 	recorder := httptest.NewRecorder()
@@ -380,9 +416,10 @@ func (i *ProxyHttp) handleWsRequest() bool {
 		}
 	}
 	dialer.NetDialContext = i.DialContext()
-	targetWsConn, _, err := dialer.Dial(hostname, i.request.Header)
+	targetWsConn, response, err := dialer.Dial(hostname, i.request.Header)
 	if err != nil {
-		Log.Error("连接ws服务器失败：" + err.Error())
+		header, _ := httputil.DumpResponse(response, false)
+		Log.Error("连接ws服务器失败：\n" + string(header) + err.Error())
 		return true
 	}
 	defer func() {
@@ -404,8 +441,8 @@ func (i *ProxyHttp) handleWsRequest() bool {
 				stop <- fmt.Errorf("读取ws服务器数据失败-2：%w", err)
 				break
 			}
-			err = i.server.OnWsResponseEvent(msgType, message, clientWsConn, func(msgType int, message []byte, wsConn *Websocket.Conn) error {
-				return wsConn.WriteMessage(msgType, message)
+			err = i.server.OnWsResponseEvent(msgType, message, func(msgType int, message []byte) error {
+				return clientWsConn.WriteMessage(msgType, message)
 			})
 			if err != nil {
 				stop <- fmt.Errorf("发送ws浏览器数据失败-1：%w", err)
@@ -426,8 +463,8 @@ func (i *ProxyHttp) handleWsRequest() bool {
 				stop <- fmt.Errorf("读取ws浏览器数据失败-2：%w", err)
 				break
 			}
-			err = i.server.OnWsRequestEvent(msgType, message, targetWsConn, func(msgType int, message []byte, wsConn *Websocket.Conn) error {
-				return wsConn.WriteMessage(msgType, message)
+			err = i.server.OnWsRequestEvent(msgType, message, func(msgType int, message []byte) error {
+				return targetWsConn.WriteMessage(msgType, message)
 			})
 			if err != nil {
 				stop <- fmt.Errorf("发送ws浏览器数据失败-1：%w", err)
@@ -439,12 +476,9 @@ func (i *ProxyHttp) handleWsRequest() bool {
 	return false
 }
 
-// DialContext用于指定创建未加密的TCP连接的dial功能，如果该函数为空，则使用net包下的dial函数，走了自己的dns缓存
-
 func (i *ProxyHttp) DialContext() func(ctx context.Context, network, addr string) (conn net.Conn, err error) {
 	return func(ctx context.Context, network, addr string) (conn net.Conn, err error) {
 		separator := strings.LastIndex(addr, ":")
-		//Log.Log.Println("Proxyhttp-DialContext: ", i)
 		ipList, err := i.server.dns.Fetch(addr[:separator])
 		var ip string
 		for _, item := range ipList {
@@ -467,13 +501,13 @@ func (i *ProxyHttp) DialContext() func(ctx context.Context, network, addr string
 	}
 }
 
-// WsIsConnected 连接是否可用
+// 连接是否可用
 func (i *ProxyHttp) WsIsConnected(conn *Websocket.Conn) bool {
 	err := conn.WriteMessage(1, nil)
 	return err == nil
 }
 
-// RemoveWsHeader 移除ws请求头
+// 移除ws请求头
 func (i *ProxyHttp) RemoveWsHeader() {
 	headers := []string{
 		"Upgrade",

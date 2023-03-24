@@ -1,8 +1,8 @@
 package AsCache
 
 import (
+	"awesomeProxy/Log"
 	"fmt"
-	"log"
 	"sync"
 )
 
@@ -63,7 +63,7 @@ func (g *Group) Get(key string) (ByteView, error) {
 	}
 
 	if v, ok := g.mainCache.get(key); ok {
-		log.Println("[GeeCache] hit")
+		Log.Debug("[GeeCache] hit")
 		return v, nil
 	}
 

@@ -49,12 +49,12 @@ func (sm *SafeMap) DeleteIp(ip string) {
 }
 
 // MaxIpQps 每分钟最大请求次数
-var MaxIpQps = 60
+var MaxIpQps = 100
 
 // FiltrationCrawler 爬虫过滤函数，如果检测到是爬虫，那么就返回true，否则返回false
 func FiltrationCrawler(request http.Request) bool {
 	ip := getIP(request)
-	Log.Info("GetIp :", ip)
+	Log.Info("Request Ip :", ip)
 	if UaCheck(request) {
 		return true
 	}
@@ -65,11 +65,11 @@ func FiltrationCrawler(request http.Request) bool {
 // UaCheck 检查请求中的请求头是否正常
 func UaCheck(request http.Request) bool {
 	ua := request.UserAgent()
-	ref := request.Referer()
-	// 检测请求头长度 和refer地址
-	if len(ua) < 80 && ref == "" {
-		return true
-	}
+	//ref := request.Referer()
+	//// 检测请求头长度 和refer地址
+	//if len(ua) < 80 && ref == "" {
+	//	return true
+	//}
 	for _, s := range CrawlerUserAgent {
 		re, err := regexp.Compile(s)
 		if err != nil {

@@ -294,3 +294,149 @@
 [WARN]2023/03/24 01:29:37 handle.go:23: 发现爬虫，现在正在对IP进行监管
 [INFO]2023/03/24 01:30:08 UnCrawler.go:57: GetIp :127.0.0.1
 [INFO]2023/03/24 01:30:08 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:02:39 ConfigInit.go:183: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/25 01:02:39 ConfigInit.go:184: 欢迎使用awesomeProxy
+[INFO]2023/03/25 01:02:39 ConfigInit.go:186: 反向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/25 01:02:39 Utils.go:136: Windows系统代理：127.0.0.1:9090自动设置成功
+[INFO]2023/03/25 01:02:55 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:02:55 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:02:59 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:02:59 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:03:04 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:03:04 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:03:11 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:03:11 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:03:42 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:03:42 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:03:45 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:03:45 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:03:45 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:03:45 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:03:45 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:03:45 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:03:51 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:03:51 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:03:53 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:03:53 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:04:13 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:04:13 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:04:52 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:04:52 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[DEBUG]2023/03/25 01:04:52 reverseproxy.go:492: 现在进入缓存操作
+[INFO]2023/03/25 01:04:58 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:04:58 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[DEBUG]2023/03/25 01:04:58 reverseproxy.go:492: 现在进入缓存操作
+[INFO]2023/03/25 01:05:13 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:05:13 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:05:28 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:28 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:28 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:28 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:28 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:28 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:28 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:28 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:28 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:28 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:28 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:28 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:28 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:28 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:30 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:30 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:39 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:39 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:05:47 UnCrawler.go:57: GetIp :127.0.0.1
+[WARN]2023/03/25 01:05:47 handle.go:23: 发现爬虫，现在正在对IP进行监管
+[INFO]2023/03/25 01:06:13 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:06:13 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:06:27 ConfigInit.go:183: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/25 01:06:27 ConfigInit.go:184: 欢迎使用awesomeProxy
+[INFO]2023/03/25 01:06:27 ConfigInit.go:186: 反向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/25 01:06:27 Utils.go:136: Windows系统代理：127.0.0.1:9090自动设置成功
+[INFO]2023/03/25 01:06:34 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:06:34 handle.go:49: request.URL.Path：/ascache/scores/Tom request.URL.RawQuery：
+[DEBUG]2023/03/25 01:06:34 reverseproxy.go:492: 现在进入缓存操作
+[INFO]2023/03/25 01:06:36 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:06:36 handle.go:49: request.URL.Path：/ascache/scores/Tom request.URL.RawQuery：
+[DEBUG]2023/03/25 01:06:36 reverseproxy.go:492: 现在进入缓存操作
+[INFO]2023/03/25 01:06:49 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:06:49 handle.go:49: request.URL.Path：/ascache/scores/Tom request.URL.RawQuery：
+[DEBUG]2023/03/25 01:06:49 reverseproxy.go:492: 现在进入缓存操作
+[INFO]2023/03/25 01:07:13 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:07:13 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:07:27 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:07:27 handle.go:49: request.URL.Path：/ascache/scores/Tom request.URL.RawQuery：
+[DEBUG]2023/03/25 01:07:27 reverseproxy.go:492: 现在进入缓存操作
+[INFO]2023/03/25 01:07:29 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:07:29 handle.go:49: request.URL.Path：/ascache/scores/Tom request.URL.RawQuery：
+[DEBUG]2023/03/25 01:07:29 reverseproxy.go:492: 现在进入缓存操作
+[INFO]2023/03/25 01:07:34 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:07:34 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:07:37 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:07:37 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:07:50 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:07:50 handle.go:49: request.URL.Path：/ascache/scores/kkk request.URL.RawQuery：
+[DEBUG]2023/03/25 01:07:50 reverseproxy.go:492: 现在进入缓存操作
+[ERROR]2023/03/25 01:07:50 reverseproxy.go:511: Cache Group get errorkkk not exist
+[INFO]2023/03/25 01:07:57 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:07:57 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:08:04 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:08:04 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:08:09 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:08:09 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:08:13 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:08:13 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:09:13 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:13 handle.go:49: request.URL.Path：/ request.URL.RawQuery：
+[INFO]2023/03/25 01:09:20 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:20 handle.go:49: request.URL.Path：/connecttest.txt request.URL.RawQuery：
+[INFO]2023/03/25 01:09:20 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:20 handle.go:49: request.URL.Path：/connecttest.txt request.URL.RawQuery：
+[INFO]2023/03/25 01:09:20 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:20 handle.go:49: request.URL.Path：/connecttest.txt request.URL.RawQuery：
+[INFO]2023/03/25 01:09:20 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:20 handle.go:49: request.URL.Path：/connecttest.txt request.URL.RawQuery：
+[INFO]2023/03/25 01:09:20 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:20 handle.go:49: request.URL.Path：/connecttest.txt request.URL.RawQuery：
+[INFO]2023/03/25 01:09:20 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:20 handle.go:49: request.URL.Path：/connecttest.txt request.URL.RawQuery：
+[INFO]2023/03/25 01:09:20 UnCrawler.go:57: GetIp :127.0.0.1
+[INFO]2023/03/25 01:09:20 handle.go:49: request.URL.Path：/connecttest.txt request.URL.RawQuery：
+[INFO]2023/03/25 01:37:32 ConfigInit.go:183: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/25 01:37:32 ConfigInit.go:184: 欢迎使用awesomeProxy
+[INFO]2023/03/25 01:37:32 ConfigInit.go:186: 反向代理监听端口:0.0.0.0:9090
+[DEBUG]2023/03/25 01:37:43 reverseproxy.go:347: 现在进入缓存操作
+[ERROR]2023/03/25 01:37:43 reverseproxy.go:366: Cache Group get errorkkk not exist
+[DEBUG]2023/03/25 01:37:49 reverseproxy.go:347: 现在进入缓存操作
+[DEBUG]2023/03/25 01:41:04 reverseproxy.go:347: 现在进入缓存操作

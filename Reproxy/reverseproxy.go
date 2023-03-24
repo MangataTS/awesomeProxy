@@ -1,8 +1,11 @@
 package Reproxy
 
 import (
+	"awesomeProxy/AsCache"
+	"awesomeProxy/Log"
 	"awesomeProxy/Reproxy/ascii"
 	"awesomeProxy/Reproxy/httpguts"
+	"awesomeProxy/config"
 	"context"
 	"errors"
 	"fmt"
@@ -94,6 +97,15 @@ func (r *ProxyRequest) SetXForwarded() {
 // 1xx responses are forwarded to the client if the underlying
 // transport supports ClientTrace.Got1xxResponse.
 type ReverseProxy struct {
+	// this peer's base URL, e.g. "https://example.net:8000"
+	// self 参数表示的是用来记录自己的地址，包括主机名/IP 和端口
+	self string
+	// basePath，作为节点间通讯地址的前缀，默认是 /_geecache/，
+	//那么 http://example.com/_geecache/ 开头的请求，就用于节点间的访问。
+	//因为一个主机上还可能承载其他的服务，加一段 Path 是一个好习惯。
+	//比如，大部分网站的 API 接口，一般以 /api 作为前缀。
+	basePath string
+
 	// Rewrite must be a function which modifies
 	// the request into a new request to be sent
 	// using Transport. Its response is then copied
@@ -252,11 +264,17 @@ func joinURLPath(a, b *url.URL) (path, rawpath string) {
 //			r.Out.Host = r.In.Host // if desired
 //		}
 //	}
+const defaultBasePath = "/ascache/"
+
 func NewSingleHostReverseProxy(target *url.URL) *ReverseProxy {
 	director := func(req *http.Request) {
 		rewriteRequestURL(req, target)
 	}
-	return &ReverseProxy{Director: director}
+	return &ReverseProxy{
+		Director: director,
+		self:     "127.0.0.1:" + config.CONFIG.ReProxy.Port,
+		basePath: defaultBasePath,
+	}
 }
 
 func rewriteRequestURL(req *http.Request, target *url.URL) {
@@ -323,11 +341,43 @@ func (p *ReverseProxy) modifyResponse(rw http.ResponseWriter, res *http.Response
 }
 
 func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+
+	// 如果可以前缀满足缓存操作
+	if strings.HasPrefix(req.URL.Path, p.basePath) {
+		Log.Debug("现在进入缓存操作")
+		parts := strings.SplitN(req.URL.Path[len(p.basePath):], "/", 2)
+		if len(parts) != 2 {
+			Log.Error("bad request")
+			//http.Error(rw, "bad request", http.StatusBadRequest)
+			return
+		}
+		groupName := parts[0]
+		key := parts[1]
+
+		group := AsCache.GetGroup(groupName)
+		if group == nil {
+			Log.Error("no such group: " + groupName)
+			//http.Error(rw, "no such group: "+groupName, http.StatusNotFound)
+			return
+		}
+
+		view, err := group.Get(key)
+		if err != nil {
+			Log.Error("Cache Group get error" + err.Error())
+			//http.Error(rw, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		rw.Header().Set("Content-Type", "application/octet-stream")
+		rw.Write(view.ByteSlice())
+		return
+	}
+
+	// 如果没有配置，则使用 http 的默认连接池
 	transport := p.Transport
 	if transport == nil {
 		transport = http.DefaultTransport
 	}
-
+	// 验证请求是否终止
 	ctx := req.Context()
 	if ctx.Done() != nil {
 		// CloseNotifier predates context.Context, and has been
@@ -353,7 +403,7 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 			}
 		}()
 	}
-
+	// 拷贝上下文信息，并赋值给对外请求的 request
 	outreq := req.Clone(ctx)
 	if req.ContentLength == 0 {
 		outreq.Body = nil // Issue 16036: nil Body for http.Transport retries
@@ -367,10 +417,12 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		// read after closing it.
 		defer outreq.Body.Close()
 	}
+
+	// 如果上下文中 header 为 nil，则使用 http 的 header 给该 ctx
 	if outreq.Header == nil {
 		outreq.Header = make(http.Header) // Issue 33142: historical behavior was to always allocate
 	}
-
+	// 将拷贝后的 outreq 传递给控制器, 进行自定义修改。
 	if (p.Director != nil) == (p.Rewrite != nil) {
 		p.getErrorHandler()(rw, req, errors.New("ReverseProxy must have exactly one of Director or Rewrite set"))
 		return
@@ -383,12 +435,15 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		}
 	}
 	outreq.Close = false
-
+	// 获取 Upgrade信息，先判断请求头 Connection 字段中是否包含 Upgrade 单词，有的话取出返回，没有返回空字符串。
 	reqUpType := upgradeType(outreq.Header)
+	// 检测Upgrade信息中若没有可见字符
 	if !ascii.IsPrint(reqUpType) {
 		p.getErrorHandler()(rw, req, fmt.Errorf("client tried to switch to invalid protocol %q", reqUpType))
 		return
 	}
+	// 删除 http.header['Connection']中列出的 hop-by-hop 头信息
+	// 所有 Connection 中设置的 key 都删除掉。
 	removeHopByHopHeaders(outreq.Header)
 
 	// Issue 21096: tell backend applications that care about trailer support
@@ -396,10 +451,11 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	// advertise that unless the incoming client request thought it was worth
 	// mentioning.) Note that we look at req.Header, not outreq.Header, since
 	// the latter has passed through removeHopByHopHeaders.
+	//逐段消息头是客户端和第一层代理之间的消息头，
+	//与是否往下传递的 header 信息没有联系，往下游传递的信息里不应该包含这些逐段消息头。
 	if httpguts.HeaderValuesContainsToken(req.Header["Te"], "trailers") {
 		outreq.Header.Set("Te", "trailers")
 	}
-
 	// After stripping all the hop-by-hop connection headers above, add back any
 	// necessary for protocol upgrades, such as for websockets.
 	if reqUpType != "" {
@@ -408,15 +464,14 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	}
 
 	if p.Rewrite != nil {
-		// Strip client-provided forwarding headers.
-		// The Rewrite func may use SetXForwarded to set new values
-		// for these or copy the previous values from the inbound request.
+		//删除客户端提供的转发头。
+		// Rewrite函数可以使用SetXForwarded来设置新值，或从入站请求中复制先前的值。
 		outreq.Header.Del("Forwarded")
 		outreq.Header.Del("X-Forwarded-For")
 		outreq.Header.Del("X-Forwarded-Host")
 		outreq.Header.Del("X-Forwarded-Proto")
 
-		// Remove unparsable query parameters from the outbound request.
+		// 从出站请求中删除不可解析的查询参数
 		outreq.URL.RawQuery = cleanQueryParams(outreq.URL.RawQuery)
 
 		pr := &ProxyRequest{
@@ -426,6 +481,7 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		p.Rewrite(pr)
 		outreq = pr.Out
 	} else {
+		// 设置X-Forwarded-For，追加 chientIP 信息
 		if clientIP, _, err := net.SplitHostPort(req.RemoteAddr); err == nil {
 			// If we aren't the first proxy retain prior
 			// X-Forwarded-For information as a comma+space
@@ -463,6 +519,7 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	}
 	outreq = outreq.WithContext(httptrace.WithClientTrace(outreq.Context(), trace))
 
+	// 执行一个 HTTP 事务，根据请求返回响应，在这之前我们可以进行缓存操作
 	res, err := transport.RoundTrip(outreq)
 	if err != nil {
 		p.getErrorHandler()(rw, outreq, err)
@@ -470,6 +527,7 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	}
 
 	// Deal with 101 Switching Protocols responses: (WebSocket, h2c, etc)
+	// 响应码
 	if res.StatusCode == http.StatusSwitchingProtocols {
 		if !p.modifyResponse(rw, res, outreq) {
 			return
@@ -533,6 +591,7 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 			rw.Header().Add(k, v)
 		}
 	}
+
 }
 
 var inOurTests bool // whether we're in our own tests

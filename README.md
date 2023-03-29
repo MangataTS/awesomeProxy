@@ -2,14 +2,15 @@
 
 ## 工作量
 
-Total : 65 files,  6480 codes, 1435 comments, 985 blanks, all 8900 lines
+Total : 66 files,  6605 codes, 1452 comments, 997 blanks, all 9054 lines
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 57 | 6,303 | 1,435 | 948 | 8,686 |
+| Go | 57 | 6,399 | 1,444 | 954 | 8,797 |
 | Markdown | 1 | 107 | 0 | 32 | 139 |
-| XML | 4 | 29 | 0 | 0 | 29 |
+| XML | 4 | 37 | 0 | 0 | 37 |
 | JSON | 1 | 23 | 0 | 0 | 23 |
+| Python | 1 | 21 | 8 | 6 | 35 |
 | Go Module File | 1 | 10 | 0 | 4 | 14 |
 | Go Checksum File | 1 | 8 | 0 | 1 | 9 |
 
@@ -44,9 +45,9 @@ Total : 65 files,  6480 codes, 1435 comments, 985 blanks, all 8900 lines
 
 - [x] 通过协议头和访问频率算法分析过滤爬虫，减轻服务器负担
 
-- [ ] 通过流量分析防止DDOS流量攻击
+- [x] 通过流量分析防止DDOS流量攻击
 
-- [ ] 违规IP封禁
+- [x] 违规IP封禁
 
 - [x] 分布式数据缓存，减轻服务器的计算压力，加快响应，提升用户交互
 

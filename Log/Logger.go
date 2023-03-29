@@ -251,7 +251,6 @@ maxFileNum  留的日志文件数
 func (this *_logger) SetRollingFileLoop(fileDir, fileName string, maxFileSize int64, unit _UNIT, maxFileNum int) (l *_logger, err error) {
 	if fileDir == "" {
 		fileDir, _ = os.Getwd()
-		fmt.Printf("os.Getwd() : ", fileDir)
 	}
 	if maxFileNum > 0 {
 		maxFileNum--

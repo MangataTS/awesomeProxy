@@ -4,13 +4,45 @@ import (
 	"awesomeProxy/Log"
 	"awesomeProxy/balance"
 	"awesomeProxy/config"
+	"bufio"
 	"fmt"
 	"net/http"
 	"net/url"
+	"os"
+	"strings"
 )
 
 type RProxy struct {
 	Remote *url.URL
+}
+
+func FiltIp(ip string) bool {
+	file, err := os.Open("Forbid_IP.txt")
+	if err != nil {
+		Log.Fatal(err)
+	}
+	defer func() {
+		if err := file.Close(); err != nil {
+			Log.Error("文件关闭失败:", err)
+		}
+	}()
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+	// 循环扫描每一行
+	for scanner.Scan() {
+		// 获取当前行的文本
+		line := scanner.Text()
+		// 打印当前行的文本
+		if strings.Contains(ip, line) {
+			Log.Warn("检测到黑名单IP: ", ip)
+			return true
+		}
+	}
+	// 检查扫描是否有错误
+	if err := scanner.Err(); err != nil {
+		Log.Fatal(err)
+	}
+	return false
 }
 
 func GoReverseProxy(this *RProxy) *ReverseProxy {
@@ -19,12 +51,7 @@ func GoReverseProxy(this *RProxy) *ReverseProxy {
 	proxy := NewSingleHostReverseProxy(remote)
 
 	proxy.Director = func(request *http.Request) {
-		if FiltrationCrawler(*request) {
-			Log.Warn("发现爬虫，现在正在对IP进行监管")
-			request.URL.Scheme = "http"
-			request.Host = "localhost"
-			return
-		}
+
 		ins, err := balance.DoBalance(config.BalanceNames[config.CONFIG.ReProxy.BalanceMethod], config.Insts)
 		if err != nil {
 			Log.Fatal("report error" + err.Error())

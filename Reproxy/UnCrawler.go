@@ -49,12 +49,12 @@ func (sm *SafeMap) DeleteIp(ip string) {
 }
 
 // MaxIpQps 每分钟最大请求次数
-var MaxIpQps = 100
+var MaxIpQps = 10
 
 // FiltrationCrawler 爬虫过滤函数，如果检测到是爬虫，那么就返回true，否则返回false
 func FiltrationCrawler(request http.Request) bool {
-	ip := getIP(request)
-	Log.Info("Request Ip :", ip)
+	ip := getIpWithoutPort(request)
+	//Log.Debug("Request Ip :", ip)
 	if UaCheck(request) {
 		return true
 	}
@@ -90,6 +90,18 @@ func getIP(r http.Request) string {
 	}
 	ips := strings.Split(ip, ",")
 	return ips[0]
+}
+
+// 获取请求的ip地址，如果有多个，取第一个
+func getIpWithoutPort(r http.Request) string {
+	ip := r.Header.Get("X-Forwarded-For")
+	if ip == "" {
+		ip = r.RemoteAddr
+	}
+	ips := strings.Split(ip, ",")
+	idx := strings.LastIndex(ips[0], ":")
+	ipt := ips[0][:idx]
+	return ipt
 }
 
 // 更新ipMap中对应的值，如果不存在则创建，如果存在则增加1，并记录当前时间戳（毫秒），并且检测爬虫上次爬取的时间

@@ -5,6 +5,7 @@
 package Websocket
 
 import (
+	"awesomeProxy/Log"
 	"bytes"
 	"context"
 	"crypto/tls"
@@ -260,7 +261,11 @@ func (d *Dialer) DialContext(ctx context.Context, urlStr string, requestHeader h
 			}
 			err = c.SetDeadline(deadline)
 			if err != nil {
-				c.Close()
+				defer func() {
+					if err := c.Close(); err != nil {
+						Log.Error("关闭文件失败:", err)
+					}
+				}()
 				return nil, err
 			}
 			return c, nil
@@ -300,7 +305,11 @@ func (d *Dialer) DialContext(ctx context.Context, urlStr string, requestHeader h
 
 	defer func() {
 		if netConn != nil {
-			netConn.Close()
+			defer func() {
+				if err := netConn.Close(); err != nil {
+					Log.Error("关闭文件失败:", err)
+				}
+			}()
 		}
 	}()
 
@@ -377,7 +386,10 @@ func (d *Dialer) DialContext(ctx context.Context, urlStr string, requestHeader h
 	resp.Body = ioutil.NopCloser(bytes.NewReader([]byte{}))
 	conn.subprotocol = resp.Header.Get("Sec-Websocket-Protocol")
 
-	netConn.SetDeadline(time.Time{})
+	if err := netConn.SetDeadline(time.Time{}); err != nil {
+		Log.Error("Client 时间设置 error")
+	}
+
 	netConn = nil // to avoid close in defer.
 	return conn, resp, nil
 }

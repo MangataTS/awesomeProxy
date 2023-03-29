@@ -416,6 +416,27 @@ func (p *ReverseProxy) modifyResponse(rw http.ResponseWriter, res *http.Response
 }
 
 func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+	// IP过滤
+	if FiltIp(getIpWithoutPort(*req)) {
+		rw.WriteHeader(http.StatusForbidden)
+		defer func() {
+			if _, err := rw.Write([]byte("你被放进黑名单了")); err != nil {
+				Log.Error("缓存写入失败:", err)
+			}
+		}()
+		return
+	}
+	// 爬虫过滤
+	if FiltrationCrawler(*req) {
+		Log.Warn("发现爬虫，现在正在对IP进行监管: ", getIP(*req))
+		rw.WriteHeader(http.StatusForbidden)
+		defer func() {
+			if _, err := rw.Write([]byte("小样爬虫")); err != nil {
+				Log.Error("缓存写入失败:", err)
+			}
+		}()
+		return
+	}
 
 	// 如果可以前缀满足缓存操作
 	if strings.HasPrefix(req.URL.Path, p.basePath) {

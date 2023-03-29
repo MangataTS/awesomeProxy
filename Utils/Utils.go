@@ -41,7 +41,7 @@ func BlacklistFilter(request *http.Request) {
 		Log.Info(s)
 		r, err := regexp.Compile(s)
 		if err != nil {
-			Log.Fatal("正则表达式有问题，请仔细检查，这里只支持Golang的正则~")
+			Log.Error("正则表达式有问题，请仔细检查，这里只支持Golang的正则~")
 		}
 		if r.MatchString(Turl) {
 			request.URL.Host = "-1"

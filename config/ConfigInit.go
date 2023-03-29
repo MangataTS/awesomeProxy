@@ -74,7 +74,11 @@ func ReadConfig() {
 	if err != nil {
 		Log.Fatal("open json file err")
 	}
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			Log.Error("关闭文件失败:", err)
+		}
+	}()
 	data, err := io.ReadAll(file)
 	if err != nil {
 		Log.Fatal("read json file err")

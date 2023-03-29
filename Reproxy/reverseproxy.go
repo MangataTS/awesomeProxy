@@ -43,7 +43,12 @@ func (h *httpGetter) Get(group string, key string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
+
+	defer func() {
+		if err := res.Body.Close(); err != nil {
+			Log.Error("关闭文件失败:", err)
+		}
+	}()
 
 	if res.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("server returned: %v", res.Status)
@@ -380,7 +385,8 @@ var hopHeaders = []string{
 }
 
 func (p *ReverseProxy) defaultErrorHandler(rw http.ResponseWriter, req *http.Request, err error) {
-	p.logf("http: proxy error: %v", err)
+	Log.Error("Request Host:", req.Host)
+	Log.Error("http: proxy error: ", err)
 	rw.WriteHeader(http.StatusBadGateway)
 }
 
@@ -398,7 +404,11 @@ func (p *ReverseProxy) modifyResponse(rw http.ResponseWriter, res *http.Response
 		return true
 	}
 	if err := p.ModifyResponse(res); err != nil {
-		res.Body.Close()
+		defer func() {
+			if err := res.Body.Close(); err != nil {
+				Log.Error("关闭文件失败:", err)
+			}
+		}()
 		p.getErrorHandler()(rw, req, err)
 		return false
 	}
@@ -431,7 +441,12 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 			return
 		}
 		rw.Header().Set("Content-Type", "application/octet-stream")
-		rw.Write(view.ByteSlice())
+		defer func() {
+			if _, err := rw.Write(view.ByteSlice()); err != nil {
+				Log.Error("缓存写入失败:", err)
+			}
+		}()
+
 		return
 	}
 
@@ -478,7 +493,11 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		// Issue 46866). Although calling Close doesn't guarantee there isn't
 		// any Read in flight after the handle returns, in practice it's safe to
 		// read after closing it.
-		defer outreq.Body.Close()
+		defer func() {
+			if err := outreq.Body.Close(); err != nil {
+				Log.Error("关闭文件失败:", err)
+			}
+		}()
 	}
 
 	// 如果上下文中 header 为 nil，则使用 http 的 header 给该 ctx
@@ -622,7 +641,11 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 	err = p.copyResponse(rw, res.Body, p.flushInterval(res))
 	if err != nil {
-		defer res.Body.Close()
+		defer func() {
+			if err := res.Body.Close(); err != nil {
+				Log.Error("关闭文件失败:", err)
+			}
+		}()
 		// Since we're streaming the response, if we run into an error all we can do
 		// is abort the request. Issue 23643: ReverseProxy should use ErrAbortHandler
 		// on read error while copying body.
@@ -632,7 +655,12 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		}
 		panic(http.ErrAbortHandler)
 	}
-	res.Body.Close() // close now, instead of defer, to populate res.Trailer
+	defer func() {
+		if err := res.Body.Close(); err != nil {
+			Log.Error("关闭文件失败:", err)
+		}
+	}()
+	//res.Body.Close() // close now, instead of defer, to populate res.Trailer
 
 	if len(res.Trailer) > 0 {
 		// Force chunking if we saw a response trailer.
@@ -873,7 +901,11 @@ func (p *ReverseProxy) handleUpgradeResponse(rw http.ResponseWriter, req *http.R
 		case <-req.Context().Done():
 		case <-backConnCloseCh:
 		}
-		backConn.Close()
+		defer func() {
+			if err := backConn.Close(); err != nil {
+				Log.Error("关闭文件失败:", err)
+			}
+		}()
 	}()
 
 	defer close(backConnCloseCh)
@@ -883,7 +915,11 @@ func (p *ReverseProxy) handleUpgradeResponse(rw http.ResponseWriter, req *http.R
 		p.getErrorHandler()(rw, req, fmt.Errorf("Hijack failed on protocol switch: %v", err))
 		return
 	}
-	defer conn.Close()
+	defer func() {
+		if err := conn.Close(); err != nil {
+			Log.Error("关闭文件失败:", err)
+		}
+	}()
 
 	copyHeader(rw.Header(), res.Header)
 

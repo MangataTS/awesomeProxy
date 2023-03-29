@@ -2,12 +2,12 @@
 
 ## 工作量
 
-Total : $62$ files,   $6316$  codes,  $1414$  comments, $949$ blanks, all $8679$ lines
+Total : 65 files,  6480 codes, 1435 comments, 985 blanks, all 8900 lines
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 54 | 6,139 | 1,414 | 910 | 8,463 |
-| Markdown | 1 | 107 | 0 | 34 | 141 |
+| Go | 57 | 6,303 | 1,435 | 948 | 8,686 |
+| Markdown | 1 | 107 | 0 | 32 | 139 |
 | XML | 4 | 29 | 0 | 0 | 29 |
 | JSON | 1 | 23 | 0 | 0 | 23 |
 | Go Module File | 1 | 10 | 0 | 4 | 14 |

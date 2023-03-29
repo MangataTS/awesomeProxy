@@ -88,9 +88,8 @@ func getIP(r http.Request) string {
 	if ip == "" {
 		ip = r.RemoteAddr
 	}
-	ips := strings.Split(ip, ", ")
-	ipt := strings.Split(ips[0], ":")
-	return ipt[0]
+	ips := strings.Split(ip, ",")
+	return ips[0]
 }
 
 // 更新ipMap中对应的值，如果不存在则创建，如果存在则增加1，并记录当前时间戳（毫秒），并且检测爬虫上次爬取的时间

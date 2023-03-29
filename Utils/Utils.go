@@ -127,7 +127,7 @@ func SetProxy(proxy string) error {
 	return nil
 }
 
-// SetWindowsProxy 设置系统代理
+// SetWindowsProxy 设置系统代理 eg: 127.0.0.1:9090
 func SetWindowsProxy(Host string) {
 	err := SetProxy(Host)
 	if err != nil {

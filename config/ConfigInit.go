@@ -54,6 +54,7 @@ type Logg struct {
 var CONFIG = &Config{}
 var BalanceNames = []string{"hash", "random", "roundrobin", "weight_roundrobin", "shuffle", "shuffle2"}
 var Insts []*balance.Instance
+var Addrs []string
 
 func (cc Config) Init() {
 	ReadConfig()
@@ -98,11 +99,8 @@ func (cc Config) BalanceInit() {
 	for i := 0; i < BacSize; i++ {
 		s := strings.Split(CONFIG.ReProxy.Backend[i].Host, ":")
 		bhost := s[0]
-		if len(s) > 2 {
-			Log.Fatal("awesomeProxy/config/Init balance_init error,Backend Host error ")
-		}
-		if len(s) == 1 {
-			s = append(s, "0")
+		if len(s) != 2 {
+			Log.Fatal("Config Backend Host not Equal 2")
 		}
 		bport, err := strconv.ParseInt(s[1], 10, 64)
 		if err != nil {
@@ -188,4 +186,16 @@ func Logo() {
 		Log.Info("正向代理监听端口:0.0.0.0:" + CONFIG.CoProxy.Port)
 	}
 
+}
+
+// 分布式缓存组，下面是测试代码
+// curl http://localhost:9090/ascache/scores/Tom
+// curl http://localhost:9090/ascache/scores/kkk
+
+// CacheInit 缓存初始化
+func CacheInit() {
+	for _, v := range CONFIG.ReProxy.Backend {
+		uu := "http://" + v.Host
+		Addrs = append(Addrs, uu)
+	}
 }

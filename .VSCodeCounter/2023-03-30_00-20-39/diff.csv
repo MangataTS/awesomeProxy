@@ -1,0 +1,11 @@
+"filename", "language", "Go", "Markdown", "comment", "blank", "total"
+"e:\goland\project\awesomeProxy\AsCache\ascache.go", "Go", 22, 0, 1, 2, 25
+"e:\goland\project\awesomeProxy\AsCache\consistenthash\consistenthash.go", "Go", 44, 0, 11, 9, 64
+"e:\goland\project\awesomeProxy\AsCache\consistenthash\consistenthash_test.go", "Go", 30, 0, 4, 10, 44
+"e:\goland\project\awesomeProxy\AsCache\peers.go", "Go", 7, 0, 3, 3, 13
+"e:\goland\project\awesomeProxy\README.md", "Markdown", 0, 0, 0, -2, -2
+"e:\goland\project\awesomeProxy\Reproxy\UnCrawler.go", "Go", -1, 0, 0, 0, -1
+"e:\goland\project\awesomeProxy\Reproxy\reverseproxy.go", "Go", 51, 0, 2, 10, 63
+"e:\goland\project\awesomeProxy\config\ConfigInit.go", "Go", 4, 0, 4, 2, 10
+"e:\goland\project\awesomeProxy\main.go", "Go", 7, 0, -4, 2, 5
+"Total", "-", 164, 0, 21, 36, 221

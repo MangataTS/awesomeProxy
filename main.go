@@ -17,14 +17,17 @@ import (
 func init() {
 	//配置初始化
 	config.CONFIG.Init()
-	// 初始化并根证书
-	err := Core.NewCertificate().Init()
-	if err != nil {
-		Log.Fatal("初始化根证书失败：" + err.Error())
-	}
-	//打开系统代理
-	if !config.CONFIG.ProxyMethod {
-		Host := "127.0.0.1:" + config.CONFIG.CoProxy.Port
+
+	if config.CONFIG.ProxyMethod {
+		config.CacheInit()
+	} else {
+		// 初始化并根证书
+		err := Core.NewCertificate().Init()
+		if err != nil {
+			Log.Fatal("初始化根证书失败：" + err.Error())
+		}
+		//打开系统代理
+		Host := "localhost" + config.CONFIG.CoProxy.Port
 		Utils.SetWindowsProxy(Host)
 	}
 
@@ -36,23 +39,23 @@ var db = map[string]string{
 	"Sam":  "567",
 }
 
+func createGroup() *AsCache.Group {
+	return AsCache.NewGroup("scores", 2<<10, AsCache.GetterFunc(
+		func(key string) ([]byte, error) {
+			Log.Debug("[SlowDB] search key ", key)
+			if v, ok := db[key]; ok {
+				return []byte(v), nil
+			}
+			return nil, fmt.Errorf("%s not exist", key)
+		}))
+}
+
 func main() {
 	//如果是进行反向代理代理
 	if config.CONFIG.ProxyMethod {
-		// 分布式缓存组，下面是测试代码
-		// curl http://localhost:9090/ascache/scores/Tom
-		// curl http://localhost:9090/ascache/scores/kkk
-		// 编写回调Getter函数，当缓存不存在就在这里获取，后续启用可将其写为SQL语句或者其他方法
-		AsCache.NewGroup("scores", 2<<10, AsCache.GetterFunc(
-			func(key string) ([]byte, error) {
-				Log.Debug("[SlowDB] search key", key)
-				if v, ok := db[key]; ok {
-					return []byte(v), nil
-				}
-				return nil, fmt.Errorf("%s not exist", key)
-			}))
 		port := flag.String("port", config.CONFIG.ReProxy.Port, "listen port")
 		flag.Parse()
+		gee := createGroup()
 		reverseUrl := fmt.Sprintf("http://%v:%d", config.Insts[0].Host, config.Insts[0].Port)
 		remote, err := url.Parse(reverseUrl)
 		if err != nil {
@@ -61,6 +64,8 @@ func main() {
 		Pproxy := Reproxy.GoReverseProxy(&Reproxy.RProxy{
 			Remote: remote,
 		})
+		Pproxy.Set(config.Addrs...)
+		gee.RegisterPeers(Pproxy)
 		serveErr := http.ListenAndServe(":"+*port, Pproxy)
 		if serveErr != nil {
 			panic(serveErr)

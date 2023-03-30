@@ -2,7 +2,7 @@
  "RequestData": [
   {
    "path": "/hello",
-   "times": 6
+   "times": 7
   },
   {
    "path": "/world",
@@ -10,21 +10,25 @@
   },
   {
    "path": "/word",
-   "times": 33
+   "times": 36
+  },
+  {
+   "path": "/ascache/scores/Tom",
+   "times": 0
   }
  ],
  "CacheData": {
-  "ReqTimes": 0,
+  "ReqTimes": 1,
   "HintTimes": 0,
   "HintRate": 0,
   "memory": 0
  },
  "BanIpReqTimes": 0,
  "LogsData": {
-  "InfoTimes": 0,
-  "DebugTimes": 0,
+  "InfoTimes": 6,
+  "DebugTimes": 3,
   "WarnTimes": 0,
-  "ErrorTimes": 0,
+  "ErrorTimes": 1,
   "FatalTimes": 0
  },
  "CrawlerData": [
@@ -41,15 +45,15 @@
  ],
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 98.49411600937866,
-   "kernel": 0.6055596453232854,
-   "user": 0.9003243452980619,
-   "Usage": 3.173076923076923
+   "idle": 98.54141067208118,
+   "kernel": 0.6006884459701477,
+   "user": 0.8579008819486604,
+   "Usage": 0.4807692307692308
   },
   "MEMORY_INFO": {
    "total": 116,
    "available": 31,
-   "usage": 73.10761687126173
+   "usage": 73.10766278663203
   },
   "DISK_INFO": {
    "total": 116,

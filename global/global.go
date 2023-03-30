@@ -70,7 +70,6 @@ func SaveReConfig() {
 		log.Println("Os Getwd err")
 	}
 	path = path + "\\Report\\Re\\DataFile.json"
-
 	data, err := json.MarshalIndent(ReReportConfig, "", " ")
 	if err != nil {
 		log.Println("json.MarshalIndent err ", err)

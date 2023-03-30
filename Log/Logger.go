@@ -1,6 +1,7 @@
 package Log
 
 import (
+	"awesomeProxy/global"
 	"bytes"
 	"errors"
 	"fmt"
@@ -129,18 +130,28 @@ func _staticLogger() *_logger {
 }
 
 func Debug(v ...interface{}) {
+	global.ReReportConfig.LogsData.DebugTimes++
+	global.SaveReConfig()
 	_print(default_format, LEVEL_DEBUG, default_level, 2, v...)
 }
 func Info(v ...interface{}) {
+	global.ReReportConfig.LogsData.InfoTimes++
+	global.SaveReConfig()
 	_print(default_format, LEVEL_INFO, default_level, 2, v...)
 }
 func Warn(v ...interface{}) {
+	global.ReReportConfig.LogsData.WarnTimes++
+	global.SaveReConfig()
 	_print(default_format, LEVEL_WARN, default_level, 2, v...)
 }
 func Error(v ...interface{}) {
+	global.ReReportConfig.LogsData.ErrorTimes++
+	global.SaveReConfig()
 	_print(default_format, LEVEL_ERROR, default_level, 2, v...)
 }
 func Fatal(v ...interface{}) {
+	global.ReReportConfig.LogsData.FatalTimes++
+	global.SaveReConfig()
 	_print(default_format, LEVEL_FATAL, default_level, 2, v...)
 }
 

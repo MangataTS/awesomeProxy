@@ -1,5 +1,11 @@
 package global
 
+import (
+	"encoding/json"
+	"log"
+	"os"
+)
+
 type ReReport struct {
 	RequestData   []RequestData `json:"RequestData"`
 	CacheData     CacheData     `json:"CacheData"`
@@ -54,3 +60,28 @@ type ServerStatus struct {
 
 // 存放全局变量
 var ReReportConfig = &ReReport{}
+
+func SaveReConfig() {
+	path, err := os.Getwd()
+	if err != nil {
+		log.Println("Os Getwd err")
+	}
+	path = path + "\\Report\\Re\\DataFile.json"
+	file, err := os.Open(path)
+	if err != nil {
+		log.Println("open json file err")
+	}
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Println("file close err ", err)
+		}
+	}()
+	data, err := json.MarshalIndent(ReReportConfig, "", " ")
+	if err != nil {
+		log.Println("json.MarshalIndent err ", err)
+	}
+	err = os.WriteFile(path, data, 0644)
+	if err != nil {
+		log.Println("os.WriteFile ", err)
+	}
+}

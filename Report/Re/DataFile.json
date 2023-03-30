@@ -2,11 +2,15 @@
  "RequestData": [
   {
    "path": "/hello",
-   "times": 1
+   "times": 6
   },
   {
    "path": "/world",
    "times": 0
+  },
+  {
+   "path": "/word",
+   "times": 33
   }
  ],
  "CacheData": {
@@ -30,27 +34,22 @@
    "BanTimes": 0
   },
   {
-   "ip": "127.0.0.1:32385",
+   "ip": "127.0.0.1",
    "ReqTimes": 0,
-   "BanTimes": 0
-  },
-  {
-   "ip": "127.0.0.1:32386",
-   "ReqTimes": 0,
-   "BanTimes": 0
+   "BanTimes": 12
   }
  ],
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 98.47456096191782,
-   "kernel": 0.610061553344125,
-   "user": 0.9153774847380568,
-   "Usage": 0.38872691933916426
+   "idle": 98.49411600937866,
+   "kernel": 0.6055596453232854,
+   "user": 0.9003243452980619,
+   "Usage": 3.173076923076923
   },
   "MEMORY_INFO": {
    "total": 116,
    "available": 31,
-   "usage": 73.10758407456866
+   "usage": 73.10761687126173
   },
   "DISK_INFO": {
    "total": 116,

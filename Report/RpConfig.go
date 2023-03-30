@@ -34,33 +34,3 @@ func ReadReConfig() {
 		return
 	}
 }
-
-func SaveReConfig() {
-	path, err := os.Getwd()
-	if err != nil {
-		Log.Error("Os Getwd err")
-	}
-	path = path + "\\Report\\Re\\DataFile.json"
-	file, err := os.Open(path)
-	if err != nil {
-		Log.Fatal("open json file err")
-	}
-	defer func() {
-		if err := file.Close(); err != nil {
-			Log.Error("file close err ", err)
-		}
-	}()
-	data, err := json.MarshalIndent(global.ReReportConfig, "", " ")
-	if err != nil {
-		Log.Error("json.MarshalIndent err ", err)
-	}
-	err = os.WriteFile(path, data, 0644)
-	if err != nil {
-		Log.Error("os.WriteFile ", err)
-	}
-	//encoder := json.NewEncoder(file)
-	//err = encoder.Encode(&global.ReReportConfig)
-	//if err != nil {
-	//	Log.Error("encoder.Encode error ", err)
-	//}
-}

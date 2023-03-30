@@ -159,5 +159,5 @@ func GetWindowsStatus() {
 	global.ReReportConfig.ServerStatus.MEMORYINFO = global.MEMORYINFO{int64(cmemoryinfo.total), int64(cmemoryinfo.available), float64(cmemoryinfo.usage)}
 	cdiskinfo := C.GetDiskInfo()
 	global.ReReportConfig.ServerStatus.MEMORYINFO = global.MEMORYINFO{int64(cdiskinfo.total), int64(cdiskinfo.available), float64(cdiskinfo.usage)}
-	SaveReConfig()
+	global.SaveReConfig()
 }

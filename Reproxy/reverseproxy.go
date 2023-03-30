@@ -4,7 +4,6 @@ import (
 	"awesomeProxy/AsCache"
 	"awesomeProxy/AsCache/consistenthash"
 	"awesomeProxy/Log"
-	"awesomeProxy/Report"
 	"awesomeProxy/Reproxy/ascii"
 	"awesomeProxy/Reproxy/httpguts"
 	"awesomeProxy/global"
@@ -424,18 +423,19 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		if strings.Contains(req.URL.Path, item.Path) {
 			global.ReReportConfig.RequestData[idx].Times++
 			IsNotPath = false
+			break
 		}
 	}
 	if IsNotPath {
 		tempqd := global.RequestData{req.URL.Path, 0}
 		global.ReReportConfig.RequestData = append(global.ReReportConfig.RequestData, tempqd)
 	}
-	Report.SaveReConfig()
+	global.SaveReConfig()
 	// IP过滤
 	if FiltIp(getIpWithoutPort(*req)) {
 		// 报告中的BanIpReqTimes数据更新
 		global.ReReportConfig.BanIPReqTimes++
-		Report.SaveReConfig()
+		global.SaveReConfig()
 		rw.WriteHeader(http.StatusForbidden)
 		defer func() {
 			if _, err := rw.Write([]byte("进黑名单了")); err != nil {
@@ -447,18 +447,19 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	// 爬虫过滤
 	if FiltrationCrawler(*req) {
 		CrawlerIP := getIP(*req)
+		CrawlerIPWithoutPort := getIpWithoutPort(*req)
 		IsInConfig := false
 		for idx, item := range global.ReReportConfig.CrawlerData {
-			if strings.Contains(CrawlerIP, item.IP) {
+			if strings.Contains(CrawlerIPWithoutPort, item.IP) {
 				IsInConfig = true
 				global.ReReportConfig.CrawlerData[idx].BanTimes++
 				break
 			}
 		}
 		if !IsInConfig {
-			tempc := global.CrawlerData{CrawlerIP, 0, 0}
+			tempc := global.CrawlerData{CrawlerIPWithoutPort, 0, 0}
 			global.ReReportConfig.CrawlerData = append(global.ReReportConfig.CrawlerData, tempc)
-			Report.SaveReConfig()
+			global.SaveReConfig()
 		}
 
 		Log.Warn("发现爬虫，现在正在对IP进行监管: ", CrawlerIP)
@@ -475,7 +476,7 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	if strings.HasPrefix(req.URL.Path, p.basePath) {
 		// 报告中的CacheData数据更新
 		global.ReReportConfig.CacheData.ReqTimes++
-		Report.SaveReConfig()
+		global.SaveReConfig()
 		Log.Debug("现在进入缓存操作")
 		parts := strings.SplitN(req.URL.Path[len(p.basePath):], "/", 2)
 		if len(parts) != 2 {

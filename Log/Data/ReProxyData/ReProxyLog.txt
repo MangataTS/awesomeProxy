@@ -665,3 +665,81 @@
 [INFO]2023/03/31 01:53:39 ConfigInit.go:190: 欢迎使用awesomeProxy
 [INFO]2023/03/31 01:53:39 ConfigInit.go:192: 反向代理监听端口:0.0.0.0:9090
 [INFO]2023/03/31 01:53:42 handle.go:76: request.URL.Path：/hello request.URL.RawQuery：
+[INFO]2023/03/31 02:02:18 ConfigInit.go:189: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/31 02:02:18 ConfigInit.go:190: 欢迎使用awesomeProxy
+[INFO]2023/03/31 02:02:18 ConfigInit.go:192: 反向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/31 02:02:21 handle.go:76: request.URL.Path：/hello request.URL.RawQuery：
+[INFO]2023/03/31 02:02:22 handle.go:76: request.URL.Path：/hello request.URL.RawQuery：
+[INFO]2023/03/31 02:03:37 ConfigInit.go:189: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/31 02:03:37 ConfigInit.go:190: 欢迎使用awesomeProxy
+[INFO]2023/03/31 02:03:37 ConfigInit.go:192: 反向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/31 02:03:47 handle.go:76: request.URL.Path：/hello request.URL.RawQuery：
+[INFO]2023/03/31 02:03:51 handle.go:76: request.URL.Path：/hello request.URL.RawQuery：
+[INFO]2023/03/31 02:04:02 handle.go:76: request.URL.Path：/hello request.URL.RawQuery：
+[INFO]2023/03/31 02:04:10 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:04:15 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:04:17 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:04:18 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:04:21 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:04:22 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:04:23 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:04:24 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[WARN]2023/03/31 02:04:25 reverseproxy.go:464: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32542
+[INFO]2023/03/31 02:06:51 ConfigInit.go:189: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/03/31 02:06:51 ConfigInit.go:190: 欢迎使用awesomeProxy
+[INFO]2023/03/31 02:06:51 ConfigInit.go:192: 反向代理监听端口:0.0.0.0:9090
+[INFO]2023/03/31 02:06:53 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:06:58 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:06:58 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:06:59 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:06:59 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:06:59 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:07:00 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:07:00 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:07:01 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:07:02 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[INFO]2023/03/31 02:07:02 handle.go:76: request.URL.Path：/word request.URL.RawQuery：
+[WARN]2023/03/31 02:07:03 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32569
+[WARN]2023/03/31 02:07:04 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32570
+[WARN]2023/03/31 02:07:19 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32571
+[WARN]2023/03/31 02:07:24 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32572
+[WARN]2023/03/31 02:07:28 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32573
+[WARN]2023/03/31 02:07:28 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32574
+[WARN]2023/03/31 02:07:29 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32575
+[WARN]2023/03/31 02:07:29 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32576
+[WARN]2023/03/31 02:07:30 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32577
+[WARN]2023/03/31 02:07:30 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32578
+[WARN]2023/03/31 02:07:30 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32579
+[WARN]2023/03/31 02:07:31 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32580
+[WARN]2023/03/31 02:07:31 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32581
+[WARN]2023/03/31 02:07:31 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:32582

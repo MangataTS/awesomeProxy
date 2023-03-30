@@ -1,0 +1,48 @@
+{
+  "RequestData": [
+    {
+      "ReqIp": "127.0.0.1",
+      "path": "/hello",
+      "times": 0
+    }
+  ],
+  "CacheData": {
+    "ReqTimes": 0,
+    "HintTimes": 0,
+    "HintRate": 0,
+    "memory": 0
+  },
+  "BanIpReqTimes": 0,
+  "LogsData": {
+    "InfoTimes": 0,
+    "DebugTimes": 0,
+    "WarnTimes": 0,
+    "ErrorTimes": 0,
+    "FatalTimes": 0
+  },
+  "CrawlerData": [
+    {
+      "ip": "195.120.115.242",
+      "ReqTimes": 0,
+      "BanTimes": 0
+    }
+  ],
+  "ServerStatus": {
+    "CPU_INFO": {
+      "idle": 96.93,
+      "kernel": 1.42,
+      "user": 1.63,
+      "Usage": 1.46
+    },
+    "MEMORY_INFO": {
+      "total": 15741,
+      "available": 8154,
+      "usage": 48.20
+    },
+    "DISK_INFO": {
+      "total": 116,
+      "available": 31,
+      "usage": 73.11
+    }
+  }
+}

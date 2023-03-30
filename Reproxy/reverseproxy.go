@@ -4,6 +4,7 @@ import (
 	"awesomeProxy/AsCache"
 	"awesomeProxy/AsCache/consistenthash"
 	"awesomeProxy/Log"
+	"awesomeProxy/Report"
 	"awesomeProxy/Reproxy/ascii"
 	"awesomeProxy/Reproxy/httpguts"
 	"context"
@@ -416,11 +417,16 @@ func (p *ReverseProxy) modifyResponse(rw http.ResponseWriter, res *http.Response
 }
 
 func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
+	Log.Debug("Path", req.URL.Path)
+	//Report.ReReportConfig.RequestData
+	//Report.SaveReConfig()
 	// IP过滤
 	if FiltIp(getIpWithoutPort(*req)) {
+		Report.ReReportConfig.BanIPReqTimes++
+		Report.SaveReConfig()
 		rw.WriteHeader(http.StatusForbidden)
 		defer func() {
-			if _, err := rw.Write([]byte("你被放进黑名单了")); err != nil {
+			if _, err := rw.Write([]byte("进黑名单了")); err != nil {
 				Log.Error("缓存写入失败:", err)
 			}
 		}()
@@ -428,7 +434,22 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	}
 	// 爬虫过滤
 	if FiltrationCrawler(*req) {
-		Log.Warn("发现爬虫，现在正在对IP进行监管: ", getIP(*req))
+		CrawlerIP := getIP(*req)
+		IsInConfig := false
+		for _, item := range Report.ReReportConfig.CrawlerData {
+			if strings.Contains(CrawlerIP, item.IP) {
+				IsInConfig = true
+				item.BanTimes++
+				break
+			}
+		}
+		if !IsInConfig {
+			tempc := Report.CrawlerData{CrawlerIP, 0, 0}
+			Report.ReReportConfig.CrawlerData = append(Report.ReReportConfig.CrawlerData, tempc)
+			Report.SaveReConfig()
+		}
+
+		Log.Warn("发现爬虫，现在正在对IP进行监管: ", CrawlerIP)
 		rw.WriteHeader(http.StatusForbidden)
 		defer func() {
 			if _, err := rw.Write([]byte("小样爬虫")); err != nil {
@@ -440,6 +461,8 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 	// 如果可以前缀满足缓存操作
 	if strings.HasPrefix(req.URL.Path, p.basePath) {
+		Report.ReReportConfig.CacheData.ReqTimes++
+		Report.SaveReConfig()
 		Log.Debug("现在进入缓存操作")
 		parts := strings.SplitN(req.URL.Path[len(p.basePath):], "/", 2)
 		if len(parts) != 2 {

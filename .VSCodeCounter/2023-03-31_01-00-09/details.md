@@ -1,36 +1,39 @@
 # Details
 
-Date : 2023-03-24 01:31:06
+Date : 2023-03-31 01:00:09
 
 Directory e:\\goland\\project\\awesomeProxy
 
-Total : 62 files,  6204 codes, 1351 comments, 932 blanks, all 8487 lines
+Total : 71 files,  6797 codes, 1718 comments, 1009 blanks, all 9524 lines
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Files
 | filename | language | code | comment | blank | total |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| [.idea/awesomeProxy.iml](/.idea/awesomeProxy.iml) | XML | 9 | 0 | 0 | 9 |
+| [.idea/awesomeProxy.iml](/.idea/awesomeProxy.iml) | XML | 17 | 0 | 0 | 17 |
 | [.idea/modules.xml](/.idea/modules.xml) | XML | 8 | 0 | 0 | 8 |
 | [.idea/statistic.xml](/.idea/statistic.xml) | XML | 6 | 0 | 0 | 6 |
 | [.idea/vcs.xml](/.idea/vcs.xml) | XML | 6 | 0 | 0 | 6 |
-| [AsCache/ascache.go](/AsCache/ascache.go) | Go | 67 | 8 | 16 | 91 |
+| [AsCache/ascache.go](/AsCache/ascache.go) | Go | 89 | 9 | 18 | 116 |
 | [AsCache/byteview.go](/AsCache/byteview.go) | Go | 18 | 4 | 6 | 28 |
 | [AsCache/cache.go](/AsCache/cache.go) | Go | 29 | 0 | 7 | 36 |
+| [AsCache/consistenthash/consistenthash.go](/AsCache/consistenthash/consistenthash.go) | Go | 44 | 11 | 9 | 64 |
+| [AsCache/consistenthash/consistenthash_test.go](/AsCache/consistenthash/consistenthash_test.go) | Go | 30 | 4 | 10 | 44 |
 | [AsCache/lru/lru.go](/AsCache/lru/lru.go) | Go | 62 | 9 | 11 | 82 |
 | [AsCache/lru/lru_test.go](/AsCache/lru/lru_test.go) | Go | 54 | 0 | 12 | 66 |
+| [AsCache/peers.go](/AsCache/peers.go) | Go | 7 | 3 | 3 | 13 |
 | [Cert/WindowsCA.go](/Cert/WindowsCA.go) | Go | 49 | 8 | 11 | 68 |
 | [Constant/Certificate.go](/Constant/Certificate.go) | Go | 1 | 0 | 1 | 2 |
 | [Contract/IServerProcesser.go](/Contract/IServerProcesser.go) | Go | 4 | 0 | 4 | 8 |
 | [Core/Certificate.go](/Core/Certificate.go) | Go | 168 | 10 | 10 | 188 |
 | [Core/ConnPeer.go](/Core/ConnPeer.go) | Go | 11 | 0 | 3 | 14 |
-| [Core/ProxyHttp.go](/Core/ProxyHttp.go) | Go | 428 | 42 | 21 | 491 |
-| [Core/ProxyServer.go](/Core/ProxyServer.go) | Go | 99 | 5 | 12 | 116 |
-| [Core/ProxySocket5.go](/Core/ProxySocket5.go) | Go | 246 | 21 | 11 | 278 |
-| [Core/ProxyTcp.go](/Core/ProxyTcp.go) | Go | 91 | 2 | 6 | 99 |
+| [Core/ProxyHttp.go](/Core/ProxyHttp.go) | Go | 458 | 41 | 26 | 525 |
+| [Core/ProxyServer.go](/Core/ProxyServer.go) | Go | 108 | 5 | 14 | 127 |
+| [Core/ProxySocket5.go](/Core/ProxySocket5.go) | Go | 260 | 21 | 12 | 293 |
+| [Core/ProxyTcp.go](/Core/ProxyTcp.go) | Go | 97 | 3 | 6 | 106 |
 | [Core/Storage.go](/Core/Storage.go) | Go | 67 | 4 | 9 | 80 |
-| [Core/Websocket/Client.go](/Core/Websocket/Client.go) | Go | 271 | 74 | 51 | 396 |
+| [Core/Websocket/Client.go](/Core/Websocket/Client.go) | Go | 282 | 74 | 52 | 408 |
 | [Core/Websocket/ClientClone.go](/Core/Websocket/ClientClone.go) | Go | 8 | 4 | 5 | 17 |
 | [Core/Websocket/ClientCloneLegacy.go](/Core/Websocket/ClientCloneLegacy.go) | Go | 26 | 8 | 5 | 39 |
 | [Core/Websocket/Compression.go](/Core/Websocket/Compression.go) | Go | 117 | 11 | 21 | 149 |
@@ -49,15 +52,21 @@ Total : 62 files,  6204 codes, 1351 comments, 932 blanks, all 8487 lines
 | [Core/Websocket/Trace_17.go](/Core/Websocket/Trace_17.go) | Go | 8 | 1 | 4 | 13 |
 | [Core/Websocket/Util.go](/Core/Websocket/Util.go) | Go | 244 | 26 | 14 | 284 |
 | [Core/Websocket/XnetProxy.go](/Core/Websocket/XnetProxy.go) | Go | 352 | 57 | 65 | 474 |
-| [Log/Logger.go](/Log/Logger.go) | Go | 549 | 46 | 61 | 656 |
-| [README.md](/README.md) | Markdown | 106 | 0 | 34 | 140 |
-| [Reproxy/UnCrawler.go](/Reproxy/UnCrawler.go) | Go | 101 | 14 | 15 | 130 |
+| [Log/Logger.go](/Log/Logger.go) | Go | 548 | 46 | 61 | 655 |
+| [PyTest/Re_pachong.py](/PyTest/Re_pachong.py) | Python | 21 | 8 | 6 | 35 |
+| [README.md](/README.md) | Markdown | 108 | 0 | 32 | 140 |
+| [Report/GetRe.go](/Report/GetRe.go) | Go | 3 | 0 | 3 | 6 |
+| [Report/Re/DataFile.json](/Report/Re/DataFile.json) | JSON | 48 | 0 | 0 | 48 |
+| [Report/RpConfig.go](/Report/RpConfig.go) | Go | 106 | 1 | 6 | 113 |
+| [Report/WindowsStatus.c](/Report/WindowsStatus.c) | C | 0 | 147 | 0 | 147 |
+| [Report/WindowsStatus.go](/Report/WindowsStatus.go) | Go | 11 | 149 | 3 | 163 |
+| [Reproxy/UnCrawler.go](/Reproxy/UnCrawler.go) | Go | 105 | 20 | 16 | 141 |
 | [Reproxy/ascii/print.go](/Reproxy/ascii/print.go) | Go | 44 | 10 | 8 | 62 |
 | [Reproxy/ascii/print_test.go](/Reproxy/ascii/print_test.go) | Go | 88 | 3 | 5 | 96 |
-| [Reproxy/handle.go](/Reproxy/handle.go) | Go | 50 | 36 | 10 | 96 |
+| [Reproxy/handle.go](/Reproxy/handle.go) | Go | 71 | 6 | 11 | 88 |
 | [Reproxy/httpguts/guts.go](/Reproxy/httpguts/guts.go) | Go | 35 | 11 | 5 | 51 |
 | [Reproxy/httpguts/httplex.go](/Reproxy/httpguts/httplex.go) | Go | 230 | 98 | 25 | 353 |
-| [Reproxy/reverseproxy.go](/Reproxy/reverseproxy.go) | Go | 524 | 225 | 84 | 833 |
+| [Reproxy/reverseproxy.go](/Reproxy/reverseproxy.go) | Go | 680 | 255 | 100 | 1,035 |
 | [Utils/Utils.go](/Utils/Utils.go) | Go | 122 | 2 | 14 | 138 |
 | [balance/balance_mgr.go](/balance/balance_mgr.go) | Go | 24 | 0 | 7 | 31 |
 | [balance/blancer.go](/balance/blancer.go) | Go | 4 | 0 | 2 | 6 |
@@ -69,9 +78,9 @@ Total : 62 files,  6204 codes, 1351 comments, 932 blanks, all 8487 lines
 | [balance/shuffle_balance.go](/balance/shuffle_balance.go) | Go | 26 | 2 | 9 | 37 |
 | [balance/weight_round_robin.go](/balance/weight_round_robin.go) | Go | 65 | 4 | 15 | 84 |
 | [config.json](/config.json) | JSON | 23 | 0 | 0 | 23 |
-| [config/ConfigInit.go](/config/ConfigInit.go) | Go | 170 | 8 | 14 | 192 |
+| [config/ConfigInit.go](/config/ConfigInit.go) | Go | 181 | 13 | 16 | 210 |
 | [go.mod](/go.mod) | Go Module File | 10 | 0 | 4 | 14 |
 | [go.sum](/go.sum) | Go Checksum File | 8 | 0 | 1 | 9 |
-| [main.go](/main.go) | Go | 90 | 13 | 5 | 108 |
+| [main.go](/main.go) | Go | 120 | 45 | 13 | 178 |
 
 [Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

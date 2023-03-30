@@ -3,6 +3,7 @@ package config
 import (
 	"awesomeProxy/Cert"
 	"awesomeProxy/Log"
+	"awesomeProxy/Report"
 	"awesomeProxy/balance"
 	"encoding/json"
 	"io"
@@ -64,6 +65,9 @@ func (cc Config) Init() {
 	} else {
 		Cert.Install()
 	}
+	// 报告初始化
+	Report.ReadReConfig()
+	Report.GetWindowsStatus()
 	Logo()
 
 }

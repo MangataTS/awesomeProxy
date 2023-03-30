@@ -4,7 +4,10 @@ import (
 	"encoding/json"
 	"log"
 	"os"
+	"sync"
 )
+
+var ReReportMux sync.Mutex
 
 type ReReport struct {
 	RequestData   []RequestData `json:"RequestData"`
@@ -67,19 +70,13 @@ func SaveReConfig() {
 		log.Println("Os Getwd err")
 	}
 	path = path + "\\Report\\Re\\DataFile.json"
-	file, err := os.Open(path)
-	if err != nil {
-		log.Println("open json file err")
-	}
-	defer func() {
-		if err := file.Close(); err != nil {
-			log.Println("file close err ", err)
-		}
-	}()
+
 	data, err := json.MarshalIndent(ReReportConfig, "", " ")
 	if err != nil {
 		log.Println("json.MarshalIndent err ", err)
 	}
+	ReReportMux.Lock()
+	defer ReReportMux.Unlock()
 	err = os.WriteFile(path, data, 0644)
 	if err != nil {
 		log.Println("os.WriteFile ", err)

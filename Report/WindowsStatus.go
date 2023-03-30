@@ -150,13 +150,14 @@ struct MemAndDiskInfo GetDiskInfo() {
 }
 */
 import "C"
+import "awesomeProxy/global"
 
 func GetWindowsStatus() {
 	ccpuinfo := C.GetCpuInfo()
-	ReReportConfig.ServerStatus.CPUINFO = CPUINFO{float64(ccpuinfo.idle), float64(ccpuinfo.kernel), float64(ccpuinfo.user), float64(ccpuinfo.Usage)}
+	global.ReReportConfig.ServerStatus.CPUINFO = global.CPUINFO{float64(ccpuinfo.idle), float64(ccpuinfo.kernel), float64(ccpuinfo.user), float64(ccpuinfo.Usage)}
 	cmemoryinfo := C.GetMemoryInfo()
-	ReReportConfig.ServerStatus.MEMORYINFO = MEMORYINFO{int64(cmemoryinfo.total), int64(cmemoryinfo.available), float64(cmemoryinfo.usage)}
+	global.ReReportConfig.ServerStatus.MEMORYINFO = global.MEMORYINFO{int64(cmemoryinfo.total), int64(cmemoryinfo.available), float64(cmemoryinfo.usage)}
 	cdiskinfo := C.GetDiskInfo()
-	ReReportConfig.ServerStatus.MEMORYINFO = MEMORYINFO{int64(cdiskinfo.total), int64(cdiskinfo.available), float64(cdiskinfo.usage)}
+	global.ReReportConfig.ServerStatus.MEMORYINFO = global.MEMORYINFO{int64(cdiskinfo.total), int64(cdiskinfo.available), float64(cdiskinfo.usage)}
 	SaveReConfig()
 }

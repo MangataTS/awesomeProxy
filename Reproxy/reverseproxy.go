@@ -7,6 +7,7 @@ import (
 	"awesomeProxy/Report"
 	"awesomeProxy/Reproxy/ascii"
 	"awesomeProxy/Reproxy/httpguts"
+	"awesomeProxy/global"
 	"context"
 	"errors"
 	"fmt"
@@ -417,12 +418,23 @@ func (p *ReverseProxy) modifyResponse(rw http.ResponseWriter, res *http.Response
 }
 
 func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	Log.Debug("Path", req.URL.Path)
-	//Report.ReReportConfig.RequestData
-	//Report.SaveReConfig()
+	// 报告中的RequestData数据更新
+	IsNotPath := true
+	for idx, item := range global.ReReportConfig.RequestData {
+		if strings.Contains(req.URL.Path, item.Path) {
+			global.ReReportConfig.RequestData[idx].Times++
+			IsNotPath = false
+		}
+	}
+	if IsNotPath {
+		tempqd := global.RequestData{req.URL.Path, 0}
+		global.ReReportConfig.RequestData = append(global.ReReportConfig.RequestData, tempqd)
+	}
+	Report.SaveReConfig()
 	// IP过滤
 	if FiltIp(getIpWithoutPort(*req)) {
-		Report.ReReportConfig.BanIPReqTimes++
+		// 报告中的BanIpReqTimes数据更新
+		global.ReReportConfig.BanIPReqTimes++
 		Report.SaveReConfig()
 		rw.WriteHeader(http.StatusForbidden)
 		defer func() {
@@ -436,16 +448,16 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	if FiltrationCrawler(*req) {
 		CrawlerIP := getIP(*req)
 		IsInConfig := false
-		for _, item := range Report.ReReportConfig.CrawlerData {
+		for idx, item := range global.ReReportConfig.CrawlerData {
 			if strings.Contains(CrawlerIP, item.IP) {
 				IsInConfig = true
-				item.BanTimes++
+				global.ReReportConfig.CrawlerData[idx].BanTimes++
 				break
 			}
 		}
 		if !IsInConfig {
-			tempc := Report.CrawlerData{CrawlerIP, 0, 0}
-			Report.ReReportConfig.CrawlerData = append(Report.ReReportConfig.CrawlerData, tempc)
+			tempc := global.CrawlerData{CrawlerIP, 0, 0}
+			global.ReReportConfig.CrawlerData = append(global.ReReportConfig.CrawlerData, tempc)
 			Report.SaveReConfig()
 		}
 
@@ -461,7 +473,8 @@ func (p *ReverseProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 	// 如果可以前缀满足缓存操作
 	if strings.HasPrefix(req.URL.Path, p.basePath) {
-		Report.ReReportConfig.CacheData.ReqTimes++
+		// 报告中的CacheData数据更新
+		global.ReReportConfig.CacheData.ReqTimes++
 		Report.SaveReConfig()
 		Log.Debug("现在进入缓存操作")
 		parts := strings.SplitN(req.URL.Path[len(p.basePath):], "/", 2)

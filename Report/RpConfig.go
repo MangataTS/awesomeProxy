@@ -26,11 +26,11 @@ func ReadReConfig() {
 	}()
 	data, err := io.ReadAll(file)
 	if err != nil {
-		Log.Fatal("read json file err")
+		Log.Fatal("read json file err: ", err)
 	}
 	err = json.Unmarshal(data, &global.ReReportConfig)
 	if err != nil {
-		Log.Fatal("Unmarshal json file err")
+		Log.Fatal("Unmarshal json file err: ", err)
 		return
 	}
 }

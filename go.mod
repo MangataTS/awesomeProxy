@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/jung-kurt/gofpdf v1.16.2 // indirect
 	golang.org/x/net v0.8.0 // indirect
 	golang.org/x/text v0.8.0 // indirect
 )

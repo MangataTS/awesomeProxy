@@ -22,10 +22,10 @@ type RequestData struct {
 	Times int64  `json:"times"`
 }
 type CacheData struct {
-	ReqTimes  int64 `json:"ReqTimes"`
-	HintTimes int64 `json:"HintTimes"`
-	HintRate  int64 `json:"HintRate"`
-	Memory    int64 `json:"memory"`
+	ReqTimes  int64   `json:"ReqTimes"`
+	HintTimes int64   `json:"HintTimes"`
+	HintRate  float64 `json:"HintRate"`
+	Memory    int64   `json:"memory"`
 }
 type LogsData struct {
 	InfoTimes  int64 `json:"InfoTimes"`

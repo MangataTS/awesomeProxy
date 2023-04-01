@@ -1,19 +1,19 @@
 # AwesomeProxy
 
 ## 工作量
-Total : 71 files,  6797 codes, 1718 comments, 1009 blanks, all 9524 lines
 
+Total : 72 files,  7215 codes, 1755 comments, 1072 blanks, all 10042 lines
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 60 | 6,542 | 1,563 | 966 | 9,071 |
-| Markdown | 1 | 108 | 0 | 32 | 140 |
-| JSON | 2 | 71 | 0 | 0 | 71 |
+| Go | 61 | 6,884 | 1,600 | 1,028 | 9,512 |
+| JSON | 2 | 133 | 0 | 0 | 133 |
+| Markdown | 1 | 109 | 0 | 33 | 142 |
 | XML | 4 | 37 | 0 | 0 | 37 |
 | Python | 1 | 21 | 8 | 6 | 35 |
-| Go Module File | 1 | 10 | 0 | 4 | 14 |
-| Go Checksum File | 1 | 8 | 0 | 1 | 9 |
+| Go Checksum File | 1 | 20 | 0 | 1 | 21 |
+| Go Module File | 1 | 11 | 0 | 4 | 15 |
 | C | 1 | 0 | 147 | 0 | 147 |
 
 ## 预计功能

@@ -777,3 +777,115 @@
 [DEBUG]2023/03/31 02:24:56 reverseproxy.go:271: Pick peer http://localhost:10003
 [ERROR]2023/03/31 02:24:56 ascache.go:88: [AsCache] Failed to get from peerserver returned: 404 Not Found
 [DEBUG]2023/03/31 02:24:57 main.go:45: [SlowDB] search key Tom
+[INFO]2023/04/01 16:21:24 ConfigInit.go:189: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/04/01 16:21:24 ConfigInit.go:190: 欢迎使用awesomeProxy
+[INFO]2023/04/01 16:21:24 ConfigInit.go:192: 反向代理监听端口:0.0.0.0:9090
+[INFO]2023/04/01 16:22:11 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:13 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:13 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:14 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:14 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:15 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:15 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:15 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:16 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:16 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[INFO]2023/04/01 16:22:16 handle.go:76: request.URL.Path：/kaptree request.URL.RawQuery：
+[WARN]2023/04/01 16:22:16 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4587
+[WARN]2023/04/01 16:22:17 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4588
+[WARN]2023/04/01 16:22:17 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4589
+[WARN]2023/04/01 16:22:18 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4590
+[WARN]2023/04/01 16:22:18 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4591
+[WARN]2023/04/01 16:22:18 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4592
+[WARN]2023/04/01 16:22:18 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4593
+[WARN]2023/04/01 16:22:19 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4594
+[WARN]2023/04/01 16:22:19 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4596
+[WARN]2023/04/01 16:22:19 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4597
+[WARN]2023/04/01 16:22:19 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4598
+[WARN]2023/04/01 16:22:20 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4599
+[WARN]2023/04/01 16:22:20 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4600
+[WARN]2023/04/01 16:22:20 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4601
+[WARN]2023/04/01 16:22:21 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4602
+[WARN]2023/04/01 16:22:21 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4603
+[WARN]2023/04/01 16:22:21 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4604
+[WARN]2023/04/01 16:22:22 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4605
+[WARN]2023/04/01 16:22:22 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4606
+[WARN]2023/04/01 16:22:22 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4607
+[WARN]2023/04/01 16:22:22 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4608
+[WARN]2023/04/01 16:22:34 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4610
+[WARN]2023/04/01 16:22:37 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4611
+[WARN]2023/04/01 16:22:37 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4612
+[WARN]2023/04/01 16:22:38 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4613
+[WARN]2023/04/01 16:22:38 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4614
+[WARN]2023/04/01 16:22:38 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4615
+[WARN]2023/04/01 16:22:39 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4616
+[WARN]2023/04/01 16:22:39 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4618
+[WARN]2023/04/01 16:22:39 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4619
+[WARN]2023/04/01 16:22:40 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4620
+[WARN]2023/04/01 16:22:40 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4621
+[WARN]2023/04/01 16:22:40 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4622
+[WARN]2023/04/01 16:22:41 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4623
+[WARN]2023/04/01 16:22:41 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4624
+[WARN]2023/04/01 16:23:00 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4630
+[WARN]2023/04/01 16:23:01 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4631
+[WARN]2023/04/01 16:23:01 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4634
+[WARN]2023/04/01 16:23:02 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4635
+[WARN]2023/04/01 16:23:02 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4636
+[WARN]2023/04/01 16:23:02 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4637
+[WARN]2023/04/01 16:23:03 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4638
+[WARN]2023/04/01 16:23:03 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4639
+[WARN]2023/04/01 16:23:03 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4640
+[WARN]2023/04/01 16:23:03 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4641
+[WARN]2023/04/01 16:23:04 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4642
+[WARN]2023/04/01 16:23:04 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4643
+[INFO]2023/04/01 16:23:19 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:23 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:23 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:23 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:24 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:24 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:25 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:25 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:25 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:26 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[INFO]2023/04/01 16:23:27 handle.go:76: request.URL.Path：/Ambrosius request.URL.RawQuery：
+[WARN]2023/04/01 16:23:29 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4680
+[WARN]2023/04/01 16:23:29 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4681
+[WARN]2023/04/01 16:23:30 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4682
+[WARN]2023/04/01 16:23:30 reverseproxy.go:465: 发现爬虫，现在正在对IP进行监管: 127.0.0.1:4683
+[INFO]2023/04/01 23:24:50 ConfigInit.go:189: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/04/01 23:24:50 ConfigInit.go:190: 欢迎使用awesomeProxy
+[INFO]2023/04/01 23:24:50 ConfigInit.go:192: 反向代理监听端口:0.0.0.0:9090
+[INFO]2023/04/01 23:25:53 ConfigInit.go:189: 
+'   ________   ________                   ________   ________   ________      ___    ___  ___    ___ 
+'  |\   __  \ |\   ____\                 |\   __  \ |\   __  \ |\   __  \    |\  \  /  /||\  \  /  /|
+'  \ \  \|\  \\ \  \___|_   ____________ \ \  \|\  \\ \  \|\  \\ \  \|\  \   \ \  \/  / /\ \  \/  / /
+'   \ \   __  \\ \_____  \ |\____________\\ \   ____\\ \   _  _\\ \  \\\  \   \ \    / /  \ \    / / 
+'    \ \  \ \  \\|____|\  \\|____________| \ \  \___| \ \  \\  \|\ \  \\\  \   /     \/    \/  /  /  
+'     \ \__\ \__\ ____\_\  \                \ \__\     \ \__\\ _\ \ \_______\ /  /\   \  __/  / /    
+'      \|__|\|__||\_________\                \|__|      \|__|\|__| \|_______|/__/ /\ __\|\___/ /     
+'                \|_________|                                                |__|/ \|__|\|___|/      
+'                                                                                                    
+'                                                                                                     
+[INFO]2023/04/01 23:25:53 ConfigInit.go:190: 欢迎使用awesomeProxy
+[INFO]2023/04/01 23:25:53 ConfigInit.go:192: 反向代理监听端口:0.0.0.0:9090

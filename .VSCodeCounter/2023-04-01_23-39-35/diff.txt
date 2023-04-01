@@ -1,0 +1,46 @@
+Date : 2023-04-01 23:39:35
+Directory : e:\goland\project\awesomeProxy
+Total : 11 files,  418 codes, 37 comments, 63 blanks, all 518 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| Go               |          7 |        342 |         37 |         62 |        441 |
+| JSON             |          1 |         62 |          0 |          0 |         62 |
+| Go Checksum File |          1 |         12 |          0 |          0 |         12 |
+| Go Module File   |          1 |          1 |          0 |          0 |          1 |
+| Markdown         |          1 |          1 |          0 |          1 |          2 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                      |         11 |        418 |         37 |         63 |        518 |
+| . (Files)                                              |          4 |         19 |          0 |          1 |         20 |
+| Log                                                    |          1 |         11 |          0 |          0 |         11 |
+| Report                                                 |          4 |        298 |         35 |         56 |        389 |
+| Report (Files)                                         |          3 |        236 |         35 |         56 |        327 |
+| Report\Re                                              |          1 |         62 |          0 |          0 |         62 |
+| Reproxy                                                |          1 |         13 |          1 |          0 |         14 |
+| global                                                 |          1 |         77 |          1 |          6 |         84 |
++--------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                               | language         | code       | comment    | blank      | total      |
++--------------------------------------------------------+------------------+------------+------------+------------+------------+
+| e:\goland\project\awesomeProxy\Log\Logger.go           | Go               |         11 |          0 |          0 |         11 |
+| e:\goland\project\awesomeProxy\README.md               | Markdown         |          1 |          0 |          1 |          2 |
+| e:\goland\project\awesomeProxy\Report\GetRe.go         | Go               |        308 |         35 |         59 |        402 |
+| e:\goland\project\awesomeProxy\Report\Re\DataFile.json | JSON             |         62 |          0 |          0 |         62 |
+| e:\goland\project\awesomeProxy\Report\RpConfig.go      | Go               |        -73 |          0 |         -3 |        -76 |
+| e:\goland\project\awesomeProxy\Report\WindowsStatus.go | Go               |          1 |          0 |          0 |          1 |
+| e:\goland\project\awesomeProxy\Reproxy\reverseproxy.go | Go               |         13 |          1 |          0 |         14 |
+| e:\goland\project\awesomeProxy\global\global.go        | Go               |         77 |          1 |          6 |         84 |
+| e:\goland\project\awesomeProxy\go.mod                  | Go Module File   |          1 |          0 |          0 |          1 |
+| e:\goland\project\awesomeProxy\go.sum                  | Go Checksum File |         12 |          0 |          0 |         12 |
+| e:\goland\project\awesomeProxy\main.go                 | Go               |          5 |          0 |          0 |          5 |
+| Total                                                  |                  |        418 |         37 |         63 |        518 |
++--------------------------------------------------------+------------------+------------+------------+------------+------------+

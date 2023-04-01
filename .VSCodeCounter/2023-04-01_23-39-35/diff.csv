@@ -1,0 +1,13 @@
+"filename", "language", "Go", "Go Checksum File", "Go Module File", "JSON", "Markdown", "comment", "blank", "total"
+"e:\goland\project\awesomeProxy\Log\Logger.go", "Go", 11, 0, 0, 0, 0, 0, 0, 11
+"e:\goland\project\awesomeProxy\README.md", "Markdown", 0, 0, 0, 0, 1, 0, 1, 2
+"e:\goland\project\awesomeProxy\Report\GetRe.go", "Go", 308, 0, 0, 0, 0, 35, 59, 402
+"e:\goland\project\awesomeProxy\Report\Re\DataFile.json", "JSON", 0, 0, 0, 62, 0, 0, 0, 62
+"e:\goland\project\awesomeProxy\Report\RpConfig.go", "Go", -73, 0, 0, 0, 0, 0, -3, -76
+"e:\goland\project\awesomeProxy\Report\WindowsStatus.go", "Go", 1, 0, 0, 0, 0, 0, 0, 1
+"e:\goland\project\awesomeProxy\Reproxy\reverseproxy.go", "Go", 13, 0, 0, 0, 0, 1, 0, 14
+"e:\goland\project\awesomeProxy\global\global.go", "Go", 77, 0, 0, 0, 0, 1, 6, 84
+"e:\goland\project\awesomeProxy\go.mod", "Go Module File", 0, 0, 1, 0, 0, 0, 0, 1
+"e:\goland\project\awesomeProxy\go.sum", "Go Checksum File", 0, 12, 0, 0, 0, 0, 0, 12
+"e:\goland\project\awesomeProxy\main.go", "Go", 5, 0, 0, 0, 0, 0, 0, 5
+"Total", "-", 342, 12, 1, 62, 1, 37, 63, 518

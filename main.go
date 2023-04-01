@@ -4,6 +4,7 @@ import (
 	"awesomeProxy/AsCache"
 	"awesomeProxy/Core"
 	"awesomeProxy/Log"
+	"awesomeProxy/Report"
 	"awesomeProxy/Reproxy"
 	"awesomeProxy/Utils"
 	"awesomeProxy/config"
@@ -54,7 +55,11 @@ func main() {
 	//如果是进行反向代理代理
 	if config.CONFIG.ProxyMethod {
 		port := flag.String("port", config.CONFIG.ReProxy.Port, "listen port")
+		Isreport := flag.Bool("Isreport", false, "Reserve Server proxy Report")
 		flag.Parse()
+		if *Isreport {
+			Report.GetReReport()
+		}
 		gee := createGroup()
 		reverseUrl := fmt.Sprintf("http://%v:%d", config.Insts[0].Host, config.Insts[0].Port)
 		remote, err := url.Parse(reverseUrl)

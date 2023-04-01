@@ -2,63 +2,109 @@
  "RequestData": [
   {
    "path": "/hello",
-   "times": 7
+   "times": 7541
   },
   {
    "path": "/world",
-   "times": 0
+   "times": 213415
   },
   {
    "path": "/word",
-   "times": 36
+   "times": 3312456
   },
   {
    "path": "/ascache/scores/Tom",
-   "times": 0
+   "times": 214532
+  },
+  {
+   "path": "/kaptree",
+   "times": 31324
+  },
+  {
+   "path": "/Mangata",
+   "times": 12343
+  },
+  {
+   "path": "/Zoey",
+   "times": 15551
+  },
+  {
+   "path": "/Ambrosius",
+   "times": 53454
   }
  ],
  "CacheData": {
-  "ReqTimes": 1,
-  "HintTimes": 0,
-  "HintRate": 0,
-  "memory": 0
+  "ReqTimes": 1145,
+  "HintTimes": 911,
+  "HintRate": 0.7956,
+  "memory": 34968
  },
- "BanIpReqTimes": 0,
+ "BanIpReqTimes": 777,
  "LogsData": {
-  "InfoTimes": 6,
-  "DebugTimes": 3,
-  "WarnTimes": 0,
-  "ErrorTimes": 1,
-  "FatalTimes": 0
+  "InfoTimes": 1242,
+  "DebugTimes": 453,
+  "WarnTimes": 20,
+  "ErrorTimes": 30,
+  "FatalTimes": 12
  },
  "CrawlerData": [
   {
    "ip": "195.120.115.242",
-   "ReqTimes": 0,
-   "BanTimes": 0
+   "ReqTimes": 213580,
+   "BanTimes": 12349
   },
   {
    "ip": "127.0.0.1",
-   "ReqTimes": 0,
+   "ReqTimes": 1000,
    "BanTimes": 12
+  },
+  {
+   "ip": "195.120.115.242",
+   "ReqTimes": 94871,
+   "BanTimes": 19837
+  },
+  {
+   "ip": "249.221.135.116",
+   "ReqTimes": 1235,
+   "BanTimes": 367
+  },
+  {
+   "ip": "99.0.10.64",
+   "ReqTimes": 999,
+   "BanTimes": 12
+  },
+  {
+   "ip": "198.253.235.135",
+   "ReqTimes": 451,
+   "BanTimes": 321
+  },
+  {
+   "ip": "121.185.196.138",
+   "ReqTimes": 32,
+   "BanTimes": 7
+  },
+  {
+   "ip": "231.123.91.101",
+   "ReqTimes": 9993,
+   "BanTimes": 3244
   }
  ],
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 98.54141067208118,
-   "kernel": 0.6006884459701477,
-   "user": 0.8579008819486604,
-   "Usage": 0.4807692307692308
+   "idle": 98.32384675179769,
+   "kernel": 0.7306564601773137,
+   "user": 0.9454967880250014,
+   "Usage": 1.1527377521613833
   },
   "MEMORY_INFO": {
-   "total": 116,
-   "available": 31,
-   "usage": 73.10766278663203
+   "total": 15741,
+   "available": 5278,
+   "usage": 66.4659111409887
   },
   "DISK_INFO": {
    "total": 116,
    "available": 31,
-   "usage": 73.11
+   "usage": 73.10943052838851
   }
  }
 }

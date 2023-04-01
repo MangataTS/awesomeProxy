@@ -1,16 +1,34 @@
 {
-  "ProxyMethod":true,
-  "ReProxy":{
-    "port":"9090",
-    "BalanceMethod":1,
-    "backend":[{"host":"localhost:10001","Weight":1},{"host":"localhost:10002","Weight":1},{"host":"localhost:10003","Weight":1}],
-    "Cache":{"start": "true","MaxSize": "100000"}
+  "ProxyMethod": true,
+  "ReProxy": {
+    "port": "9090",
+    "BalanceMethod": 1,
+    "backend": [
+      {
+        "host": "localhost:10001",
+        "Weight": 1
+      },
+      {
+        "host": "localhost:10002",
+        "Weight": 1
+      },
+      {
+        "host": "localhost:10003",
+        "Weight": 1
+      }
+    ],
+    "Cache": {
+      "start": "true",
+      "MaxSize": "100000"
+    }
   },
-  "CoProxy":{
-    "port":"9090",
-    "MultiListenNum":5,
-    "nagle":true,
-    "filt":[".*\\.csdn\\..*"],
+  "CoProxy": {
+    "port": "9090",
+    "MultiListenNum": 5,
+    "nagle": true,
+    "filt": [
+      ".*\\.csdn\\..*"
+    ],
     "WindowsUnProxy": "localhost;127.*;10.*;172.16.*;172.17.*;172.18.*;172.19.*;172.20.*;172.21.*;172.22.*;172.23.*;172.24.*;172.25.*;172.26.*;172.27.*;172.28.*;172.29.*;172.30.*;172.31.*;192.168.*;42.193.50.191;*.mangata.ltd;*.qq.com;*.csdn.*;*.jdgame.vip"
   },
   "Logg": {
@@ -18,6 +36,10 @@
     "FileNameCoProxy": "CoProxyLog.txt",
     "SplitFormat": "DateSplit",
     "DateSplit": "MODE_DAY",
-    "SizeSplit": {"LogSize": 300,"Unit": "MB","FileNum": 10}
+    "SizeSplit": {
+      "LogSize": 300,
+      "Unit": "MB",
+      "FileNum": 10
+    }
   }
 }

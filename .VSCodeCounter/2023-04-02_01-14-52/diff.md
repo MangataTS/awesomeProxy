@@ -1,28 +1,25 @@
 # Diff Summary
 
-Date : 2023-03-30 00:20:39
+Date : 2023-04-02 01:14:52
 
 Directory e:\\goland\\project\\awesomeProxy
 
-Total : 9 files,  164 codes, 21 comments, 36 blanks, all 221 lines
+Total : 7 files,  235 codes, 0 comments, 29 blanks, all 264 lines
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 8 | 164 | 21 | 38 | 223 |
-| Markdown | 1 | 0 | 0 | -2 | -2 |
+| Go | 4 | 189 | 0 | 29 | 218 |
+| Markdown | 1 | 23 | 0 | 0 | 23 |
+| JSON | 2 | 23 | 0 | 0 | 23 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 9 | 164 | 21 | 36 | 221 |
-| . (Files) | 2 | 7 | -4 | 0 | 3 |
-| AsCache | 4 | 103 | 19 | 24 | 146 |
-| AsCache (Files) | 2 | 29 | 4 | 5 | 38 |
-| AsCache\\consistenthash | 2 | 74 | 15 | 19 | 108 |
-| Reproxy | 2 | 50 | 2 | 10 | 62 |
-| config | 1 | 4 | 4 | 2 | 10 |
+| . | 7 | 235 | 0 | 29 | 264 |
+| . (Files) | 2 | 45 | 0 | 0 | 45 |
+| ac_automaton | 5 | 190 | 0 | 29 | 219 |
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

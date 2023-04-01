@@ -2,14 +2,15 @@
 
 ## 工作量
 
-Total : 72 files,  7215 codes, 1755 comments, 1072 blanks, all 10042 lines
+Total : 77 files,  7450 codes, 1755 comments, 1101 blanks, all 10306 lines
+
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 61 | 6,884 | 1,600 | 1,028 | 9,512 |
-| JSON | 2 | 133 | 0 | 0 | 133 |
-| Markdown | 1 | 109 | 0 | 33 | 142 |
+| Go | 65 | 7,073 | 1,600 | 1,057 | 9,730 |
+| JSON | 3 | 156 | 0 | 0 | 156 |
+| Markdown | 1 | 132 | 0 | 33 | 165 |
 | XML | 4 | 37 | 0 | 0 | 37 |
 | Python | 1 | 21 | 8 | 6 | 35 |
 | Go Checksum File | 1 | 20 | 0 | 1 | 21 |
@@ -73,25 +74,48 @@ Total : 72 files,  7215 codes, 1755 comments, 1072 blanks, all 10042 lines
 
 ```json
 {
-  "ProxyMethod":false,
-  "ReProxy":{
-    "port":"9090",
-    "BalanceMethod":1,
-    "backend":[{"host":"127.0.0.1:10001","Weight":1},{"host":"127.0.0.1:10002","Weight":1},{"host":"127.0.0.1:10003","Weight":1}],
-    "Cache":{"start": "true","MaxSize": "100000"}
+  "ProxyMethod": true,
+  "ReProxy": {
+    "port": "9090",
+    "BalanceMethod": 1,
+    "backend": [
+      {
+        "host": "localhost:10001",
+        "Weight": 1
+      },
+      {
+        "host": "localhost:10002",
+        "Weight": 1
+      },
+      {
+        "host": "localhost:10003",
+        "Weight": 1
+      }
+    ],
+    "Cache": {
+      "start": "true",
+      "MaxSize": "100000"
+    }
   },
-  "CoProxy":{
-    "port":"9090",
-    "MultiListenNum":5,
-    "nagle":true,
-    "filt":[".*\\.csdn\\..*"]
+  "CoProxy": {
+    "port": "9090",
+    "MultiListenNum": 5,
+    "nagle": true,
+    "filt": [
+      ".*\\.csdn\\..*"
+    ],
+    "WindowsUnProxy": "localhost;127.*;10.*;172.16.*;172.17.*;172.18.*;172.19.*;172.20.*;172.21.*;172.22.*;172.23.*;172.24.*;172.25.*;172.26.*;172.27.*;172.28.*;172.29.*;172.30.*;172.31.*;192.168.*;42.193.50.191;*.mangata.ltd;*.qq.com;*.csdn.*;*.jdgame.vip"
   },
   "Logg": {
     "FileNameReProxy": "ReProxyLog.txt",
     "FileNameCoProxy": "CoProxyLog.txt",
     "SplitFormat": "DateSplit",
     "DateSplit": "MODE_DAY",
-    "SizeSplit": {"LogSize": 300,"Unit": "MB","FileNum": 10}
+    "SizeSplit": {
+      "LogSize": 300,
+      "Unit": "MB",
+      "FileNum": 10
+    }
   }
 }
 ```

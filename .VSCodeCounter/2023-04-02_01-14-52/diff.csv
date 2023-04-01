@@ -1,0 +1,9 @@
+"filename", "language", "Markdown", "JSON", "Go", "comment", "blank", "total"
+"e:\goland\project\awesomeProxy\README.md", "Markdown", 23, 0, 0, 0, 0, 23
+"e:\goland\project\awesomeProxy\ac_automaton\ac.go", "Go", 0, 0, 66, 0, 12, 78
+"e:\goland\project\awesomeProxy\ac_automaton\ac_sample.json", "JSON", 0, 1, 0, 0, 0, 1
+"e:\goland\project\awesomeProxy\ac_automaton\ac_test.go", "Go", 0, 0, 72, 0, 8, 80
+"e:\goland\project\awesomeProxy\ac_automaton\trie.go", "Go", 0, 0, 36, 0, 5, 41
+"e:\goland\project\awesomeProxy\ac_automaton\trie_test.go", "Go", 0, 0, 15, 0, 4, 19
+"e:\goland\project\awesomeProxy\config.json", "JSON", 0, 22, 0, 0, 0, 22
+"Total", "-", 23, 23, 189, 0, 29, 264

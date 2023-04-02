@@ -41,7 +41,7 @@
  },
  "BanIpReqTimes": 777,
  "LogsData": {
-  "InfoTimes": 1792,
+  "InfoTimes": 2000,
   "DebugTimes": 453,
   "WarnTimes": 20,
   "ErrorTimes": 32,
@@ -91,20 +91,20 @@
  ],
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 95.31914336904876,
-   "kernel": 3.2314090843194254,
-   "user": 1.4494475466318166,
-   "Usage": 6.046065259117083
+   "idle": 95.29881598590916,
+   "kernel": 3.281012008864318,
+   "user": 1.4201720052265245,
+   "Usage": 4.970760233918129
   },
   "MEMORY_INFO": {
    "total": 15741,
-   "available": 2108,
-   "usage": 86.60690157296546
+   "available": 3366,
+   "usage": 78.61072709482436
   },
   "DISK_INFO": {
    "total": 116,
    "available": 31,
-   "usage": 73.11192307706183
+   "usage": 73.1124215867965
   }
  }
 }

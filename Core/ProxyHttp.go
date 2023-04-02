@@ -80,7 +80,9 @@ func (i *ProxyHttp) handleRequest() {
 		response := http.Response{
 			StatusCode: http.StatusOK,
 			Header: http.Header{
-				"Content-Type": []string{"application/x-x509-ca-cert"},
+				"Content-Type":              []string{"application/x-x509-ca-cert"},
+				"Content-Disposition":       []string{"attachment;filename=cert.crt"},
+				"Content-Transfer-Encoding": []string{"binary"},
 			},
 			Body: io.NopCloser(bytes.NewReader(Cert.RootCaStr)),
 		}
@@ -89,6 +91,8 @@ func (i *ProxyHttp) handleRequest() {
 	}
 	resolveRequest := ResolveHttpRequest(func(message []byte, request *http.Request) {
 		request.Body = io.NopCloser(bytes.NewReader(message))
+		request.Header.Set("Content-Length", strconv.Itoa(len(message)))
+
 	})
 	body, _ := i.ReadRequestBody(i.request.Body)
 	i.server.OnHttpRequestEvent(body, i.request, resolveRequest)
@@ -105,6 +109,8 @@ func (i *ProxyHttp) handleRequest() {
 	body, _ = i.ReadResponseBody(i.response)
 	resolveResponse := ResolveHttpResponse(func(message []byte, response *http.Response) {
 		response.Body = io.NopCloser(bytes.NewReader(message))
+		// 手动计算长度
+		response.Header.Set("Content-Length", strconv.Itoa(len(message)))
 	})
 	i.server.OnHttpResponseEvent(body, i.response, resolveResponse)
 	_ = i.response.Write(i.conn)
@@ -129,8 +135,7 @@ func (i *ProxyHttp) ReadResponseBody(response *http.Response) ([]byte, error) {
 			return []byte{}, nil
 		}
 	}
-	body, err := io.ReadAll(reader)
-	return body, err
+	return io.ReadAll(reader)
 }
 
 // RemoveHeader 移除请求头
@@ -271,6 +276,7 @@ func (i *ProxyHttp) SslReceiveSend() {
 	}
 	resolveRequest := ResolveHttpRequest(func(message []byte, request *http.Request) {
 		request.Body = io.NopCloser(bytes.NewReader(message))
+		request.Header.Set("Content-Length", strconv.Itoa(len(message)))
 	})
 
 	i.request = i.SetRequest(i.request)
@@ -289,11 +295,10 @@ func (i *ProxyHttp) SslReceiveSend() {
 	body, _ = i.ReadResponseBody(i.response)
 	resolveResponse := ResolveHttpResponse(func(message []byte, response *http.Response) {
 		response.Body = io.NopCloser(bytes.NewReader(message))
+		// 手动计算长度
+		response.Header.Set("Content-Length", strconv.Itoa(len(message)))
 	})
 	i.server.OnHttpResponseEvent(body, i.response, resolveResponse)
-	// 如果写入的数据比返回的头部指定长度还长,就会报错,这里手动计算返回的数据长度
-	i.response.Header.Set("Content-Length", strconv.Itoa(len(body)))
-	i.response.Body = io.NopCloser(bytes.NewReader(body))
 	err = i.response.Write(i.conn)
 	if err != nil {
 		if strings.Contains(err.Error(), "aborted") {
@@ -340,11 +345,11 @@ func (i *ProxyHttp) handleWsShakehandErr(rawProtolInput []byte) {
 				return
 			}
 		}
-		// 填充content-length
+		// 计算长度
 		if headerKeValList[0] == "Content-Length" {
 			rawLen := len(rawInput)
 			bodyLen, _ := strconv.Atoi(headerKeValList[1])
-			headerLen := rawLen - bodyLen
+			headerLen := rawLen - bodyLen - 4
 			wsRequest.Body = io.NopCloser(bytes.NewBuffer([]byte(rawInput[headerLen:])))
 			wsRequest.ContentLength = int64(bodyLen)
 		}
@@ -375,9 +380,6 @@ func (i *ProxyHttp) handleWsRequest() bool {
 		Log.Error("升级ws协议失败：" + err.Error())
 		return true
 	}
-	defer func() {
-		_ = clientWsConn.Close()
-	}()
 	hostname := fmt.Sprintf("%s://%s%s", func() string {
 		if i.tls {
 			return "wss"
@@ -416,9 +418,6 @@ func (i *ProxyHttp) handleWsRequest() bool {
 	stop := make(chan error, 2)
 	// 读取浏览器数据(长连接)
 	go func() {
-		defer func() {
-			_ = targetWsConn.Close()
-		}()
 		for {
 			msgType, message, err := targetWsConn.ReadMessage()
 			if err != nil {
@@ -438,9 +437,6 @@ func (i *ProxyHttp) handleWsRequest() bool {
 		}
 	}()
 	go func() {
-		defer func() {
-			_ = clientWsConn.Close()
-		}()
 		for {
 			msgType, message, err := clientWsConn.ReadMessage()
 			if err != nil {

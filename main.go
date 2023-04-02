@@ -28,8 +28,8 @@ func init() {
 			Log.Fatal("初始化根证书失败：" + err.Error())
 		}
 		//打开系统代理
-		Host := "localhost:" + config.CONFIG.CoProxy.Port
-		Utils.SetWindowsProxy(Host)
+		//Host := "localhost:" + config.CONFIG.CoProxy.Port
+		//Utils.SetWindowsProxy(Host)
 	}
 
 }
@@ -152,14 +152,14 @@ func main() {
 			return resolve(msgType, message)
 		}
 
-		// 注册w服务器推送消息事件函数
+		// 注册tcp服务器推送消息事件函数
 		s.OnTcpClientStreamEvent = func(message []byte, resolve Core.ResolveTcp) (int, error) {
 			Log.Info("TcpClientStreamEvent：" + string(message))
 			// 可以在这里做数据修改
 			return resolve(message)
 		}
 
-		// 注册w服务器推送消息事件函数
+		// 注册tcp服务器推送消息事件函数
 		s.OnTcpServerStreamEvent = func(message []byte, resolve Core.ResolveTcp) (int, error) {
 			Log.Info("TcpServerStreamEvent：" + string(message))
 			// 可以在这里做数据修改

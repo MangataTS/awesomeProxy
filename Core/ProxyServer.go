@@ -3,12 +3,14 @@ package Core
 import (
 	"awesomeProxy/Contract"
 	"awesomeProxy/Log"
+	"awesomeProxy/Utils"
 	"awesomeProxy/config"
 	"bufio"
 	"fmt"
 	"github.com/viki-org/dnscache"
 	"net"
 	"net/http"
+	"runtime"
 	"time"
 )
 
@@ -53,6 +55,22 @@ type ProxyServer struct {
 	OnTcpClientStreamEvent TcpClientStreamEvent
 }
 
+func (i *ProxyServer) Install() {
+	if runtime.GOOS == "windows" {
+		err := Utils.InstallCert("cert.crt")
+		if err != nil {
+			Log.Fatal(err.Error())
+		}
+		Log.Info("已安装系统证书")
+		err = Utils.SetWindowsProxy(fmt.Sprintf("localhost:%s", i.port))
+		if err != nil {
+			Log.Fatal(err.Error())
+		}
+		Log.Info("已设置系统代理")
+	}
+	Log.Info("非windows系统请手动安装证书并设置代理,可以在根目录或访问http://awesome-proxy.io/tls获取证书文件")
+}
+
 func NewProxyServer(port string, nagle bool, proxy string, to string) *ProxyServer {
 	return &ProxyServer{
 		port:  port,
@@ -74,6 +92,7 @@ func (i *ProxyServer) Start() error {
 		return fmt.Errorf("%w", err)
 	}
 	i.listener = listener
+	i.Install()
 	i.MultiListen()
 	select {}
 }

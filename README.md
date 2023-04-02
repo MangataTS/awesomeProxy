@@ -1,7 +1,6 @@
 <div style="text-align:center">
 
 # AwesomeProxy
-
 </div>
 
 <hr>

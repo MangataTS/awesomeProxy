@@ -1,10 +1,13 @@
 <div style="text-align:center">
+
 # AwesomeProxy
+
 </div>
 
 <hr>
 
 <div style="text-align:center">
+
 ![GitHub go.mod Go version (branch & subdirectory of monorepo)](https://img.shields.io/github/go-mod/go-version/MangataTS/awesomeProxy/main)
 ![GitHub](https://img.shields.io/github/license/MangataTS/awesomeProxy)
 ![GitHub search hit counter](https://img.shields.io/github/search/MangataTS/awesomeProxy/start)

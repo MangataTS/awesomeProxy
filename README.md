@@ -17,7 +17,7 @@
 
 ## 工作量
 
-Total : 79 files,  7559 codes, 1752 comments, 1122 blanks, all 10433 lines
+**Total : 79 files,  7559 codes, 1752 comments, 1122 blanks, all 10433 lines**
 
 Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 

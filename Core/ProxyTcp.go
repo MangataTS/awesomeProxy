@@ -19,12 +19,9 @@ type ProxyTcp struct {
 type ResolveTcp func(buff []byte) (int, error)
 
 func (i *ProxyTcp) Handle() {
-	defer func() {
-		_ = i.ConnPeer.conn.Close()
-	}()
+
 	var tcpAddr *net.TCPAddr
 	var err error
-	// TODO 如果设置了上级代理
 	tcpAddr, err = net.ResolveTCPAddr("tcp", i.server.to)
 	if err != nil {
 		Log.Error("解析tcp代理目标地址错误：" + err.Error())
@@ -78,9 +75,9 @@ func (i *ProxyTcp) Transport(out chan<- error, originConn net.Conn, targetConn n
 		if readLen > 0 {
 			buff = buff[0:readLen]
 			if role == TcpServer {
-				writeLen, err = i.server.OnTcpServerStreamEvent(buff, resolve)
+				writeLen, err = i.server.OnTcpServerStreamEvent(buff, resolve, i.conn)
 			} else {
-				writeLen, err = i.server.OnTcpClientStreamEvent(buff, resolve)
+				writeLen, err = i.server.OnTcpClientStreamEvent(buff, resolve, i.conn)
 			}
 			if writeLen < 0 || readLen < writeLen {
 				writeLen = 0

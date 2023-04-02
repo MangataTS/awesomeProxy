@@ -1,0 +1,43 @@
+Date : 2023-04-03 02:18:51
+Directory : e:\goland\project\awesomeProxy
+Total : 13 files,  109 codes, -3 comments, 21 blanks, all 127 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Go       |         12 |        100 |         -3 |         15 |        112 |
+| Markdown |          1 |          9 |          0 |          6 |         15 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                  | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                     |         13 |        109 |         -3 |         21 |        127 |
+| . (Files)                                                             |          2 |         29 |         -5 |         11 |         35 |
+| Core                                                                  |          6 |         15 |          0 |          3 |         18 |
+| Utils                                                                 |          2 |         33 |          1 |          2 |         36 |
+| ac_automaton                                                          |          2 |         30 |          1 |          5 |         36 |
+| config                                                                |          1 |          2 |          0 |          0 |          2 |
++-----------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                              | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| e:\goland\project\awesomeProxy\Core\Cache.go                          | Go       |         67 |          4 |          9 |         80 |
+| e:\goland\project\awesomeProxy\Core\ProxyHttp.go                      | Go       |         -4 |          1 |          1 |         -2 |
+| e:\goland\project\awesomeProxy\Core\ProxyServer.go                    | Go       |         26 |          0 |          0 |         26 |
+| e:\goland\project\awesomeProxy\Core\ProxySocket5.go                   | Go       |         -4 |          0 |          1 |         -3 |
+| e:\goland\project\awesomeProxy\Core\ProxyTcp.go                       | Go       |         -3 |         -1 |          1 |         -3 |
+| e:\goland\project\awesomeProxy\Core\Storage.go                        | Go       |        -67 |         -4 |         -9 |        -80 |
+| e:\goland\project\awesomeProxy\README.md                              | Markdown |          9 |          0 |          6 |         15 |
+| e:\goland\project\awesomeProxy\Utils\Utils.go                         | Go       |        -76 |         -1 |         -9 |        -86 |
+| e:\goland\project\awesomeProxy\Utils\Windows.go                       | Go       |        109 |          2 |         11 |        122 |
+| e:\goland\project\awesomeProxy\ac_automaton\SensitiveWordFiltering.go | Go       |          4 |          0 |          4 |          8 |
+| e:\goland\project\awesomeProxy\ac_automaton\ac.go                     | Go       |         26 |          1 |          1 |         28 |
+| e:\goland\project\awesomeProxy\config\ConfigInit.go                   | Go       |          2 |          0 |          0 |          2 |
+| e:\goland\project\awesomeProxy\main.go                                | Go       |         20 |         -5 |          5 |         20 |
+| Total                                                                 |          |        109 |         -3 |         21 |        127 |
++-----------------------------------------------------------------------+----------+------------+------------+------------+------------+

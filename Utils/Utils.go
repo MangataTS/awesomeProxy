@@ -32,7 +32,7 @@ func GetLastTimeFrame(conn *tls.Conn, property string) []byte {
 	return val.Bytes()
 }
 
-func BlacklistFilter(request *http.Request) {
+func BlacklistFilter(request *http.Request) bool {
 	Turl := request.URL.String()
 	for _, s := range config.CONFIG.CoProxy.Filt {
 		//Log.Debug(s)
@@ -44,7 +44,8 @@ func BlacklistFilter(request *http.Request) {
 			request.URL.Host = "-1"
 			request.Host = "-1"
 			Log.Warn("访问到黑名单网页: " + s)
-			return
+			return true
 		}
 	}
+	return false
 }

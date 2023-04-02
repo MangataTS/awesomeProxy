@@ -64,7 +64,7 @@ func GoReverseProxy(this *RProxy) *ReverseProxy {
 		targetQuery := remote.RawQuery
 		request.URL.Scheme = remote.Scheme
 		request.URL.Host = remote.Host
-		request.Host = remote.Host // todo 这个是关键
+		request.Host = remote.Host
 		request.URL.Path, request.URL.RawPath = joinURLPath(remote, request.URL)
 
 		if targetQuery == "" || request.URL.RawQuery == "" {

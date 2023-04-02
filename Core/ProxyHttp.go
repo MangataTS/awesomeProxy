@@ -76,9 +76,11 @@ func (i *ProxyHttp) handleRequest() {
 		return
 	}
 	// 如果是下载证书,返回证书，给HTTPS提供加密操作的
-	if i.request.Host == SslFileHost && i.request.URL.Path == "/ssl" {
+	if i.request.URL.Path == "/tls" {
 		response := http.Response{
 			StatusCode: http.StatusOK,
+			ProtoMajor: 1,
+			ProtoMinor: 1,
 			Header: http.Header{
 				"Content-Type":              []string{"application/x-x509-ca-cert"},
 				"Content-Disposition":       []string{"attachment;filename=cert.crt"},
@@ -95,7 +97,10 @@ func (i *ProxyHttp) handleRequest() {
 
 	})
 	body, _ := i.ReadRequestBody(i.request.Body)
-	i.server.OnHttpRequestEvent(body, i.request, resolveRequest, i.conn)
+	resolveResult := i.server.OnHttpRequestEvent(body, i.request, resolveRequest, i.conn)
+	if !resolveResult {
+		return
+	}
 	// 处理正常请求,获取响应，将客户端数据转发给请求的服务器
 	i.response, err = i.Transport(i.request)
 	if i.response == nil {
@@ -112,7 +117,10 @@ func (i *ProxyHttp) handleRequest() {
 		// 手动计算长度
 		response.Header.Set("Content-Length", strconv.Itoa(len(message)))
 	})
-	i.server.OnHttpResponseEvent(body, i.response, resolveResponse, i.conn)
+	resolveResult = i.server.OnHttpResponseEvent(body, i.response, resolveResponse, i.conn)
+	if !resolveResult {
+		return
+	}
 	_ = i.response.Write(i.conn)
 }
 
@@ -281,7 +289,10 @@ func (i *ProxyHttp) SslReceiveSend() {
 
 	i.request = i.SetRequest(i.request)
 	body, _ := i.ReadRequestBody(i.request.Body)
-	i.server.OnHttpRequestEvent(body, i.request, resolveRequest, i.conn)
+	resolveResult := i.server.OnHttpRequestEvent(body, i.request, resolveRequest, i.conn)
+	if !resolveResult {
+		return
+	}
 	i.response, err = i.Transport(i.request)
 	if err != nil {
 		Log.Error("远程服务器响应失败：" + err.Error())
@@ -298,7 +309,10 @@ func (i *ProxyHttp) SslReceiveSend() {
 		// 手动计算长度
 		response.Header.Set("Content-Length", strconv.Itoa(len(message)))
 	})
-	i.server.OnHttpResponseEvent(body, i.response, resolveResponse, i.conn)
+	resolveResult = i.server.OnHttpResponseEvent(body, i.response, resolveResponse, i.conn)
+	if !resolveResult {
+		return
+	}
 	err = i.response.Write(i.conn)
 	if err != nil {
 		if strings.Contains(err.Error(), "aborted") {

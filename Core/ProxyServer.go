@@ -14,8 +14,8 @@ import (
 	"time"
 )
 
-type HttpRequestEvent func(message []byte, request *http.Request, resolve ResolveHttpRequest, conn net.Conn)
-type HttpResponseEvent func(message []byte, response *http.Response, resolve ResolveHttpResponse, conn net.Conn)
+type HttpRequestEvent func(message []byte, request *http.Request, resolve ResolveHttpRequest, conn net.Conn) bool
+type HttpResponseEvent func(message []byte, response *http.Response, resolve ResolveHttpResponse, conn net.Conn) bool
 
 type Socks5ResponseEvent func(message []byte, resolve ResolveSocks5, conn net.Conn) (int, error)
 type Socks5RequestEvent func(message []byte, resolve ResolveSocks5, conn net.Conn) (int, error)
@@ -71,7 +71,7 @@ func (i *ProxyServer) Install() {
 		}
 		Log.Info("已设置系统代理")
 	}
-	Log.Info("非windows系统请手动安装证书并设置代理,可以在根目录或访问http://awesome-proxy.io/tls获取证书文件")
+	Log.Info("非windows系统请手动安装证书并设置代理,可以在根目录或访问http://127.0.0.1/tls获取证书文件")
 }
 
 func NewProxyServer(port string, nagle bool, proxy string, to string) *ProxyServer {

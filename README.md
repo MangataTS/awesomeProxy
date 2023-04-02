@@ -6,25 +6,27 @@
 
 <hr>
 
-<div style="text-align:center">
+<div align="center">
 
 ![GitHub go.mod Go version (branch & subdirectory of monorepo)](https://img.shields.io/github/go-mod/go-version/MangataTS/awesomeProxy/main)
 ![GitHub](https://img.shields.io/github/license/MangataTS/awesomeProxy)
 ![GitHub search hit counter](https://img.shields.io/github/search/MangataTS/awesomeProxy/start)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/MangataTS/awesomeProxy)
+
 </div>
 
 ## 工作量
 
-Total : 77 files,  7450 codes, 1755 comments, 1101 blanks, all 10306 lines
+Total : 79 files,  7559 codes, 1752 comments, 1122 blanks, all 10433 lines
 
+Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 65 | 7,073 | 1,600 | 1,057 | 9,730 |
+| Go | 67 | 7,173 | 1,597 | 1,072 | 9,842 |
 | JSON | 3 | 156 | 0 | 0 | 156 |
-| Markdown | 1 | 132 | 0 | 33 | 165 |
+| Markdown | 1 | 141 | 0 | 39 | 180 |
 | XML | 4 | 37 | 0 | 0 | 37 |
 | Python | 1 | 21 | 8 | 6 | 35 |
 | Go Checksum File | 1 | 20 | 0 | 1 | 21 |
@@ -44,7 +46,7 @@ Total : 77 files,  7450 codes, 1755 comments, 1101 blanks, all 10306 lines
 
 - [x] 正则匹配黑名单HOST过滤
 
-- [ ] 用AC自动机算法去做一个模式串匹配，对访问的网站的返回数据进行数据包过滤+网站分析，排除隐患网站和非法网站以及钓鱼网站
+- [x] 用AC自动机算法去做一个模式串匹配，对访问的网站的返回数据进行数据包过滤+网站分析，排除隐患网站和非法网站以及钓鱼网站
 
 - [x] 自动生成并安装RSA公私钥证书，代理加密数据包
 

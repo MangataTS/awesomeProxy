@@ -7,6 +7,7 @@ import (
 	"awesomeProxy/Report"
 	"awesomeProxy/Reproxy"
 	"awesomeProxy/Utils"
+	"awesomeProxy/ac_automaton"
 	"awesomeProxy/config"
 	"flag"
 	"fmt"
@@ -89,23 +90,6 @@ func main() {
 		}
 		// 启动服务
 		s := Core.NewProxyServer(*port, *nagle, *TcpProxy, *to)
-		// 注册http客户端请求事件函数
-		s.OnHttpRequestEvent = func(body []byte, request *http.Request, resolve Core.ResolveHttpRequest, conn net.Conn) {
-			Log.Info("=========================HttpRequestEvent: =============================")
-			Log.Info("Host : ", request.Host)
-			Log.Info("Method : ", request.Method)
-			Log.Info("URL : ", request.URL)
-			Log.Info("Proto : ", request.Proto)
-			Log.Info("Form : ", request.Form)
-			Utils.BlacklistFilter(request)
-
-			mimeType := request.Header.Get("Content-Type")
-			if strings.Contains(mimeType, "json") {
-				Log.Info("HttpRequestEvent：" + string(body))
-			}
-			// 可以在这里做数据修改
-			resolve(body, request)
-		}
 		// 注册tcp连接事件
 		s.OnTcpConnectEvent = func(conn net.Conn) {
 
@@ -115,14 +99,53 @@ func main() {
 
 		}
 
+		// 注册http客户端请求事件函数
+		s.OnHttpRequestEvent = func(body []byte, request *http.Request, resolve Core.ResolveHttpRequest, conn net.Conn) bool {
+			Log.Debug("=========================HttpRequestEvent: =============================")
+			Log.Debug("Host : ", request.Host)
+			Log.Debug("Method : ", request.Method)
+			Log.Debug("URL : ", request.URL)
+			Log.Debug("Proto : ", request.Proto)
+			Log.Debug("Form : ", request.Form)
+			if Utils.BlacklistFilter(request) {
+				return true
+			}
+
+			mimeType := request.Header.Get("Content-Type")
+			if strings.Contains(mimeType, "json") {
+				//Log.Info("HttpRequestEvent：" + string(body))
+			}
+			// 可以在这里做数据修改
+			resolve(body, request)
+			// 如果正常处理必须返回true，如果不需要发送请求，返回false，一般在自己操作conn的时候才会用到
+			return true
+		}
+
 		// 注册http服务器响应事件函数
-		s.OnHttpResponseEvent = func(body []byte, response *http.Response, resolve Core.ResolveHttpResponse, conn net.Conn) {
+		s.OnHttpResponseEvent = func(body []byte, response *http.Response, resolve Core.ResolveHttpResponse, conn net.Conn) bool {
 			mimeType := response.Header.Get("Content-Type")
 			if strings.Contains(mimeType, "json") {
 				Log.Info("HttpResponseEvent：" + string(body))
 			}
+			sbody := string(body)
+			res := ac_automaton.Acauto.FindMatches(sbody)
+			mingcnt := 0
+			tiggercnt := 0
+			if len(res) != 0 {
+				for name, cnt := range res {
+					//Log.Debug("敏感词: ", name, " 触发次数: ", cnt, "拦截")
+					mingcnt++
+					tiggercnt += cnt
+					sbody = strings.ReplaceAll(sbody, name, "*")
+				}
+				body = []byte(sbody) //[]byte("触发敏感词")
+				Log.Info("敏感词数量：", mingcnt, " 触发总次数： ", tiggercnt)
+			}
 			// 可以在这里做数据修改
 			resolve(body, response)
+
+			// 如果正常处理必须返回true，如果不需要发送请求，返回false，一般在自己操作conn的时候才会用到
+			return true
 		}
 		// 注册socket5服务器推送消息事件函数
 		s.OnSocks5ResponseEvent = func(message []byte, resolve Core.ResolveSocks5, conn net.Conn) (int, error) {

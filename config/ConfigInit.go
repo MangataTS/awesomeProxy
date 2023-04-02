@@ -4,6 +4,7 @@ import (
 	"awesomeProxy/Cert"
 	"awesomeProxy/Log"
 	"awesomeProxy/Report"
+	"awesomeProxy/ac_automaton"
 	"awesomeProxy/balance"
 	"encoding/json"
 	"io"
@@ -64,6 +65,7 @@ func (cc Config) Init() {
 		cc.BalanceInit()
 	} else {
 		Cert.Install()
+		ac_automaton.AddKeyWordFromPath(ac_automaton.Acauto, "./ac_automaton/SensitiveWordsSmall.txt")
 	}
 	// 报告初始化
 	Report.ReadReConfig()

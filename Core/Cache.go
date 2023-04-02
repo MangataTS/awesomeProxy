@@ -9,7 +9,7 @@ import (
 
 var Cache = NewStorage()
 
-type Action struct {
+type action struct {
 	wg     *sync.WaitGroup
 	fn     func() (interface{}, error)
 	cert   interface{}
@@ -19,17 +19,17 @@ type Action struct {
 
 type Storage struct {
 	lock    *sync.Mutex
-	mapping map[string]*Action
+	mapping map[string]*action
 }
 
 func NewStorage() *Storage {
 	return &Storage{
 		lock:    &sync.Mutex{},
-		mapping: map[string]*Action{},
+		mapping: map[string]*action{},
 	}
 }
 
-func (i *Storage) do(action *Action, host string, callback func() (interface{}, error)) {
+func (i *Storage) do(action *action, callback func() (interface{}, error)) {
 	defer func() {
 		action.wg.Done()
 	}()
@@ -52,13 +52,13 @@ func (i *Storage) GetCertificate(hostname string, port string) (interface{}, err
 		return action.cert, nil
 	}
 	// 对不同的域名的并发,同一时刻只生成一个域名处理对象
-	i.mapping[host] = &Action{
+	i.mapping[host] = &action{
 		wg: &sync.WaitGroup{},
 		fn: GetAction(host),
 	}
 	i.mapping[host].wg.Add(1)
 	i.lock.Unlock()
-	i.do(i.mapping[host], host, i.mapping[host].fn)
+	i.do(i.mapping[host], i.mapping[host].fn)
 	return i.mapping[host].cert, i.mapping[host].err
 }
 

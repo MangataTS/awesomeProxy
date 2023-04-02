@@ -28,7 +28,7 @@ func init() {
 			Log.Fatal("初始化根证书失败：" + err.Error())
 		}
 		//打开系统代理
-		Host := "localhost" + config.CONFIG.CoProxy.Port
+		Host := "localhost:" + config.CONFIG.CoProxy.Port
 		Utils.SetWindowsProxy(Host)
 	}
 

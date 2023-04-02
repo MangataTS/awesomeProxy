@@ -1,6 +1,11 @@
 package ac_automaton
 
-import "unicode/utf8"
+import (
+	"bufio"
+	"log"
+	"os"
+	"unicode/utf8"
+)
 
 type ACAutomaton struct {
 	Trie
@@ -74,4 +79,27 @@ func (ac *ACAutomaton) FindMatches(s string) map[string]int {
 		}
 	}
 	return res
+}
+
+func AddKeyWordFromPath(ac *ACAutomaton, path string) {
+	file, err := os.Open(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Fatal("AddKeyWord 文件关闭失败:", err)
+		}
+	}()
+	scanner := bufio.NewScanner(file)
+	scanner.Split(bufio.ScanLines)
+	for scanner.Scan() {
+		line := scanner.Text()
+		ac.Insert(line)
+	}
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	// AC自动机
+	ac.Build()
 }

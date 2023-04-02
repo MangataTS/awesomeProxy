@@ -23,7 +23,7 @@ import (
 
 const ConnectSuccess = "HTTP/1.1 200 Connection Established\r\n\r\n"
 const ConnectFailed = "HTTP/1.1 502 Bad Gateway\r\n\r\n"
-const SslFileHost = "zt.io"
+const SslFileHost = "awesome-proxy.io"
 
 type ProxyHttp struct {
 	ConnPeer
@@ -91,7 +91,6 @@ func (i *ProxyHttp) handleRequest() {
 		request.Body = io.NopCloser(bytes.NewReader(message))
 	})
 	body, _ := i.ReadRequestBody(i.request.Body)
-	i.request.Body = io.NopCloser(bytes.NewReader(body))
 	i.server.OnHttpRequestEvent(body, i.request, resolveRequest)
 	// 处理正常请求,获取响应，将客户端数据转发给请求的服务器
 	i.response, err = i.Transport(i.request)
@@ -99,11 +98,6 @@ func (i *ProxyHttp) handleRequest() {
 		Log.Error("远程服务器无响应-1")
 		return
 	}
-	defer func() {
-		if i.response.Body != nil {
-			i.response.Body.Close()
-		}
-	}()
 	if err != nil {
 		Log.Error("获取远程服务器响应失败：" + err.Error())
 		return
@@ -113,15 +107,10 @@ func (i *ProxyHttp) handleRequest() {
 		response.Body = io.NopCloser(bytes.NewReader(message))
 	})
 	i.server.OnHttpResponseEvent(body, i.response, resolveResponse)
-	defer func() {
-		if i.response.Body != nil {
-			i.response.Body.Close()
-		}
-	}()
 	_ = i.response.Write(i.conn)
 }
 
-// 读取http请求体
+// ReadRequestBody 读取http请求体
 func (i *ProxyHttp) ReadRequestBody(reader io.Reader) ([]byte, error) {
 	if reader == nil {
 		return []byte{}, nil
@@ -177,8 +166,8 @@ func (i *ProxyHttp) Transport(request *http.Request) (*http.Response, error) {
 	i.RemoveHeader(request.Header)
 	transport := &http.Transport{
 		DisableKeepAlives:     true,
-		TLSHandshakeTimeout:   5 * time.Second,
-		ResponseHeaderTimeout: 60 * time.Second,
+		TLSHandshakeTimeout:   15 * time.Second,
+		ResponseHeaderTimeout: 30 * time.Second,
 		DialContext:           i.DialContext(),
 		TLSClientConfig:       &tls.Config{InsecureSkipVerify: true},
 	}
@@ -187,6 +176,7 @@ func (i *ProxyHttp) Transport(request *http.Request) (*http.Response, error) {
 	}
 	response, err := transport.RoundTrip(request)
 	if err != nil {
+		Log.Error("转发http请求失败：" + err.Error())
 		return nil, err
 	}
 	// 去除一些头部
@@ -254,7 +244,7 @@ func (i *ProxyHttp) SslReceiveSend() {
 	if err != nil {
 		i.tls = false
 		if err == io.EOF || strings.Index(err.Error(), "closed") != -1 {
-			Log.Error("客户端连接超时：" + err.Error())
+			Log.Error("客户端TLS握手失败: " + err.Error())
 			return
 		}
 		// 反射读取最后一帧原始数据
@@ -295,11 +285,6 @@ func (i *ProxyHttp) SslReceiveSend() {
 		Log.Error("远程服务器无响应-2")
 		return
 	}
-	defer func() {
-		if i.response.Body != nil {
-			_ = i.response.Body.Close()
-		}
-	}()
 
 	body, _ = i.ReadResponseBody(i.response)
 	resolveResponse := ResolveHttpResponse(func(message []byte, response *http.Response) {
@@ -357,10 +342,10 @@ func (i *ProxyHttp) handleWsShakehandErr(rawProtolInput []byte) {
 		}
 		// 填充content-length
 		if headerKeValList[0] == "Content-Length" {
-			contentLen, _ := strconv.Atoi(headerKeValList[1])
-			contentHeaderLen := len(rawInput)
-			bodyLen := contentHeaderLen - contentLen
-			wsRequest.Body = io.NopCloser(bytes.NewBuffer([]byte(rawInput[bodyLen:])))
+			rawLen := len(rawInput)
+			bodyLen, _ := strconv.Atoi(headerKeValList[1])
+			headerLen := rawLen - bodyLen
+			wsRequest.Body = io.NopCloser(bytes.NewBuffer([]byte(rawInput[headerLen:])))
 			wsRequest.ContentLength = int64(bodyLen)
 		}
 	}
@@ -418,8 +403,11 @@ func (i *ProxyHttp) handleWsRequest() bool {
 	dialer.NetDialContext = i.DialContext()
 	targetWsConn, response, err := dialer.Dial(hostname, i.request.Header)
 	if err != nil {
-		header, _ := httputil.DumpResponse(response, false)
-		Log.Error("连接ws服务器失败：\n" + string(header) + err.Error())
+		var header []byte
+		if response != nil {
+			header, _ = httputil.DumpResponse(response, false)
+		}
+		Log.Error("连接ws服务器失败：" + string(header) + err.Error())
 		return true
 	}
 	defer func() {

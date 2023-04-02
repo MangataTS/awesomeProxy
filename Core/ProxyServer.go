@@ -87,8 +87,8 @@ func (i *ProxyServer) MultiListen() {
 			for {
 				conn, err := i.listener.Accept()
 				if err != nil {
-					if e, ok := err.(net.Error); ok && e.Temporary() {
-						Log.Error("接受连接失败,重试：" + err.Error())
+					if e, ok := err.(net.Error); ok && e.Timeout() {
+						Log.Error("接受连接超时：" + err.Error())
 						time.Sleep(time.Second / 20)
 					} else {
 						Log.Error("接受连接失败：" + err.Error())

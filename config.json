@@ -1,5 +1,5 @@
 {
-  "ProxyMethod": true,
+  "ProxyMethod": false,
   "ReProxy": {
     "port": "9090",
     "BalanceMethod": 1,

@@ -29,9 +29,6 @@ func init() {
 		if err != nil {
 			Log.Fatal("初始化根证书失败：" + err.Error())
 		}
-		//打开系统代理
-		//Host := "localhost:" + config.CONFIG.CoProxy.Port
-		//Utils.SetWindowsProxy(Host)
 	}
 
 }
@@ -57,9 +54,10 @@ func main() {
 	//如果是进行反向代理代理
 	if config.CONFIG.ProxyMethod {
 		port := flag.String("port", config.CONFIG.ReProxy.Port, "listen port")
-		Isreport := flag.Bool("Isreport", false, "Reserve Server proxy Report")
+		IsReport := flag.Bool("IsReport", false, "Reserve Server proxy Report")
 		flag.Parse()
-		if *Isreport {
+		if *IsReport {
+
 			Report.GetReReport()
 		}
 		gee := createGroup()
@@ -83,7 +81,11 @@ func main() {
 		nagle := flag.Bool("nagle", config.CONFIG.CoProxy.Nagle, "connect remote use nagle algorithm")
 		TcpProxy := flag.String("proxy", "", "prxoy remote host")
 		to := flag.String("to", "", "tcp remote host")
+		IsReport := flag.Bool("IsReport", false, "Reserve Server proxy Report")
 		flag.Parse()
+		if *IsReport {
+			Report.GetCoReport()
+		}
 		if *port == "0" {
 			Log.Fatal("port required")
 			return

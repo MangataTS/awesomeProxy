@@ -48,6 +48,7 @@ func InstallCert(certName string) error {
 	return nil
 }
 
+// SetWindowsProxy 设置系统代理
 func SetWindowsProxy(proxy string) error {
 	const (
 		InternetPerConnFlags              = 1

@@ -61,16 +61,55 @@ type ServerStatus struct {
 	DISKINFO   DISKINFO   `json:"DISK_INFO"`
 }
 
-// 存放全局变量
+// ReReportConfig 全局反向代理变量
 var ReReportConfig = &ReReport{}
 
+type CoReport struct {
+	CoRequestData   []CoRequestData   `json:"CoRequestData"`
+	CoProtocolData  []CoProtocolData  `json:"CoProtocolData"`
+	CoBlackHostData []CoBlackHostData `json:"CoBlackHostData"`
+	CoSensitiveData CoSensitiveData   `json:"CoSensitiveData"`
+	LogsData        LogsData          `json:"LogsData"`
+	ServerStatus    ServerStatus      `json:"ServerStatus"`
+}
+type CoRequestData struct {
+	ReqHost  string `json:"reqHost"`
+	ReqTimes int    `json:"reqTimes"`
+}
+type CoProtocolData struct {
+	Name        string `json:"Name"`
+	ReqTimes    int    `json:"ReqTimes"`
+	ReqDataSize int    `json:"ReqDataSize"`
+}
+type CoBlackHostData struct {
+	URLHost  string `json:"UrlHost"`
+	ReqTimes int    `json:"ReqTimes"`
+}
+type CoSensitiveData struct {
+	TriggerNum    int      `json:"TriggerNum"`
+	Interceptions int      `json:"Interceptions"`
+	IllegalURL    []string `json:"IllegalUrl"`
+}
+
+var CoReportConfig = &CoReport{}
+
 func SaveReConfig() {
-	path, err := os.Getwd()
-	if err != nil {
-		log.Println("Os Getwd err")
-	}
-	path = path + "\\Report\\Re\\DataFile.json"
+	path := "./Report/Re/DataFile.json"
 	data, err := json.MarshalIndent(ReReportConfig, "", " ")
+	if err != nil {
+		log.Println("json.MarshalIndent err ", err)
+	}
+	ReReportMux.Lock()
+	defer ReReportMux.Unlock()
+	err = os.WriteFile(path, data, 0644)
+	if err != nil {
+		log.Println("os.WriteFile ", err)
+	}
+}
+
+func SaveCoConfig() {
+	path := "./Report/Co/DataFile.json"
+	data, err := json.MarshalIndent(CoReportConfig, "", " ")
 	if err != nil {
 		log.Println("json.MarshalIndent err ", err)
 	}

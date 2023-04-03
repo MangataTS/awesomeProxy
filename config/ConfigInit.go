@@ -3,7 +3,6 @@ package config
 import (
 	"awesomeProxy/Cert"
 	"awesomeProxy/Log"
-	"awesomeProxy/Report"
 	"awesomeProxy/ac_automaton"
 	"awesomeProxy/balance"
 	"encoding/json"
@@ -67,9 +66,6 @@ func (cc Config) Init() {
 		Cert.Install()
 		ac_automaton.AddKeyWordFromPath(ac_automaton.Acauto, "./ac_automaton/SensitiveWordsSmall.txt")
 	}
-	// 报告初始化
-	Report.ReadReConfig()
-	Report.GetWindowsStatus()
 	Logo()
 
 }

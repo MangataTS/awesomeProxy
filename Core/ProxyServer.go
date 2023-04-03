@@ -65,6 +65,7 @@ func (i *ProxyServer) Install() {
 			Log.Fatal(err.Error())
 		}
 		Log.Info("已安装系统证书")
+
 		err = Utils.SetWindowsProxy(fmt.Sprintf("localhost:%s", i.port))
 		if err != nil {
 			Log.Fatal(err.Error())

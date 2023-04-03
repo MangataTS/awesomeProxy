@@ -1,110 +1,36 @@
 {
- "RequestData": [
-  {
-   "path": "/hello",
-   "times": 7541
-  },
-  {
-   "path": "/world",
-   "times": 213415
-  },
-  {
-   "path": "/word",
-   "times": 3312456
-  },
-  {
-   "path": "/ascache/scores/Tom",
-   "times": 214532
-  },
-  {
-   "path": "/kaptree",
-   "times": 31324
-  },
-  {
-   "path": "/Mangata",
-   "times": 12343
-  },
-  {
-   "path": "/Zoey",
-   "times": 15551
-  },
-  {
-   "path": "/Ambrosius",
-   "times": 53454
-  }
- ],
+ "RequestData": null,
  "CacheData": {
-  "ReqTimes": 1145,
-  "HintTimes": 911,
-  "HintRate": 0.7956,
-  "memory": 34968
+  "ReqTimes": 0,
+  "HintTimes": 0,
+  "HintRate": 0,
+  "memory": 0
  },
- "BanIpReqTimes": 777,
+ "BanIpReqTimes": 0,
  "LogsData": {
-  "InfoTimes": 4014,
-  "DebugTimes": 6804,
-  "WarnTimes": 20,
-  "ErrorTimes": 113,
-  "FatalTimes": 12
+  "InfoTimes": 10,
+  "DebugTimes": 42,
+  "WarnTimes": 0,
+  "ErrorTimes": 1,
+  "FatalTimes": 0
  },
- "CrawlerData": [
-  {
-   "ip": "195.120.115.242",
-   "ReqTimes": 213580,
-   "BanTimes": 12349
-  },
-  {
-   "ip": "127.0.0.1",
-   "ReqTimes": 1000,
-   "BanTimes": 12
-  },
-  {
-   "ip": "195.120.115.242",
-   "ReqTimes": 94871,
-   "BanTimes": 19837
-  },
-  {
-   "ip": "249.221.135.116",
-   "ReqTimes": 1235,
-   "BanTimes": 367
-  },
-  {
-   "ip": "99.0.10.64",
-   "ReqTimes": 999,
-   "BanTimes": 12
-  },
-  {
-   "ip": "198.253.235.135",
-   "ReqTimes": 451,
-   "BanTimes": 321
-  },
-  {
-   "ip": "121.185.196.138",
-   "ReqTimes": 32,
-   "BanTimes": 7
-  },
-  {
-   "ip": "231.123.91.101",
-   "ReqTimes": 9993,
-   "BanTimes": 3244
-  }
- ],
+ "CrawlerData": null,
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 94.68534887126377,
-   "kernel": 3.858006683366271,
-   "user": 1.4566444453699556,
-   "Usage": 4.461687681862269
+   "idle": 0,
+   "kernel": 0,
+   "user": 0,
+   "Usage": 0
   },
   "MEMORY_INFO": {
-   "total": 15741,
-   "available": 2448,
-   "usage": 84.44817169783838
+   "total": 0,
+   "available": 0,
+   "usage": 0
   },
   "DISK_INFO": {
-   "total": 116,
-   "available": 31,
-   "usage": 73.11711479357483
+   "total": 0,
+   "available": 0,
+   "usage": 0
   }
  }
 }

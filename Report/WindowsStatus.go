@@ -161,3 +161,13 @@ func GetWindowsStatus() {
 	global.ReReportConfig.ServerStatus.DISKINFO = global.DISKINFO{int64(cdiskinfo.total), int64(cdiskinfo.available), float64(cdiskinfo.usage)}
 	global.SaveReConfig()
 }
+
+func GetCoWindowsStatus() {
+	ccpuinfo := C.GetCpuInfo()
+	global.CoReportConfig.ServerStatus.CPUINFO = global.CPUINFO{float64(ccpuinfo.idle), float64(ccpuinfo.kernel), float64(ccpuinfo.user), float64(ccpuinfo.Usage)}
+	cmemoryinfo := C.GetMemoryInfo()
+	global.CoReportConfig.ServerStatus.MEMORYINFO = global.MEMORYINFO{int64(cmemoryinfo.total), int64(cmemoryinfo.available), float64(cmemoryinfo.usage)}
+	cdiskinfo := C.GetDiskInfo()
+	global.CoReportConfig.ServerStatus.DISKINFO = global.DISKINFO{int64(cdiskinfo.total), int64(cdiskinfo.available), float64(cdiskinfo.usage)}
+	global.SaveReConfig()
+}

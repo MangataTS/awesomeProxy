@@ -1,0 +1,13 @@
+"filename", "language", "Go", "JSON", "Markdown", "comment", "blank", "total"
+"e:\goland\project\awesomeProxy\Core\ProxyServer.go", "Go", 0, 0, 0, 0, 1, 1
+"e:\goland\project\awesomeProxy\README.md", "Markdown", 0, 0, 1, 0, 1, 2
+"e:\goland\project\awesomeProxy\Report\Co\DataFile.json", "JSON", 0, 84, 0, 0, 0, 84
+"e:\goland\project\awesomeProxy\Report\GetRe.go", "Go", 252, 0, 0, 23, 36, 311
+"e:\goland\project\awesomeProxy\Report\Re\DataFile.json", "JSON", 0, -74, 0, 0, 0, -74
+"e:\goland\project\awesomeProxy\Report\RpConfig.go", "Go", 15, 0, 0, 1, 1, 17
+"e:\goland\project\awesomeProxy\Report\WindowsStatus.go", "Go", 9, 0, 0, 0, 1, 10
+"e:\goland\project\awesomeProxy\Utils\Windows.go", "Go", 0, 0, 0, 1, 0, 1
+"e:\goland\project\awesomeProxy\config\ConfigInit.go", "Go", -3, 0, 0, -1, 0, -4
+"e:\goland\project\awesomeProxy\global\global.go", "Go", 36, 0, 0, 0, 3, 39
+"e:\goland\project\awesomeProxy\main.go", "Go", 4, 0, 0, -3, 1, 2
+"Total", "-", 313, 10, 1, 21, 44, 389

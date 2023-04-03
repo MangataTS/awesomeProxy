@@ -37,7 +37,7 @@
     "SplitFormat": "DateSplit",
     "DateSplit": "MODE_DAY",
     "SizeSplit": {
-      "LogSize": 300,
+      "LogSize": 3,
       "Unit": "MB",
       "FileNum": 10
     }

@@ -1,0 +1,84 @@
+{
+  "CoRequestData": [
+    {
+      "reqHost": "acm.mangata.ltd",
+      "reqTimes": 99
+    },
+    {
+      "reqHost": "zhihu.com",
+      "reqTimes": 199
+    }
+  ],
+  "CoProtocolData": [
+    {
+      "Name": "HTTP",
+      "ReqTimes": 123,
+      "ReqDataSize": 124515
+    },
+    {
+      "Name": "HTTPS",
+      "ReqTimes": 41241,
+      "ReqDataSize": 12312511
+    },
+    {
+      "Name": "WS",
+      "ReqTimes": 11234,
+      "ReqDataSize": 24552245
+    },
+    {
+      "Name": "WSS",
+      "ReqTimes": 415,
+      "ReqDataSize": 51552
+    },
+    {
+      "Name": "SOCKET5",
+      "ReqTimes": 512,
+      "ReqDataSize": 5215115
+    },
+    {
+      "Name": "TCP",
+      "ReqTimes": 15663,
+      "ReqDataSize": 12512521
+    }
+  ],
+  "CoBlackHostData": [
+    {
+      "UrlHost": "pppf.ggas.com",
+      "ReqTimes": 0
+    }
+  ],
+  "CoSensitiveData": {
+    "TriggerNum": 231,
+    "Interceptions": 420,
+    "IllegalUrl": [
+      "1001an.com",
+      "dafff.com",
+      "wa2ad.com"
+    ]
+  },
+  "LogsData": {
+    "InfoTimes": 1236,
+    "DebugTimes": 453,
+    "WarnTimes": 20,
+    "ErrorTimes": 30,
+    "FatalTimes": 12
+  },
+  "ServerStatus": {
+    "CPU_INFO": {
+      "idle": 98.54141067208118,
+      "kernel": 0.6006884459701477,
+      "user": 0.8579008819486604,
+      "Usage": 0.4807692307692308
+    },
+    "MEMORY_INFO": {
+      "total": 15741,
+      "available": 4197,
+      "usage": 73.33246976197442
+    },
+    "DISK_INFO": {
+      "total": 116,
+      "available": 31,
+      "usage": 73.11
+    }
+  }
+}

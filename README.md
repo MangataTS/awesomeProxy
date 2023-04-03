@@ -19,8 +19,6 @@
 
 **Total : 79 files,  7559 codes, 1752 comments, 1122 blanks, all 10433 lines**
 
-Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
-
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
@@ -80,9 +78,9 @@ Summary / [Details](details.md) / [Diff Summary](diff.md) / [Diff Details](diff-
   - [x] 提供两种日志分割方式，按照日期分割和文件大小分割
   - [x] 线程安全，让日志库使用更加安全
 
-- [ ] 生成流量分析报告
+- [x] 生成流量分析报告
   - [x] 反向代理分析恶意攻击和爬虫
-  - [ ] 正向代理分析对用户上网行为分析，违禁网站访问等
+  - [x] 正向代理分析对用户上网行为分析，违禁网站访问等
   
 ## config.json
 

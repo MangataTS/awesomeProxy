@@ -91,7 +91,12 @@ type CoSensitiveData struct {
 	IllegalURL    []string `json:"IllegalUrl"`
 }
 
+var Glock sync.Mutex
 var CoReportConfig = &CoReport{}
+var CalCoRequestData = make(map[string]int)
+var CalCoProtocolData = make(map[string]CoProtocolData)
+var CalCoBlackHostData = make(map[string]int)
+var CalCoSensitiveDataUrl = make(map[string]bool)
 
 func SaveReConfig() {
 	path := "./Report/Re/DataFile.json"

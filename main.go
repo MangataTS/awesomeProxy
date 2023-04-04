@@ -9,6 +9,7 @@ import (
 	"awesomeProxy/Utils"
 	"awesomeProxy/ac_automaton"
 	"awesomeProxy/config"
+	"awesomeProxy/global"
 	"flag"
 	"fmt"
 	"net"
@@ -110,9 +111,40 @@ func main() {
 			Log.Debug("Proto : ", request.Proto)
 			Log.Debug("Form : ", request.Form)
 			if Utils.BlacklistFilter(request) {
+				// CalCoBlackHostData 数据统计 ok 上锁
+				Uvalue, ok := global.CalCoBlackHostData[request.Host]
+				if !ok {
+					Uvalue = 0
+				}
+				Uvalue++
+				global.Glock.Lock()
+				global.CalCoBlackHostData[request.Host] = Uvalue
+				global.Glock.Unlock()
 				return true
 			}
 
+			// CalCoRequestData 数据统计 上锁
+			value, ok := global.CalCoRequestData[request.Host]
+			if !ok {
+				value = 0
+			}
+
+			global.Glock.Lock()
+			global.CalCoRequestData[request.Host] = value + 1
+			global.Glock.Unlock()
+
+			// CalCoProtocolData 数据统计 上锁
+			tvalue, ok := global.CalCoProtocolData["HTTP"]
+			if !ok {
+				tvalue.Name = "HTTP"
+				tvalue.ReqTimes = 0
+				tvalue.ReqDataSize = 0
+			}
+			tvalue.ReqTimes++
+			tvalue.ReqDataSize += len(body)
+			global.Glock.Lock()
+			global.CalCoProtocolData["HTTP"] = tvalue
+			global.Glock.Unlock()
 			mimeType := request.Header.Get("Content-Type")
 			if strings.Contains(mimeType, "json") {
 				//Log.Info("HttpRequestEvent：" + string(body))
@@ -142,6 +174,12 @@ func main() {
 				}
 				body = []byte(sbody) //[]byte("触发敏感词")
 				Log.Info("敏感词数量：", mingcnt, " 触发总次数： ", tiggercnt)
+				// 更新敏感网站 ok
+				global.Glock.Lock()
+				global.CoReportConfig.CoSensitiveData.TriggerNum += mingcnt
+				global.CoReportConfig.CoSensitiveData.Interceptions += tiggercnt
+				global.CalCoSensitiveDataUrl[response.Request.Host] = true
+				global.Glock.Unlock()
 			}
 			// 可以在这里做数据修改
 			resolve(body, response)

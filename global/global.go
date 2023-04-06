@@ -7,8 +7,6 @@ import (
 	"sync"
 )
 
-var ReReportMux sync.Mutex
-
 type ReReport struct {
 	RequestData   []RequestData `json:"RequestData"`
 	CacheData     CacheData     `json:"CacheData"`
@@ -91,6 +89,7 @@ type CoSensitiveData struct {
 	IllegalURL    []string `json:"IllegalUrl"`
 }
 
+// Glock 全局锁
 var Glock sync.Mutex
 
 var CoReportConfig = &CoReport{}
@@ -101,8 +100,9 @@ var CalCoBlackHostData = make(map[string]int)
 var CalCoSensitiveDataUrl = make(map[string]bool)
 
 func WriteToCalCoRequestData() {
-	Glock.Lock()
-	defer Glock.Unlock()
+	var WLock sync.Mutex
+	WLock.Lock()
+	defer WLock.Unlock()
 
 	for host, cnt := range CalCoRequestData {
 		flg := true
@@ -120,16 +120,22 @@ func WriteToCalCoRequestData() {
 }
 
 func WriteCalCoProtocolData() {
-	Glock.Lock()
-	defer Glock.Unlock()
+	var WLock sync.Mutex
+	WLock.Lock()
+	defer WLock.Unlock()
+
 	for idx, item := range CoReportConfig.CoProtocolData {
-		CoReportConfig.CoProtocolData[idx] = CalCoProtocolData[item.Name]
+		value, ok := CalCoProtocolData[item.Name]
+		if ok && value != CoReportConfig.CoProtocolData[idx] {
+			CoReportConfig.CoProtocolData[idx] = value
+		}
 	}
 }
 
 func WriteCalCoBlackHostData() {
-	Glock.Lock()
-	defer Glock.Unlock()
+	var WLock sync.Mutex
+	WLock.Lock()
+	defer WLock.Unlock()
 
 	for host, cnt := range CalCoBlackHostData {
 		flg := true
@@ -147,8 +153,10 @@ func WriteCalCoBlackHostData() {
 }
 
 func WriteCalCoSensitiveDataUrl() {
-	Glock.Lock()
-	defer Glock.Unlock()
+	var WLock sync.Mutex
+	WLock.Lock()
+	defer WLock.Unlock()
+
 	for _, item := range CoReportConfig.CoSensitiveData.IllegalURL {
 		value, ok := CalCoSensitiveDataUrl[item]
 		if ok && value {
@@ -162,14 +170,42 @@ func WriteCalCoSensitiveDataUrl() {
 	}
 }
 
+func WriteCalLog(name string) {
+	var WLock sync.Mutex
+	WLock.Lock()
+	defer WLock.Unlock()
+
+	switch name {
+	case "Debug":
+		ReReportConfig.LogsData.DebugTimes++
+		CoReportConfig.LogsData.DebugTimes++
+	case "Info":
+		ReReportConfig.LogsData.InfoTimes++
+		CoReportConfig.LogsData.InfoTimes++
+	case "Warn":
+		ReReportConfig.LogsData.WarnTimes++
+		CoReportConfig.LogsData.WarnTimes++
+	case "Error":
+		ReReportConfig.LogsData.ErrorTimes++
+		CoReportConfig.LogsData.ErrorTimes++
+	case "Fatal":
+		ReReportConfig.LogsData.FatalTimes++
+		CoReportConfig.LogsData.FatalTimes++
+	}
+	SaveReConfig()
+	SaveCoConfig()
+
+}
+
 func SaveReConfig() {
 	path := "./Report/Re/DataFile.json"
 	data, err := json.MarshalIndent(ReReportConfig, "", " ")
 	if err != nil {
 		log.Println("json.MarshalIndent err ", err)
 	}
-	ReReportMux.Lock()
-	defer ReReportMux.Unlock()
+	var Flock sync.Mutex
+	Flock.Lock()
+	defer Flock.Unlock()
 	err = os.WriteFile(path, data, 0644)
 	if err != nil {
 		log.Println("os.WriteFile ", err)
@@ -177,13 +213,19 @@ func SaveReConfig() {
 }
 
 func SaveCoConfig() {
+	WriteToCalCoRequestData()
+	WriteCalCoProtocolData()
+	WriteCalCoBlackHostData()
+	WriteCalCoSensitiveDataUrl()
+
 	path := "./Report/Co/DataFile.json"
 	data, err := json.MarshalIndent(CoReportConfig, "", " ")
 	if err != nil {
 		log.Println("json.MarshalIndent err ", err)
 	}
-	ReReportMux.Lock()
-	defer ReReportMux.Unlock()
+	var Flock sync.Mutex
+	Flock.Lock()
+	defer Flock.Unlock()
 	err = os.WriteFile(path, data, 0644)
 	if err != nil {
 		log.Println("os.WriteFile ", err)

@@ -1,84 +1,155 @@
 {
-  "CoRequestData": [
-    {
-      "reqHost": "acm.mangata.ltd",
-      "reqTimes": 99
-    },
-    {
-      "reqHost": "zhihu.com",
-      "reqTimes": 199
-    }
-  ],
-  "CoProtocolData": [
-    {
-      "Name": "HTTP",
-      "ReqTimes": 123,
-      "ReqDataSize": 124515
-    },
-    {
-      "Name": "HTTPS",
-      "ReqTimes": 41241,
-      "ReqDataSize": 12312511
-    },
-    {
-      "Name": "WS",
-      "ReqTimes": 11234,
-      "ReqDataSize": 24552245
-    },
-    {
-      "Name": "WSS",
-      "ReqTimes": 415,
-      "ReqDataSize": 51552
-    },
-    {
-      "Name": "SOCKET5",
-      "ReqTimes": 512,
-      "ReqDataSize": 5215115
-    },
-    {
-      "Name": "TCP",
-      "ReqTimes": 15663,
-      "ReqDataSize": 12512521
-    }
-  ],
-  "CoBlackHostData": [
-    {
-      "UrlHost": "pppf.ggas.com",
-      "ReqTimes": 0
-    }
-  ],
-  "CoSensitiveData": {
-    "TriggerNum": 231,
-    "Interceptions": 420,
-    "IllegalUrl": [
-      "1001an.com",
-      "dafff.com",
-      "wa2ad.com"
-    ]
+ "CoRequestData": [
+  {
+   "reqHost": "acm.mangata.ltd",
+   "reqTimes": 99
   },
-  "LogsData": {
-    "InfoTimes": 1236,
-    "DebugTimes": 453,
-    "WarnTimes": 20,
-    "ErrorTimes": 30,
-    "FatalTimes": 12
+  {
+   "reqHost": "zhihu.com",
+   "reqTimes": 199
   },
-  "ServerStatus": {
-    "CPU_INFO": {
-      "idle": 98.54141067208118,
-      "kernel": 0.6006884459701477,
-      "user": 0.8579008819486604,
-      "Usage": 0.4807692307692308
-    },
-    "MEMORY_INFO": {
-      "total": 15741,
-      "available": 4197,
-      "usage": 73.33246976197442
-    },
-    "DISK_INFO": {
-      "total": 116,
-      "available": 31,
-      "usage": 73.11
-    }
+  {
+   "reqHost": "www.bing.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "cn.bing.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "th.bing.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "ts4.cn.mm.bing.net",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "ts1.cn.mm.bing.net",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "ts2.cn.mm.bing.net",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "login.microsoftonline.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "login.live.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "www2.bing.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "aefd.nelreports.net",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "pc-store.lenovomm.cn",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "kv801.prod.do.dsp.mp.microsoft.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "geo.prod.do.dsp.mp.microsoft.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "juejin.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "sb.adtidy.org",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "www.runoob.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "disc801.prod.do.dsp.mp.microsoft.com",
+   "reqTimes": 1
   }
+ ],
+ "CoProtocolData": [
+  {
+   "Name": "HTTP",
+   "ReqTimes": 247,
+   "ReqDataSize": 330350
+  },
+  {
+   "Name": "HTTPS",
+   "ReqTimes": 124,
+   "ReqDataSize": 1451
+  },
+  {
+   "Name": "WS",
+   "ReqTimes": 21,
+   "ReqDataSize": 12411
+  },
+  {
+   "Name": "WSS",
+   "ReqTimes": 1234,
+   "ReqDataSize": 1245124
+  },
+  {
+   "Name": "TCP",
+   "ReqTimes": 124,
+   "ReqDataSize": 124
+  },
+  {
+   "Name": "Socks5",
+   "ReqTimes": 123,
+   "ReqDataSize": 45125
+  }
+ ],
+ "CoBlackHostData": [
+  {
+   "UrlHost": "pppf.ggas.com",
+   "ReqTimes": 0
+  }
+ ],
+ "CoSensitiveData": {
+  "TriggerNum": 242,
+  "Interceptions": 446,
+  "IllegalUrl": [
+   "1001an.com",
+   "dafff.com",
+   "wa2ad.com",
+   "cn.bing.com",
+   "juejin.cn",
+   "www.runoob.com"
+  ]
+ },
+ "LogsData": {
+  "InfoTimes": 1267,
+  "DebugTimes": 1269,
+  "WarnTimes": 20,
+  "ErrorTimes": 37,
+  "FatalTimes": 12
+ },
+ "ServerStatus": {
+  "CPU_INFO": {
+   "idle": 98.06587391681663,
+   "kernel": 0.6987124094797442,
+   "user": 1.2354136737036285,
+   "Usage": 2.5
+  },
+  "MEMORY_INFO": {
+   "total": 15741,
+   "available": 5351,
+   "usage": 66.0015926439602
+  },
+  "DISK_INFO": {
+   "total": 116,
+   "available": 31,
+   "usage": 73.1829935109447
+  }
+ }
 }

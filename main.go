@@ -21,7 +21,6 @@ import (
 func init() {
 	//配置初始化
 	config.CONFIG.Init()
-
 	if config.CONFIG.ProxyMethod {
 		config.CacheInit()
 	} else {
@@ -58,7 +57,6 @@ func main() {
 		IsReport := flag.Bool("IsReport", false, "Reserve Server proxy Report")
 		flag.Parse()
 		if *IsReport {
-
 			Report.GetReReport()
 		}
 		gee := createGroup()
@@ -120,6 +118,7 @@ func main() {
 				global.Glock.Lock()
 				global.CalCoBlackHostData[request.Host] = Uvalue
 				global.Glock.Unlock()
+				global.SaveCoConfig()
 				return true
 			}
 
@@ -128,23 +127,25 @@ func main() {
 			if !ok {
 				value = 0
 			}
-
 			global.Glock.Lock()
 			global.CalCoRequestData[request.Host] = value + 1
 			global.Glock.Unlock()
+			global.SaveCoConfig()
 
 			// CalCoProtocolData 数据统计 上锁
 			tvalue, ok := global.CalCoProtocolData["HTTP"]
 			if !ok {
 				tvalue.Name = "HTTP"
-				tvalue.ReqTimes = 0
-				tvalue.ReqDataSize = 0
+				tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[0].ReqTimes
+				tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[0].ReqDataSize
 			}
 			tvalue.ReqTimes++
 			tvalue.ReqDataSize += len(body)
 			global.Glock.Lock()
 			global.CalCoProtocolData["HTTP"] = tvalue
 			global.Glock.Unlock()
+			global.SaveCoConfig()
+
 			mimeType := request.Header.Get("Content-Type")
 			if strings.Contains(mimeType, "json") {
 				//Log.Info("HttpRequestEvent：" + string(body))
@@ -180,6 +181,7 @@ func main() {
 				global.CoReportConfig.CoSensitiveData.Interceptions += tiggercnt
 				global.CalCoSensitiveDataUrl[response.Request.Host] = true
 				global.Glock.Unlock()
+				global.SaveCoConfig()
 			}
 			// 可以在这里做数据修改
 			resolve(body, response)

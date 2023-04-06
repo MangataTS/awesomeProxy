@@ -3,6 +3,7 @@ package config
 import (
 	"awesomeProxy/Cert"
 	"awesomeProxy/Log"
+	"awesomeProxy/Report"
 	"awesomeProxy/ac_automaton"
 	"awesomeProxy/balance"
 	"encoding/json"
@@ -60,6 +61,8 @@ var Addrs []string
 func (cc Config) Init() {
 	ReadConfig()
 	LogInit()
+	Report.ReadReConfig()
+	Report.ReadCoConfig()
 	if CONFIG.ProxyMethod == true {
 		cc.BalanceInit()
 	} else {
@@ -168,7 +171,6 @@ func LogInit() {
 	} else {
 		Log.Fatal("Log SplitFormat error")
 	}
-
 }
 
 func Logo() {

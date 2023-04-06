@@ -92,11 +92,75 @@ type CoSensitiveData struct {
 }
 
 var Glock sync.Mutex
+
 var CoReportConfig = &CoReport{}
+
 var CalCoRequestData = make(map[string]int)
 var CalCoProtocolData = make(map[string]CoProtocolData)
 var CalCoBlackHostData = make(map[string]int)
 var CalCoSensitiveDataUrl = make(map[string]bool)
+
+func WriteToCalCoRequestData() {
+	Glock.Lock()
+	defer Glock.Unlock()
+
+	for host, cnt := range CalCoRequestData {
+		flg := true
+		for idx, item := range CoReportConfig.CoRequestData {
+			if item.ReqHost == host {
+				flg = false
+				CoReportConfig.CoRequestData[idx].ReqTimes = cnt
+				break
+			}
+		}
+		if flg {
+			CoReportConfig.CoRequestData = append(CoReportConfig.CoRequestData, CoRequestData{host, cnt})
+		}
+	}
+}
+
+func WriteCalCoProtocolData() {
+	Glock.Lock()
+	defer Glock.Unlock()
+	for idx, item := range CoReportConfig.CoProtocolData {
+		CoReportConfig.CoProtocolData[idx] = CalCoProtocolData[item.Name]
+	}
+}
+
+func WriteCalCoBlackHostData() {
+	Glock.Lock()
+	defer Glock.Unlock()
+
+	for host, cnt := range CalCoBlackHostData {
+		flg := true
+		for idx, item := range CoReportConfig.CoBlackHostData {
+			if item.URLHost == host {
+				flg = false
+				CoReportConfig.CoBlackHostData[idx].ReqTimes = cnt
+				break
+			}
+		}
+		if flg {
+			CoReportConfig.CoBlackHostData = append(CoReportConfig.CoBlackHostData, CoBlackHostData{host, cnt})
+		}
+	}
+}
+
+func WriteCalCoSensitiveDataUrl() {
+	Glock.Lock()
+	defer Glock.Unlock()
+	for _, item := range CoReportConfig.CoSensitiveData.IllegalURL {
+		value, ok := CalCoSensitiveDataUrl[item]
+		if ok && value {
+			CalCoSensitiveDataUrl[item] = false
+		}
+	}
+	for name, cc := range CalCoSensitiveDataUrl {
+		if cc {
+			CoReportConfig.CoSensitiveData.IllegalURL = append(CoReportConfig.CoSensitiveData.IllegalURL, name)
+		}
+	}
+}
 
 func SaveReConfig() {
 	path := "./Report/Re/DataFile.json"

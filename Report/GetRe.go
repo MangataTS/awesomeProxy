@@ -375,25 +375,36 @@ func GetReReport() {
 
 	pdf.AddPage()
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("Awesome Proxy Reserve Report", 0, 0)
 	TitleComment(pdf, titleStr)
 
 	ReadReConfig()
 	GetWindowsStatus()
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Request Data", 1, 0)
 	RequestDataComment(pdf)
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Cache Data", 1, 0)
 	CacheDataComment(pdf)
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Ban Ip Request Data", 1, 0)
 	BanIpReqDataComment(pdf)
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Log Data", 1, 0)
 	LogsDataComment(pdf)
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Crawler Data", 1, 0)
 	CrawlerDataComment(pdf)
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Server Status", 1, 0)
 	ServerStatusDataComment(pdf)
-
-	//SetFont("字体的别名", "", size)
-	//pdf.SetFont("fangsong", "", 15)
 
 	if err := pdf.OutputFileAndClose("./Report/Re/ReverseReport.pdf"); err != nil {
 		panic(err.Error())
@@ -699,17 +710,35 @@ func GetCoReport() {
 	pdf.SetAuthor("XieShunQuan", false)
 
 	pdf.AddPage()
-
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("Awesome Proxy Forward Report", 0, 0)
 	TitleComment(pdf, titleStr)
 
 	ReadCoConfig()
 	GetCoWindowsStatus()
 
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Request Data", 1, 0)
 	CoRequestDataComment(pdf)
+
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Protocol Data", 1, 0)
 	CoProtocolDataComment(pdf)
+
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Black Host Data", 1, 0)
 	CoBlackHostDataComment(pdf)
+
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Sensitive Data", 1, 0)
 	CoSensitiveDataComment(pdf)
+
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Log Data", 1, 0)
 	CoLogsDataComment(pdf)
+
+	pdf.SetFont("Arial", "", 15)
+	pdf.Bookmark("The Server Status", 1, 0)
 	CoServerStatusDataComment(pdf)
 
 	if err := pdf.OutputFileAndClose("./Report/Co/CoReport.pdf"); err != nil {

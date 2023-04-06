@@ -528,8 +528,8 @@
   },
   {
    "Name": "WSS",
-   "ReqTimes": 1234,
-   "ReqDataSize": 1245124
+   "ReqTimes": 1237,
+   "ReqDataSize": 1245363
   },
   {
    "Name": "TCP",
@@ -549,10 +549,6 @@
   {
    "UrlHost": "tpt.fdsag.com",
    "ReqTimes": 5123
-  },
-  {
-   "UrlHost": "-1",
-   "ReqTimes": 5
   }
  ],
  "CoSensitiveData": {
@@ -597,28 +593,28 @@
   ]
  },
  "LogsData": {
-  "InfoTimes": 1876,
+  "InfoTimes": 1897,
   "DebugTimes": 22713,
   "WarnTimes": 33,
-  "ErrorTimes": 137,
+  "ErrorTimes": 139,
   "FatalTimes": 12
  },
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 98.60802362931274,
-   "kernel": 0.6726250001925538,
-   "user": 0.7193513704947105,
-   "Usage": 1.1538461538461537
+   "idle": 98.5998324462285,
+   "kernel": 0.6779202969460089,
+   "user": 0.7222472568254908,
+   "Usage": 1.3658536585365855
   },
   "MEMORY_INFO": {
    "total": 15741,
-   "available": 5366,
-   "usage": 65.91119061923277
+   "available": 5309,
+   "usage": 66.27188055319189
   },
   "DISK_INFO": {
    "total": 116,
    "available": 31,
-   "usage": 73.19131403197659
+   "usage": 73.18824426150522
   }
  }
 }

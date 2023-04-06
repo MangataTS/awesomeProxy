@@ -17,14 +17,14 @@
 
 ## 工作量
 
-**Total : 80 files,  7883 codes, 1773 comments, 1166 blanks, all 10822 lines**
+**Total : 80 files,  8659 codes, 1782 comments, 1189 blanks, all 11630 lines**
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 67 | 7,486 | 1,618 | 1,115 | 10,219 |
-| JSON | 4 | 166 | 0 | 0 | 166 |
-| Markdown | 1 | 142 | 0 | 40 | 182 |
+| Go | 67 | 7,727 | 1,627 | 1,139 | 10,493 |
+| JSON | 4 | 702 | 0 | 0 | 702 |
+| Markdown | 1 | 141 | 0 | 39 | 180 |
 | XML | 4 | 37 | 0 | 0 | 37 |
 | Python | 1 | 21 | 8 | 6 | 35 |
 | Go Checksum File | 1 | 20 | 0 | 1 | 21 |

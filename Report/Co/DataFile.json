@@ -10,7 +10,7 @@
   },
   {
    "reqHost": "www.bing.com",
-   "reqTimes": 5
+   "reqTimes": 3
   },
   {
    "reqHost": "cn.bing.com",
@@ -66,7 +66,7 @@
   },
   {
    "reqHost": "sb.adtidy.org",
-   "reqTimes": 1
+   "reqTimes": 5
   },
   {
    "reqHost": "www.runoob.com",
@@ -75,18 +75,451 @@
   {
    "reqHost": "disc801.prod.do.dsp.mp.microsoft.com",
    "reqTimes": 1
+  },
+  {
+   "reqHost": "www.nowcoder.com",
+   "reqTimes": 25
+  },
+  {
+   "reqHost": "gw-c.nowcoder.com",
+   "reqTimes": 28
+  },
+  {
+   "reqHost": "arms-retcode.aliyuncs.com",
+   "reqTimes": 120
+  },
+  {
+   "reqHost": "static.nowcoder.com",
+   "reqTimes": 17
+  },
+  {
+   "reqHost": "uploadfiles.nowcoder.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "grow.nowcoder.com",
+   "reqTimes": 50
+  },
+  {
+   "reqHost": "images.nowcoder.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "www.baidu.com",
+   "reqTimes": 6
+  },
+  {
+   "reqHost": "t8.baidu.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "hectorstatic.baidu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "sp1.baidu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "b.bdstatic.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "ug.baidu.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "report.url.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "developer.aliyun.com",
+   "reqTimes": 25
+  },
+  {
+   "reqHost": "ctldl.windowsupdate.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "g.alicdn.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "oneconsole.alicdn.com",
+   "reqTimes": 6
+  },
+  {
+   "reqHost": "at.alicdn.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "zhihu-web-analytics.zhihu.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "csdnimg.cn",
+   "reqTimes": 449
+  },
+  {
+   "reqHost": "dup.baidustatic.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "g.csdnimg.cn",
+   "reqTimes": 217
+  },
+  {
+   "reqHost": "img-home.csdnimg.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "profile.csdnimg.cn",
+   "reqTimes": 29
+  },
+  {
+   "reqHost": "zz.bdstatic.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "cpro.baidustatic.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "pagead2.googlesyndication.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "hm.baidu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "edge.microsoft.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "sofire.bdstatic.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "gsp0.baidu.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "sofire.baidu.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "www.aliyun.com",
+   "reqTimes": 25
+  },
+  {
+   "reqHost": "alinw.alicdn.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "img.alicdn.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "ucc.alicdn.com",
+   "reqTimes": 14
+  },
+  {
+   "reqHost": "ucc.aliyun.com",
+   "reqTimes": 20
+  },
+  {
+   "reqHost": "p3-juejin.byteimg.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "query.aliyun.com",
+   "reqTimes": 40
+  },
+  {
+   "reqHost": "page.aliyun.com",
+   "reqTimes": 25
+  },
+  {
+   "reqHost": "fecs.console.aliyun.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "bridge.aliyun.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "self.events.data.microsoft.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "profile-avatar.csdnimg.cn",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "ylc-picture.oss-cn-beijing.aliyuncs.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "1d.tlu.dl.delivery.mp.microsoft.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "pcrec.baidu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "zhuanlan.zhihu.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "static.zhihu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "pica.zhimg.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "pic3.zhimg.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "pic2.zhimg.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "pic4.zhimg.com",
+   "reqTimes": 8
+  },
+  {
+   "reqHost": "www.taodudu.cc",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "116.62.222.46",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "www.ncqh.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "coreui.cn",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "img-blog.csdnimg.cn",
+   "reqTimes": 84
+  },
+  {
+   "reqHost": "office.tqzw.net.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "pic.xiahunao.cn",
+   "reqTimes": 11
+  },
+  {
+   "reqHost": "pic.002.xiahunao.cn",
+   "reqTimes": 9
+  },
+  {
+   "reqHost": "www.elecfans.com",
+   "reqTimes": 23
+  },
+  {
+   "reqHost": "m.9tcc.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "skin.elecfans.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "t13.baidu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "t7.baidu.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "t9.baidu.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "t14.baidu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "www.jianshu.com",
+   "reqTimes": 12
+  },
+  {
+   "reqHost": "bbs.elecfans.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "images.elecfans.top",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "file.elecfans.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "picx.zhimg.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "hardvoicepic.elecfans.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "passport.elecfans.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "www.281050.com",
+   "reqTimes": 6
+  },
+  {
+   "reqHost": "bbs.pcbeta.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "deepinout.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "www.pianshen.com",
+   "reqTimes": 26
+  },
+  {
+   "reqHost": "apps.bdimg.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "www.cnblogs.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "static.deepinout.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "common.cnblogs.com",
+   "reqTimes": 9
+  },
+  {
+   "reqHost": "www.404bugs.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "img.yangshuaibin.com",
+   "reqTimes": 8
+  },
+  {
+   "reqHost": "static.404bugs.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "mmbiz.qpic.cn",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "pic1.zhimg.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "widget.seniverse.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "cdn.sencdn.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "images3.pianshen.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "cdn2.jianshu.io",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "upload.jianshu.io",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "brssp.ibreader.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "images1.pianshen.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "images4.pianshen.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "images2.pianshen.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "acjs.aliyun.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "mpic.haiwainet.cn",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "thumb1.pianshen.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "thumb3.pianshen.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "thumb4.pianshen.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "thumb2.pianshen.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "cmp.quantcast.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "assets.msn.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "upload-images.jianshu.io",
+   "reqTimes": 3
   }
  ],
  "CoProtocolData": [
   {
    "Name": "HTTP",
-   "ReqTimes": 247,
-   "ReqDataSize": 330350
+   "ReqTimes": 666,
+   "ReqDataSize": 2173051
   },
   {
    "Name": "HTTPS",
-   "ReqTimes": 124,
-   "ReqDataSize": 1451
+   "ReqTimes": 3177,
+   "ReqDataSize": 75937270
+  },
+  {
+   "Name": "SOCKS5",
+   "ReqTimes": 123,
+   "ReqDataSize": 45125
   },
   {
    "Name": "WS",
@@ -101,55 +534,91 @@
   {
    "Name": "TCP",
    "ReqTimes": 124,
-   "ReqDataSize": 124
-  },
-  {
-   "Name": "Socks5",
-   "ReqTimes": 123,
-   "ReqDataSize": 45125
+   "ReqDataSize": 12424
   }
  ],
  "CoBlackHostData": [
   {
    "UrlHost": "pppf.ggas.com",
-   "ReqTimes": 0
+   "ReqTimes": 23
+  },
+  {
+   "UrlHost": "www.faff.com",
+   "ReqTimes": 23452
+  },
+  {
+   "UrlHost": "tpt.fdsag.com",
+   "ReqTimes": 5123
+  },
+  {
+   "UrlHost": "-1",
+   "ReqTimes": 5
   }
  ],
  "CoSensitiveData": {
-  "TriggerNum": 242,
-  "Interceptions": 446,
+  "TriggerNum": 414,
+  "Interceptions": 818,
   "IllegalUrl": [
    "1001an.com",
    "dafff.com",
    "wa2ad.com",
    "cn.bing.com",
    "juejin.cn",
-   "www.runoob.com"
+   "www.runoob.com",
+   "www.nowcoder.com",
+   "gw-c.nowcoder.com",
+   "www.baidu.com",
+   "developer.aliyun.com",
+   "pagead2.googlesyndication.com",
+   "www.aliyun.com",
+   "at.alicdn.com",
+   "ucc.alicdn.com",
+   "g.alicdn.com",
+   "img.alicdn.com",
+   "csdnimg.cn",
+   "zhuanlan.zhihu.com",
+   "static.zhihu.com",
+   "www.taodudu.cc",
+   "116.62.222.46",
+   "office.tqzw.net.cn",
+   "www.elecfans.com",
+   "www.jianshu.com",
+   "images.elecfans.top",
+   "file.elecfans.com",
+   "www.281050.com",
+   "deepinout.com",
+   "www.cnblogs.com",
+   "static.deepinout.com",
+   "img.yangshuaibin.com",
+   "bbs.pcbeta.com",
+   "mmbiz.qpic.cn",
+   "mpic.haiwainet.cn",
+   "assets.msn.cn"
   ]
  },
  "LogsData": {
-  "InfoTimes": 1267,
-  "DebugTimes": 1269,
-  "WarnTimes": 20,
-  "ErrorTimes": 37,
+  "InfoTimes": 1876,
+  "DebugTimes": 22713,
+  "WarnTimes": 33,
+  "ErrorTimes": 137,
   "FatalTimes": 12
  },
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 98.06587391681663,
-   "kernel": 0.6987124094797442,
-   "user": 1.2354136737036285,
-   "Usage": 2.5
+   "idle": 98.60802362931274,
+   "kernel": 0.6726250001925538,
+   "user": 0.7193513704947105,
+   "Usage": 1.1538461538461537
   },
   "MEMORY_INFO": {
    "total": 15741,
-   "available": 5351,
-   "usage": 66.0015926439602
+   "available": 5366,
+   "usage": 65.91119061923277
   },
   "DISK_INFO": {
    "total": 116,
    "available": 31,
-   "usage": 73.1829935109447
+   "usage": 73.19131403197659
   }
  }
 }

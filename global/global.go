@@ -91,6 +91,10 @@ type CoSensitiveData struct {
 
 // Glock 全局锁
 var Glock sync.Mutex
+var CalCoReqLock sync.Mutex
+var CalCoProLock sync.Mutex
+var CalCoBlaLock sync.Mutex
+var CalCoSenLock sync.Mutex
 
 var CoReportConfig = &CoReport{}
 
@@ -100,9 +104,11 @@ var CalCoBlackHostData = make(map[string]int)
 var CalCoSensitiveDataUrl = make(map[string]bool)
 
 func WriteToCalCoRequestData() {
-	var WLock sync.Mutex
-	WLock.Lock()
-	defer WLock.Unlock()
+	Glock.Lock()
+	defer Glock.Unlock()
+
+	CalCoReqLock.Lock()
+	CalCoReqLock.Unlock()
 
 	for host, cnt := range CalCoRequestData {
 		flg := true
@@ -120,9 +126,11 @@ func WriteToCalCoRequestData() {
 }
 
 func WriteCalCoProtocolData() {
-	var WLock sync.Mutex
-	WLock.Lock()
-	defer WLock.Unlock()
+	Glock.Lock()
+	defer Glock.Unlock()
+
+	CalCoProLock.Lock()
+	defer CalCoProLock.Unlock()
 
 	for idx, item := range CoReportConfig.CoProtocolData {
 		value, ok := CalCoProtocolData[item.Name]
@@ -133,9 +141,11 @@ func WriteCalCoProtocolData() {
 }
 
 func WriteCalCoBlackHostData() {
-	var WLock sync.Mutex
-	WLock.Lock()
-	defer WLock.Unlock()
+	Glock.Lock()
+	defer Glock.Unlock()
+
+	CalCoBlaLock.Lock()
+	defer CalCoBlaLock.Unlock()
 
 	for host, cnt := range CalCoBlackHostData {
 		flg := true
@@ -153,9 +163,11 @@ func WriteCalCoBlackHostData() {
 }
 
 func WriteCalCoSensitiveDataUrl() {
-	var WLock sync.Mutex
-	WLock.Lock()
-	defer WLock.Unlock()
+	Glock.Lock()
+	defer Glock.Unlock()
+
+	CalCoSenLock.Lock()
+	CalCoSenLock.Unlock()
 
 	for _, item := range CoReportConfig.CoSensitiveData.IllegalURL {
 		value, ok := CalCoSensitiveDataUrl[item]
@@ -171,9 +183,7 @@ func WriteCalCoSensitiveDataUrl() {
 }
 
 func WriteCalLog(name string) {
-	var WLock sync.Mutex
-	WLock.Lock()
-	defer WLock.Unlock()
+	Glock.Lock()
 
 	switch name {
 	case "Debug":
@@ -192,20 +202,21 @@ func WriteCalLog(name string) {
 		ReReportConfig.LogsData.FatalTimes++
 		CoReportConfig.LogsData.FatalTimes++
 	}
+	Glock.Unlock()
 	SaveReConfig()
 	SaveCoConfig()
 
 }
 
 func SaveReConfig() {
+	Glock.Lock()
+	defer Glock.Unlock()
 	path := "./Report/Re/DataFile.json"
 	data, err := json.MarshalIndent(ReReportConfig, "", " ")
 	if err != nil {
 		log.Println("json.MarshalIndent err ", err)
 	}
-	var Flock sync.Mutex
-	Flock.Lock()
-	defer Flock.Unlock()
+
 	err = os.WriteFile(path, data, 0644)
 	if err != nil {
 		log.Println("os.WriteFile ", err)
@@ -213,19 +224,20 @@ func SaveReConfig() {
 }
 
 func SaveCoConfig() {
+
 	WriteToCalCoRequestData()
 	WriteCalCoProtocolData()
 	WriteCalCoBlackHostData()
 	WriteCalCoSensitiveDataUrl()
 
+	Glock.Lock()
+	defer Glock.Unlock()
 	path := "./Report/Co/DataFile.json"
 	data, err := json.MarshalIndent(CoReportConfig, "", " ")
 	if err != nil {
 		log.Println("json.MarshalIndent err ", err)
 	}
-	var Flock sync.Mutex
-	Flock.Lock()
-	defer Flock.Unlock()
+
 	err = os.WriteFile(path, data, 0644)
 	if err != nil {
 		log.Println("os.WriteFile ", err)

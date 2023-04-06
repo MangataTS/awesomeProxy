@@ -50,4 +50,5 @@ func ReadCoConfig() {
 		Log.Fatal("Unmarshal json file err: ", err)
 		return
 	}
+
 }

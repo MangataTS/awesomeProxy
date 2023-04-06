@@ -10,6 +10,7 @@ import (
 	"awesomeProxy/ac_automaton"
 	"awesomeProxy/config"
 	"awesomeProxy/global"
+	"crypto/tls"
 	"flag"
 	"fmt"
 	"net"
@@ -110,40 +111,26 @@ func main() {
 			Log.Debug("Form : ", request.Form)
 			if Utils.BlacklistFilter(request) {
 				// CalCoBlackHostData 数据统计 ok 上锁
+				global.CalCoBlaLock.Lock()
 				Uvalue, ok := global.CalCoBlackHostData[request.Host]
 				if !ok {
 					Uvalue = 0
 				}
 				Uvalue++
-				global.Glock.Lock()
 				global.CalCoBlackHostData[request.Host] = Uvalue
-				global.Glock.Unlock()
+				global.CalCoBlaLock.Unlock()
 				global.SaveCoConfig()
 				return true
 			}
 
 			// CalCoRequestData 数据统计 上锁
+			global.CalCoReqLock.Lock()
 			value, ok := global.CalCoRequestData[request.Host]
 			if !ok {
 				value = 0
 			}
-			global.Glock.Lock()
 			global.CalCoRequestData[request.Host] = value + 1
-			global.Glock.Unlock()
-			global.SaveCoConfig()
-
-			// CalCoProtocolData 数据统计 上锁
-			tvalue, ok := global.CalCoProtocolData["HTTP"]
-			if !ok {
-				tvalue.Name = "HTTP"
-				tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[0].ReqTimes
-				tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[0].ReqDataSize
-			}
-			tvalue.ReqTimes++
-			tvalue.ReqDataSize += len(body)
-			global.Glock.Lock()
-			global.CalCoProtocolData["HTTP"] = tvalue
-			global.Glock.Unlock()
+			global.CalCoReqLock.Unlock()
 			global.SaveCoConfig()
 
 			mimeType := request.Header.Get("Content-Type")
@@ -162,6 +149,40 @@ func main() {
 			if strings.Contains(mimeType, "json") {
 				Log.Info("HttpResponseEvent：" + string(body))
 			}
+			// todo 对其他协议进行数据统计
+			if response.TLS != nil {
+				// HTTPS 数据统计 上锁
+				global.CalCoProLock.Lock()
+				tvalue, ok := global.CalCoProtocolData["HTTPS"]
+				if !ok {
+					tvalue.Name = "HTTPS"
+					global.Glock.Lock()
+					tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[1].ReqTimes
+					tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[1].ReqDataSize
+					global.Glock.Unlock()
+				}
+				tvalue.ReqTimes++
+				tvalue.ReqDataSize += len(body)
+				global.CalCoProtocolData["HTTPS"] = tvalue
+				global.CalCoProLock.Unlock()
+				global.SaveCoConfig()
+			} else {
+				// HTTP 数据统计 上锁
+				global.CalCoProLock.Lock()
+				tvalue, ok := global.CalCoProtocolData["HTTP"]
+				if !ok {
+					tvalue.Name = "HTTP"
+					global.Glock.Lock()
+					tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[0].ReqTimes
+					tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[0].ReqDataSize
+					global.Glock.Unlock()
+				}
+				tvalue.ReqTimes++
+				tvalue.ReqDataSize += len(body)
+				global.CalCoProtocolData["HTTP"] = tvalue
+				global.CalCoProLock.Unlock()
+				global.SaveCoConfig()
+			}
 			sbody := string(body)
 			res := ac_automaton.Acauto.FindMatches(sbody)
 			mingcnt := 0
@@ -175,23 +196,42 @@ func main() {
 				}
 				body = []byte(sbody) //[]byte("触发敏感词")
 				Log.Info("敏感词数量：", mingcnt, " 触发总次数： ", tiggercnt)
+
 				// 更新敏感网站 ok
+
 				global.Glock.Lock()
 				global.CoReportConfig.CoSensitiveData.TriggerNum += mingcnt
 				global.CoReportConfig.CoSensitiveData.Interceptions += tiggercnt
-				global.CalCoSensitiveDataUrl[response.Request.Host] = true
 				global.Glock.Unlock()
+				global.CalCoSenLock.Lock()
+				global.CalCoSensitiveDataUrl[response.Request.Host] = true
+				global.CalCoSenLock.Unlock()
 				global.SaveCoConfig()
 			}
 			// 可以在这里做数据修改
 			resolve(body, response)
-
 			// 如果正常处理必须返回true，如果不需要发送请求，返回false，一般在自己操作conn的时候才会用到
 			return true
 		}
 		// 注册socket5服务器推送消息事件函数
 		s.OnSocks5ResponseEvent = func(message []byte, resolve Core.ResolveSocks5, conn net.Conn) (int, error) {
 			Log.Info("Socks5ResponseEvent：" + string(message))
+			// SOCKS5 数据统计 上锁
+			global.CalCoProLock.Lock()
+			tvalue, ok := global.CalCoProtocolData["SOCKS5"]
+			if !ok {
+				tvalue.Name = "SOCKS5"
+				global.Glock.Lock()
+				tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[2].ReqTimes
+				tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[2].ReqDataSize
+				global.Glock.Unlock()
+			}
+			tvalue.ReqTimes++
+			tvalue.ReqDataSize += len(message)
+			global.CalCoProtocolData["SOCKS5"] = tvalue
+			global.CalCoProLock.Unlock()
+			global.SaveCoConfig()
+
 			// 可以在这里做数据修改
 			return resolve(message)
 		}
@@ -210,6 +250,39 @@ func main() {
 		// 注册ws服务器推送消息事件函数
 		s.OnWsResponseEvent = func(msgType int, message []byte, resolve Core.ResolveWs, conn net.Conn) error {
 			Log.Info("WsResponseEvent：" + string(message))
+			if conn.(*tls.Conn) != nil {
+				// WebSocket TLS 数据统计 上锁
+				global.CalCoProLock.Lock()
+				tvalue, ok := global.CalCoProtocolData["WS"]
+				if !ok {
+					tvalue.Name = "WSS"
+					global.Glock.Lock()
+					tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[4].ReqTimes
+					tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[4].ReqDataSize
+					global.Glock.Unlock()
+				}
+				tvalue.ReqTimes++
+				tvalue.ReqDataSize += len(message)
+				global.CalCoProtocolData["WSS"] = tvalue
+				global.CalCoProLock.Unlock()
+				global.SaveCoConfig()
+			} else {
+				// WebSocket 数据统计 上锁
+				global.CalCoProLock.Lock()
+				tvalue, ok := global.CalCoProtocolData["WS"]
+				if !ok {
+					tvalue.Name = "WS"
+					global.Glock.Lock()
+					tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[3].ReqTimes
+					tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[3].ReqDataSize
+					global.Glock.Unlock()
+				}
+				tvalue.ReqTimes++
+				tvalue.ReqDataSize += len(message)
+				global.CalCoProtocolData["WS"] = tvalue
+				global.CalCoProLock.Unlock()
+				global.SaveCoConfig()
+			}
 			// 可以在这里做数据修改
 			return resolve(msgType, message)
 		}
@@ -224,6 +297,22 @@ func main() {
 		// 注册tcp服务器推送消息事件函数
 		s.OnTcpServerStreamEvent = func(message []byte, resolve Core.ResolveTcp, conn net.Conn) (int, error) {
 			Log.Info("TcpServerStreamEvent：" + string(message))
+			//  TCP 数据统计 上锁
+			global.CalCoProLock.Lock()
+			tvalue, ok := global.CalCoProtocolData["TCP"]
+			if !ok {
+				tvalue.Name = "TCP"
+				global.Glock.Lock()
+				tvalue.ReqTimes = global.CoReportConfig.CoProtocolData[5].ReqTimes
+				tvalue.ReqDataSize = global.CoReportConfig.CoProtocolData[5].ReqDataSize
+				global.Glock.Unlock()
+			}
+			tvalue.ReqTimes++
+			tvalue.ReqDataSize += len(message)
+			global.CalCoProtocolData["TCP"] = tvalue
+			global.CalCoProLock.Unlock()
+			global.SaveCoConfig()
+
 			// 可以在这里做数据修改
 			return resolve(message)
 		}

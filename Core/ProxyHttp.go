@@ -40,11 +40,6 @@ type ResolveHttpResponse func(message []byte, response *http.Response)
 
 type ResolveWs func(msgType int, message []byte) error
 
-func NewProxyHttp() *ProxyHttp {
-	p := &ProxyHttp{}
-	return p
-}
-
 // Handle tcp连接处理入口
 func (i *ProxyHttp) Handle() {
 	request, err := http.ReadRequest(i.reader)

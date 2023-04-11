@@ -10,7 +10,6 @@ import (
 	"github.com/viki-org/dnscache"
 	"net"
 	"net/http"
-	"runtime"
 	"time"
 )
 
@@ -59,19 +58,20 @@ type ProxyServer struct {
 }
 
 func (i *ProxyServer) Install() {
-	if runtime.GOOS == "windows" {
-		err := Utils.InstallCert("cert.crt")
-		if err != nil {
-			Log.Fatal(err.Error())
-		}
-		Log.Info("已安装系统证书")
-
-		err = Utils.SetWindowsProxy(fmt.Sprintf("localhost:%s", i.port))
-		if err != nil {
-			Log.Fatal(err.Error())
-		}
-		Log.Info("已设置系统代理")
+	//if runtime.GOOS == "windows" {
+	//
+	//}
+	err := Utils.InstallCert("cert.crt")
+	if err != nil {
+		Log.Fatal(err.Error())
 	}
+	Log.Info("已安装系统证书")
+
+	err = Utils.SetWindowsProxy(fmt.Sprintf("localhost:%s", i.port))
+	if err != nil {
+		Log.Fatal(err.Error())
+	}
+	Log.Info("已设置系统代理")
 	Log.Info("非windows系统请手动安装证书并设置代理,可以在根目录或访问http://127.0.0.1/tls获取证书文件")
 }
 

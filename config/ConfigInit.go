@@ -1,7 +1,6 @@
 package config
 
 import (
-	"awesomeProxy/Cert"
 	"awesomeProxy/Log"
 	"awesomeProxy/Report"
 	"awesomeProxy/ac_automaton"
@@ -66,7 +65,6 @@ func (cc Config) Init() {
 	if CONFIG.ProxyMethod == true {
 		cc.BalanceInit()
 	} else {
-		Cert.Install()
 		ac_automaton.AddKeyWordFromPath(ac_automaton.Acauto, "./ac_automaton/SensitiveWordsSmall.txt")
 	}
 	Logo()

@@ -17,19 +17,18 @@
 
 ## 工作量
 
-**Total : 80 files,  8659 codes, 1782 comments, 1189 blanks, all 11630 lines**
+**Total : 80 files,  8913 codes, 1633 comments, 1195 blanks, all 11741 lines**
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| Go | 67 | 7,727 | 1,627 | 1,139 | 10,493 |
-| JSON | 4 | 702 | 0 | 0 | 702 |
-| Markdown | 1 | 141 | 0 | 39 | 180 |
+| Go | 68 | 7,685 | 1,625 | 1,142 | 10,452 |
+| JSON | 4 | 996 | 0 | 0 | 996 |
+| Markdown | 1 | 143 | 0 | 42 | 185 |
 | XML | 4 | 37 | 0 | 0 | 37 |
 | Python | 1 | 21 | 8 | 6 | 35 |
 | Go Checksum File | 1 | 20 | 0 | 1 | 21 |
 | Go Module File | 1 | 11 | 0 | 4 | 15 |
-| C | 1 | 0 | 147 | 0 | 147 |
 
 ## 预计功能
 
@@ -81,7 +80,12 @@
 - [x] 生成流量分析报告
   - [x] 反向代理分析恶意攻击和爬虫
   - [x] 正向代理分析对用户上网行为分析，违禁网站访问等
-  
+
+## 环境
+
+go version $>=$  go1.20
+
+
 ## config.json
 
 先给一个简单的配置例子：

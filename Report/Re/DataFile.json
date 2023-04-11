@@ -8,10 +8,10 @@
  },
  "BanIpReqTimes": 0,
  "LogsData": {
-  "InfoTimes": 701,
-  "DebugTimes": 22694,
+  "InfoTimes": 1017,
+  "DebugTimes": 28262,
   "WarnTimes": 13,
-  "ErrorTimes": 112,
+  "ErrorTimes": 143,
   "FatalTimes": 0
  },
  "CrawlerData": null,

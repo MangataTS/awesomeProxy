@@ -10,11 +10,11 @@
   },
   {
    "reqHost": "www.bing.com",
-   "reqTimes": 3
+   "reqTimes": 4
   },
   {
    "reqHost": "cn.bing.com",
-   "reqTimes": 5
+   "reqTimes": 54
   },
   {
    "reqHost": "th.bing.com",
@@ -66,7 +66,7 @@
   },
   {
    "reqHost": "sb.adtidy.org",
-   "reqTimes": 5
+   "reqTimes": 1
   },
   {
    "reqHost": "www.runoob.com",
@@ -278,19 +278,19 @@
   },
   {
    "reqHost": "pica.zhimg.com",
-   "reqTimes": 3
-  },
-  {
-   "reqHost": "pic3.zhimg.com",
-   "reqTimes": 4
-  },
-  {
-   "reqHost": "pic2.zhimg.com",
    "reqTimes": 2
   },
   {
+   "reqHost": "pic3.zhimg.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "pic2.zhimg.com",
+   "reqTimes": 1
+  },
+  {
    "reqHost": "pic4.zhimg.com",
-   "reqTimes": 8
+   "reqTimes": 5
   },
   {
    "reqHost": "www.taodudu.cc",
@@ -370,7 +370,7 @@
   },
   {
    "reqHost": "picx.zhimg.com",
-   "reqTimes": 4
+   "reqTimes": 15
   },
   {
    "reqHost": "hardvoicepic.elecfans.com",
@@ -430,7 +430,7 @@
   },
   {
    "reqHost": "pic1.zhimg.com",
-   "reqTimes": 1
+   "reqTimes": 11
   },
   {
    "reqHost": "widget.seniverse.com",
@@ -503,6 +503,282 @@
   {
    "reqHost": "upload-images.jianshu.io",
    "reqTimes": 3
+  },
+  {
+   "reqHost": "cloud.tencent.com",
+   "reqTimes": 28
+  },
+  {
+   "reqHost": "ping.cloud.tencent.com",
+   "reqTimes": 17
+  },
+  {
+   "reqHost": "cloudcache.tencent-cloud.cn",
+   "reqTimes": 56
+  },
+  {
+   "reqHost": "cloudcache.tencent-cloud.com",
+   "reqTimes": 66
+  },
+  {
+   "reqHost": "slscache.tencent-cloud.cn",
+   "reqTimes": 12
+  },
+  {
+   "reqHost": "dscache.tencent-cloud.cn",
+   "reqTimes": 7
+  },
+  {
+   "reqHost": "qcloudimg.tencent-cloud.cn",
+   "reqTimes": 23
+  },
+  {
+   "reqHost": "opc.cloud.tencent.com",
+   "reqTimes": 15
+  },
+  {
+   "reqHost": "act-api.cloud.tencent.com",
+   "reqTimes": 91
+  },
+  {
+   "reqHost": "ai-1255598498.cosgz.myqcloud.com",
+   "reqTimes": 7
+  },
+  {
+   "reqHost": "cloudcache.tencentcs.com",
+   "reqTimes": 32
+  },
+  {
+   "reqHost": "cloudcache.tencentcs.cn",
+   "reqTimes": 17
+  },
+  {
+   "reqHost": "www.xymww.com",
+   "reqTimes": 7
+  },
+  {
+   "reqHost": "lib.baomitu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "lf1-cdn-tos.bytegoofy.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "tam.cdn-go.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "baike.baidu.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "bkssl.bdimg.com",
+   "reqTimes": 50
+  },
+  {
+   "reqHost": "yuntu.cloud.tencent.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "wappass.baidu.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "www.zhihu.com",
+   "reqTimes": 10
+  },
+  {
+   "reqHost": "mc.qcloudimg.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "workbench.cloud.tencent.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "finance.sina.com.cn",
+   "reqTimes": 7
+  },
+  {
+   "reqHost": "crash2.zhihu.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "open.zhihu.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "unpkg.zhimg.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "n3.sinaimg.cn",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "ent.sina.com.cn",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "news.sina.com.cn",
+   "reqTimes": 11
+  },
+  {
+   "reqHost": "i1.sinaimg.cn",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "103.41.167.237",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "n0.sinaimg.cn",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "tech.sina.com.cn",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "cstaticdun.126.net",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "i.sso.sina.com.cn",
+   "reqTimes": 8
+  },
+  {
+   "reqHost": "captcha.zhihu.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "ecs.console.aliyun.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "tjs.sjs.sinajs.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "da.dun.163.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "n.sinaimg.cn",
+   "reqTimes": 24
+  },
+  {
+   "reqHost": "main.qcloudimg.com",
+   "reqTimes": 5
+  },
+  {
+   "reqHost": "apm.zhihu.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "n2.sinaimg.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "www.sinaimg.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "buy.cloud.tencent.com",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "c.dun.163.com",
+   "reqTimes": 9
+  },
+  {
+   "reqHost": "comment.sina.com.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "acstatic-dun.126.net",
+   "reqTimes": 6
+  },
+  {
+   "reqHost": "i0.sinaimg.cn",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "comment5.news.sina.com.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "img.t.sinajs.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "insight.cloud.tencent.com",
+   "reqTimes": 61
+  },
+  {
+   "reqHost": "i3.sinaimg.cn",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "cstaticdun1.126.net",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "ac.dun.163.com",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "i2.sinaimg.cn",
+   "reqTimes": 3
+  },
+  {
+   "reqHost": "tvax2.sinaimg.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "pluto.sina.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "api.zhihu.com",
+   "reqTimes": 4
+  },
+  {
+   "reqHost": "d.tech.sina.com.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "wp.news.sina.com.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "woocall.sina.com.cn",
+   "reqTimes": 2
+  },
+  {
+   "reqHost": "api.zhuanlan.sina.com.cn",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "118.89.204.198",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "baikebcs.bdimg.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "console.cloud.tencent.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "www.bingapis.com",
+   "reqTimes": 1
+  },
+  {
+   "reqHost": "functional.events.data.microsoft.com",
+   "reqTimes": 2
   }
  ],
  "CoProtocolData": [
@@ -513,8 +789,8 @@
   },
   {
    "Name": "HTTPS",
-   "ReqTimes": 3177,
-   "ReqDataSize": 75937270
+   "ReqTimes": 4104,
+   "ReqDataSize": 116268319
   },
   {
    "Name": "SOCKS5",
@@ -528,8 +804,8 @@
   },
   {
    "Name": "WSS",
-   "ReqTimes": 1237,
-   "ReqDataSize": 1245363
+   "ReqTimes": 1238,
+   "ReqDataSize": 1245433
   },
   {
    "Name": "TCP",
@@ -552,8 +828,8 @@
   }
  ],
  "CoSensitiveData": {
-  "TriggerNum": 414,
-  "Interceptions": 818,
+  "TriggerNum": 544,
+  "Interceptions": 1265,
   "IllegalUrl": [
    "1001an.com",
    "dafff.com",
@@ -589,32 +865,50 @@
    "bbs.pcbeta.com",
    "mmbiz.qpic.cn",
    "mpic.haiwainet.cn",
-   "assets.msn.cn"
+   "assets.msn.cn",
+   "cloud.tencent.com",
+   "slscache.tencent-cloud.cn",
+   "act-api.cloud.tencent.com",
+   "ai-1255598498.cosgz.myqcloud.com",
+   "www.xymww.com",
+   "cloudcache.tencent-cloud.com",
+   "cloudcache.tencentcs.com",
+   "qcloudimg.tencent-cloud.cn",
+   "bkssl.bdimg.com",
+   "wappass.baidu.com",
+   "finance.sina.com.cn",
+   "www.zhihu.com",
+   "news.sina.com.cn",
+   "open.zhihu.com",
+   "cloudcache.tencent-cloud.cn",
+   "cstaticdun.126.net",
+   "cstaticdun1.126.net",
+   "n.sinaimg.cn"
   ]
  },
  "LogsData": {
-  "InfoTimes": 1897,
-  "DebugTimes": 22713,
+  "InfoTimes": 2213,
+  "DebugTimes": 28281,
   "WarnTimes": 33,
-  "ErrorTimes": 139,
+  "ErrorTimes": 170,
   "FatalTimes": 12
  },
  "ServerStatus": {
   "CPU_INFO": {
-   "idle": 98.5998324462285,
-   "kernel": 0.6779202969460089,
-   "user": 0.7222472568254908,
-   "Usage": 1.3658536585365855
+   "idle": 98.8126921834311,
+   "kernel": 0.6790092012444414,
+   "user": 0.5082986153244617,
+   "Usage": 1.1516314779270633
   },
   "MEMORY_INFO": {
    "total": 15741,
-   "available": 5309,
-   "usage": 66.27188055319189
+   "available": 4562,
+   "usage": 71.01802407428501
   },
   "DISK_INFO": {
    "total": 116,
    "available": 31,
-   "usage": 73.18824426150522
+   "usage": 73.19048099597259
   }
  }
 }

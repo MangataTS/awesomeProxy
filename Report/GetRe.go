@@ -715,6 +715,7 @@ func GetCoReport() {
 	TitleComment(pdf, titleStr)
 
 	ReadCoConfig()
+
 	GetCoWindowsStatus()
 
 	pdf.SetFont("Arial", "", 15)
